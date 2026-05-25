@@ -19,15 +19,25 @@
     </button>
 
     <nav class="site-header__nav" id="main-navigation" aria-label="Menu principal">
-      <a href="#especialidades">Especialidades</a>
-      <a href="#servicos">Servi&ccedil;os</a>
+      <div class="site-header__dropdown">
+        <button class="site-header__dropdown-button" type="button" aria-expanded="false" aria-controls="services-menu">
+          Servi&ccedil;os
+        </button>
+
+        <div class="site-header__dropdown-menu" id="services-menu">
+          <a href="servicos.html">Todos os servi&ccedil;os</a>
+          <a href="abertura-de-empresa.html">Abertura de empresa</a>
+          <a href="contabilidade-digital.html">Contabilidade digital</a>
+        </div>
+      </div>
+
       <a href="#sobre">Sobre</a>
       <a href="#blog">Blog</a>
       <a href="#contato">Contato</a>
     </nav>
 
     <a class="site-header__client" href="#" aria-label="Acessar area do cliente">
-      Area do cliente
+      Área do cliente
     </a>
   </header>
 
