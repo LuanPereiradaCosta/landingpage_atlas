@@ -1,0 +1,32 @@
+{
+  "servers": {
+    "filesystem": {
+      "command": "npx.cmd",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "C:\\Users\\Usuario\\Desktop\\atlas"
+      ]
+    },
+    "puppeteer": {
+      "command": "npx.cmd",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-puppeteer"
+      ]
+    },
+    "context7": {
+      "command": "npx.cmd",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ]
+    },
+    "fetch": {
+      "command": "C:\\Users\\Usuario\\AppData\\Roaming\\Python\\Python314\\Scripts\\uvx.exe",
+      "args": [
+        "mcp-server-fetch"
+      ]
+    }
+  }
+}
