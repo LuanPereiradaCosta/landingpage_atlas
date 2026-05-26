@@ -13,6 +13,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -68,6 +72,30 @@ button:focus-visible {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes institutionalTextReveal {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes institutionalBackgroundReveal {
+  from {
+    filter: blur(8px) saturate(0.96) contrast(1.04);
+    transform: scale(1.65);
+  }
+
+  to {
+    filter: blur(0) saturate(0.96) contrast(1.04);
+    transform: scale(1.08);
   }
 }
 
@@ -617,6 +645,120 @@ body.is-loaded .page-loader {
   font-size: 0.76rem;
 }
 
+.institutional-section {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: 86vh;
+  padding: 96px 20px;
+  overflow: hidden;
+  color: var(--color-surface);
+  background-color: var(--color-primary);
+}
+
+.institutional-section__background,
+.institutional-section__overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.institutional-section__background {
+  z-index: -2;
+  background-image: url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=80");
+  background-position: center;
+  background-size: cover;
+  transform: scale(1.65);
+  transform-origin: center;
+  filter: blur(8px) saturate(0.96) contrast(1.04);
+  will-change: filter, transform;
+}
+
+.institutional-section.is-visible .institutional-section__background {
+  animation: institutionalBackgroundReveal 1.7s ease-out both;
+}
+
+.institutional-section__overlay {
+  z-index: -1;
+  background:
+    radial-gradient(circle at center, rgba(6, 26, 43, 0.22) 0%, rgba(6, 26, 43, 0.5) 72%),
+    linear-gradient(180deg, rgba(6, 26, 43, 0.38) 0%, rgba(6, 26, 43, 0.48) 48%, rgba(6, 26, 43, 0.78) 100%);
+}
+
+.institutional-section__content {
+  width: min(100%, 760px);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.institutional-section__eyebrow {
+  margin: 0 0 18px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.8rem;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+
+.institutional-section__eyebrow,
+.institutional-section__title,
+.institutional-section__text,
+.institutional-section__support {
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+.institutional-section.is-visible .institutional-section__eyebrow,
+.institutional-section.is-visible .institutional-section__title,
+.institutional-section.is-visible .institutional-section__text,
+.institutional-section.is-visible .institutional-section__support {
+  animation: institutionalTextReveal 0.72s ease both;
+}
+
+.institutional-section.is-visible .institutional-section__eyebrow {
+  animation-delay: 0.06s;
+}
+
+.institutional-section.is-visible .institutional-section__title {
+  animation-delay: 0.16s;
+}
+
+.institutional-section.is-visible .institutional-section__text {
+  animation-delay: 0.28s;
+}
+
+.institutional-section.is-visible .institutional-section__support {
+  animation-delay: 0.4s;
+}
+
+.institutional-section__title {
+  max-width: 640px;
+  margin: 0;
+  margin-inline: auto;
+  font-size: clamp(1.9rem, 7vw, 3.8rem);
+  line-height: 1.05;
+  font-weight: 760;
+  letter-spacing: 0;
+}
+
+.institutional-section__text {
+  max-width: 560px;
+  margin: 28px 0 0;
+  margin-inline: auto;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(1.05rem, 3vw, 1.35rem);
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.institutional-section__support {
+  max-width: 500px;
+  margin: 18px 0 0;
+  margin-inline: auto;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
 @media (min-width: 768px) {
   .site-header {
     display: flex;
@@ -707,11 +849,25 @@ body.is-loaded .page-loader {
     justify-self: end;
     transform: translate(-18px, -68px);
   }
+
+  .institutional-section {
+    min-height: 92vh;
+    padding: 120px 48px;
+  }
+
+  .institutional-section__content {
+    margin-left: auto;
+  }
 }
 
 @media (min-width: 1180px) {
   .hero {
     grid-template-columns: minmax(0, 1fr) 510px;
+    padding-left: 72px;
+    padding-right: 72px;
+  }
+
+  .institutional-section {
     padding-left: 72px;
     padding-right: 72px;
   }
@@ -766,6 +922,20 @@ body.is-loaded .page-loader {
   .hero__button {
     width: 100%;
   }
+
+  .institutional-section {
+    min-height: 78vh;
+    padding: 82px 20px;
+  }
+
+  .institutional-section__background {
+    background-position: 58% center;
+  }
+
+  .institutional-section__overlay {
+    background:
+      linear-gradient(180deg, rgba(6, 26, 43, 0.5) 0%, rgba(11, 46, 74, 0.52) 48%, rgba(6, 26, 43, 0.82) 100%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -776,5 +946,12 @@ body.is-loaded .page-loader {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .institutional-section__background,
+  .institutional-section.is-visible .institutional-section__background {
+    animation: none;
+    filter: blur(0) saturate(0.96) contrast(1.04);
+    transform: scale(1.08);
   }
 }
