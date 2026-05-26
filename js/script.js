@@ -8,6 +8,7 @@ const heroSlidesTrack = document.querySelector('.hero__slides');
 const heroSlides = document.querySelectorAll('.hero__slide');
 const heroReviews = document.querySelectorAll('.hero__review');
 const institutionalSection = document.querySelector('.institutional-section');
+const differentialsSection = document.querySelector('.differentials-section');
 const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 let activeHeroSlide = 0;
 
@@ -103,6 +104,22 @@ if (institutionalSection) {
   });
 
   institutionalTextObserver.observe(institutionalSection);
+}
+
+if (differentialsSection) {
+  const differentialsObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        differentialsSection.classList.add('is-visible');
+      } else {
+        differentialsSection.classList.remove('is-visible');
+      }
+    });
+  }, {
+    threshold: 0.3
+  });
+
+  differentialsObserver.observe(differentialsSection);
 }
 
 menuButton.addEventListener('click', () => {
