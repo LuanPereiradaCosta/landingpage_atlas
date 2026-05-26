@@ -6,7 +6,11 @@
   <title>Atlas Contabilidade Digital</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="is-loading">
+  <div class="page-loader" aria-hidden="true">
+    <img src="assets/images/logo_atlas.png" alt="">
+  </div>
+
   <header class="site-header">
     <a class="site-header__brand" href="#" aria-label="Atlas Contabilidade Digital - pagina inicial">
       <img src="assets/images/logo_atlas.png" alt="Logo da Atlas Contabilidade Digital">
@@ -40,6 +44,76 @@
       Área do cliente
     </a>
   </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__background" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">Contabilidade digital para empresas modernas</p>
+
+        <h1 class="hero__title" id="hero-title">
+          Gest&atilde;o cont&aacute;bil mais clara, segura e pr&oacute;xima da sua empresa.
+        </h1>
+
+        <p class="hero__text">
+          A Atlas Contabilidade Digital une tecnologia, atendimento consultivo e processos bem organizados para apoiar empresas que querem crescer com mais tranquilidade.
+        </p>
+
+        <div class="hero__actions" aria-label="Acoes principais">
+          <a class="hero__button hero__button--primary" href="#contato">Falar com especialista</a>
+          <a class="hero__button hero__button--secondary" href="#servicos">Conhecer servi&ccedil;os</a>
+        </div>
+      </div>
+
+      <div class="hero__media" aria-label="Avaliacoes de clientes">
+        <div class="hero__carousel" data-hero-carousel>
+          <div class="hero__slides">
+            <img class="hero__slide is-active" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80" alt="Ambiente corporativo moderno com mesas de trabalho">
+            <img class="hero__slide" src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80" alt="Equipe em reuniao profissional analisando informacoes">
+            <img class="hero__slide" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80" alt="Profissionais conversando em ambiente de escritorio">
+            <img class="hero__slide" src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80" alt="Equipe reunida em mesa de planejamento empresarial">
+            <img class="hero__slide" src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=900&q=80" alt="Profissionais em conversa de consultoria no escritorio">
+          </div>
+
+          <article class="hero__review is-active" aria-live="polite">
+            <div class="hero__review-rating" aria-label="Avaliacao cinco estrelas">★★★★★</div>
+            <p>“Atendimento claro, r&aacute;pido e muito organizado. A rotina cont&aacute;bil ficou mais simples.”</p>
+            <strong>Cliente Atlas</strong>
+            <span>Empresa de servi&ccedil;os</span>
+          </article>
+
+          <article class="hero__review" aria-live="polite">
+            <div class="hero__review-rating" aria-label="Avaliacao cinco estrelas">★★★★★</div>
+            <p>“Conseguimos acompanhar tudo com mais seguran&ccedil;a e receber orienta&ccedil;&otilde;es no momento certo.”</p>
+            <strong>Cliente Atlas</strong>
+            <span>Consultoria empresarial</span>
+          </article>
+
+          <article class="hero__review" aria-live="polite">
+            <div class="hero__review-rating" aria-label="Avaliacao cinco estrelas">★★★★★</div>
+            <p>“A equipe transmite confian&ccedil;a e explica os processos de um jeito f&aacute;cil de entender.”</p>
+            <strong>Cliente Atlas</strong>
+            <span>Neg&oacute;cio digital</span>
+          </article>
+
+          <article class="hero__review" aria-live="polite">
+            <div class="hero__review-rating" aria-label="Avaliacao cinco estrelas">★★★★★</div>
+            <p>“A organiza&ccedil;&atilde;o dos prazos e documentos ajudou nossa empresa a ganhar tempo.”</p>
+            <strong>Cliente Atlas</strong>
+            <span>Com&eacute;rcio local</span>
+          </article>
+
+          <article class="hero__review" aria-live="polite">
+            <div class="hero__review-rating" aria-label="Avaliacao cinco estrelas">★★★★★</div>
+            <p>“Sentimos mais previsibilidade e apoio para tomar decis&otilde;es importantes.”</p>
+            <strong>Cliente Atlas</strong>
+            <span>Empresa em crescimento</span>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <script src="js/script.js"></script>
 </body>
