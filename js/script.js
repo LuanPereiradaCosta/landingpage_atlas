@@ -4,6 +4,7 @@ const siteHeader = document.querySelector('.site-header');
 const servicesDropdown = document.querySelector('.site-header__dropdown');
 const servicesButton = document.querySelector('.site-header__dropdown-button');
 const heroSection = document.querySelector('.hero');
+const heroSlidesTrack = document.querySelector('.hero__slides');
 const heroSlides = document.querySelectorAll('.hero__slide');
 const heroReviews = document.querySelectorAll('.hero__review');
 let activeHeroSlide = 0;
@@ -27,14 +28,38 @@ const showHeroSlide = (slideIndex) => {
     return;
   }
 
-  activeHeroSlide = (slideIndex + heroSlides.length) % heroSlides.length;
+  const nextActiveSlide = (slideIndex + heroSlides.length) % heroSlides.length;
+  const previousHeroSlide = (nextActiveSlide - 1 + heroSlides.length) % heroSlides.length;
+  const nextHeroSlide = (nextActiveSlide + 1) % heroSlides.length;
+
+  if (heroSlidesTrack && nextActiveSlide !== activeHeroSlide) {
+    heroSlidesTrack.classList.add('is-moving');
+
+    heroReviews.forEach((review) => {
+      review.classList.add('is-moving');
+    });
+
+    window.setTimeout(() => {
+      heroSlidesTrack.classList.remove('is-moving');
+
+      heroReviews.forEach((review) => {
+        review.classList.remove('is-moving');
+      });
+    }, 900);
+  }
+
+  activeHeroSlide = nextActiveSlide;
 
   heroSlides.forEach((slide, index) => {
     slide.classList.toggle('is-active', index === activeHeroSlide);
+    slide.classList.toggle('is-previous', index === previousHeroSlide);
+    slide.classList.toggle('is-next', index === nextHeroSlide);
   });
 
   heroReviews.forEach((review, index) => {
     review.classList.toggle('is-active', index === activeHeroSlide);
+    review.classList.toggle('is-previous', index === previousHeroSlide);
+    review.classList.toggle('is-next', index === nextHeroSlide);
   });
 
 };
@@ -73,7 +98,7 @@ if (heroSection) {
 
   window.setInterval(() => {
     showHeroSlide(activeHeroSlide + 1);
-  }, 4500);
+  }, 5200);
 }
 
 updateHeaderBackground();
