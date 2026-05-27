@@ -171,6 +171,9 @@ document.querySelectorAll('a[href^="#"]').forEach((anchorLink) => {
     mainNavigation.classList.remove('is-open');
     menuButton.setAttribute('aria-expanded', 'false');
     menuButton.setAttribute('aria-label', 'Abrir menu');
+
+    servicesDropdown.classList.remove('is-open');
+    servicesButton.setAttribute('aria-expanded', 'false');
   });
 });
 
