@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Atlas Contabilidade Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&family=Plus+Jakarta+Sans:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="is-loading">
@@ -116,24 +119,78 @@
       </div>
     </section>
 
-    <section class="institutional-section" id="sobre" aria-labelledby="institutional-title">
-      <div class="institutional-section__background" aria-hidden="true"></div>
+    <section class="institutional-section" id="sobre" aria-labelledby="institutional-title" data-institutional-slider>
+      <div class="institutional-section__background" aria-hidden="true">
+        <img class="institutional-section__slide is-active" src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=80" alt="">
+        <img class="institutional-section__slide" src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=80" alt="">
+        <img class="institutional-section__slide" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1800&q=80" alt="">
+        <img class="institutional-section__slide" src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1800&q=80" alt="">
+      </div>
       <div class="institutional-section__overlay" aria-hidden="true"></div>
 
-      <div class="institutional-section__content">
-        <p class="institutional-section__eyebrow">Atlas Contabilidade Digital</p>
+      <div class="institutional-section__layout">
+        <aside class="institutional-section__panel" aria-label="Resumo institucional da Atlas">
+          <p class="institutional-section__eyebrow">Atlas Contabilidade Digital</p>
 
-        <h2 class="institutional-section__title" id="institutional-title">
-          Contabilidade digital com visão estratégica.
-        </h2>
+          <h2 class="institutional-section__title" id="institutional-title">
+            Gest&atilde;o cont&aacute;bil inteligente.
+          </h2>
 
-        <p class="institutional-section__text">
-          Clareza para decidir. Segurança para crescer.
-        </p>
+          <p class="institutional-section__text">
+            Clareza para empresas crescerem.
+          </p>
 
-        <p class="institutional-section__support">
-          Tecnologia com atendimento humano para cuidar dos números enquanto você foca no negócio.
-        </p>
+          <dl class="institutional-section__details">
+            <div>
+              <dt>Atendimento</dt>
+              <dd>Digital</dd>
+            </div>
+
+            <div>
+              <dt>Foco</dt>
+              <dd>Empresas</dd>
+            </div>
+
+            <div>
+              <dt>Base</dt>
+              <dd>S&atilde;o Jos&eacute;, SC</dd>
+            </div>
+
+            <div>
+              <dt>Modelo</dt>
+              <dd>Consultivo</dd>
+            </div>
+          </dl>
+
+          <div class="institutional-section__panel-footer">
+            <img class="institutional-section__thumb" src="assets/images/logo_atlas.png" alt="Logo da Atlas Contabilidade Digital">
+
+            <p class="institutional-section__support">
+              Tecnologia com atendimento humano.
+            </p>
+          </div>
+        </aside>
+
+        <div class="institutional-section__content">
+          <p>Contabilidade digital com vis&atilde;o estrat&eacute;gica.</p>
+          <p>Seguran&ccedil;a para crescer.</p>
+        </div>
+      </div>
+
+      <div class="institutional-section__controls" aria-label="Controles das imagens institucionais">
+        <span class="institutional-section__counter" aria-live="polite">
+          <span data-institutional-current>01</span> / <span data-institutional-total>04</span>
+        </span>
+
+        <div class="institutional-section__arrows">
+          <button class="institutional-section__control" type="button" aria-label="Imagem institucional anterior" data-institutional-prev>
+            &larr;
+          </button>
+
+          <button class="institutional-section__control" type="button" aria-label="Pr&oacute;xima imagem institucional" data-institutional-next>
+            &rarr;
+          </button>
+        </div>
       </div>
     </section>
 
