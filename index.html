@@ -26,6 +26,8 @@
     </button>
 
     <nav class="site-header__nav" id="main-navigation" aria-label="Menu principal">
+      <a href="#">Home</a>
+
       <div class="site-header__dropdown">
         <button class="site-header__dropdown-button" type="button" aria-expanded="false" aria-controls="services-menu">
           Servi&ccedil;os
@@ -45,9 +47,28 @@
       <a href="#contato">Contato</a>
     </nav>
 
-    <a class="site-header__client" href="#" aria-label="Acessar area do cliente">
-      Área do cliente
-    </a>
+    <div class="site-header__social">
+      <a href="#" target="_blank" rel="noopener" aria-label="Instagram da Atlas">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn da Atlas">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="4"/>
+          <line x1="8" y1="11" x2="8" y2="16"/>
+          <line x1="8" y1="8" x2="8" y2="8.5"/>
+          <path d="M12 16v-5M16 16v-3a2 2 0 0 0-4 0"/>
+        </svg>
+      </a>
+      <a href="#" target="_blank" rel="noopener" aria-label="WhatsApp da Atlas">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.04 4.2a7.72 7.72 0 0 0-6.55 11.8l.2.31-.72 2.66 2.72-.71.3.18a7.73 7.73 0 1 0 4.05-14.24Zm0 13.97a6.23 6.23 0 0 1-3.17-.86l-.44-.26-1.43.38.38-1.39-.29-.45a6.22 6.22 0 1 1 4.95 2.58Zm3.42-4.64c-.19-.1-1.1-.54-1.27-.6-.17-.07-.29-.1-.42.09-.12.19-.48.6-.59.72-.11.13-.22.14-.41.05-.19-.1-.8-.29-1.53-.93a5.7 5.7 0 0 1-1.06-1.32c-.11-.19-.01-.29.08-.39.08-.08.19-.22.28-.32.09-.11.12-.19.19-.32.06-.13.03-.24-.02-.34-.05-.09-.42-1-.57-1.38-.15-.36-.3-.31-.42-.32h-.35c-.13 0-.34.05-.51.24-.17.19-.67.65-.67 1.59s.69 1.84.78 1.97c.1.13 1.35 2.06 3.27 2.89.46.2.81.32 1.09.41.46.14.88.12 1.21.07.37-.05 1.1-.45 1.26-.88.15-.43.15-.8.11-.88-.05-.08-.17-.13-.36-.22Z"/>
+        </svg>
+      </a>
+    </div>
   </header>
 
   <main>
@@ -129,47 +150,26 @@
       <div class="institutional-section__overlay" aria-hidden="true"></div>
 
       <div class="institutional-section__layout">
-        <aside class="institutional-section__panel" aria-label="Resumo institucional da Atlas">
-          <p class="institutional-section__eyebrow">Atlas Contabilidade Digital</p>
-
-          <h2 class="institutional-section__title" id="institutional-title">
-            Gest&atilde;o cont&aacute;bil inteligente.
-          </h2>
-
-          <p class="institutional-section__text">
-            Clareza para empresas crescerem.
-          </p>
-
-          <dl class="institutional-section__details">
-            <div>
-              <dt>Atendimento</dt>
-              <dd>Digital</dd>
+        <div class="institutional-section__stats">
+          <p class="institutional-section__stats-label">Empresas atendidas</p>
+          <p class="institutional-section__stats-big"><span class="institutional-section__stat-accent">+</span>120</p>
+          <p class="institutional-section__stats-sub">clientes satisfeitos em SC</p>
+          <div class="institutional-section__stats-divider"></div>
+          <div class="institutional-section__stats-row">
+            <div class="institutional-section__stat-mini">
+              <p class="institutional-section__stat-mini-num">98<span class="institutional-section__stat-accent-sm">%</span></p>
+              <p class="institutional-section__stat-mini-desc">Satisfa&ccedil;&atilde;o</p>
             </div>
-
-            <div>
-              <dt>Foco</dt>
-              <dd>Empresas</dd>
+            <div class="institutional-section__stat-mini">
+              <p class="institutional-section__stat-mini-num"><span class="institutional-section__stat-accent">+</span>8</p>
+              <p class="institutional-section__stat-mini-desc">Anos no mercado</p>
             </div>
-
-            <div>
-              <dt>Base</dt>
-              <dd>S&atilde;o Jos&eacute;, SC</dd>
+            <div class="institutional-section__stat-mini">
+              <p class="institutional-section__stat-mini-num institutional-section__stat-mini-num--sm">S&atilde;o Jos&eacute;</p>
+              <p class="institutional-section__stat-mini-desc">Base em SC</p>
             </div>
-
-            <div>
-              <dt>Modelo</dt>
-              <dd>Consultivo</dd>
-            </div>
-          </dl>
-
-          <div class="institutional-section__panel-footer">
-            <img class="institutional-section__thumb" src="assets/images/logo_atlas.png" alt="Logo da Atlas Contabilidade Digital">
-
-            <p class="institutional-section__support">
-              Tecnologia com atendimento humano.
-            </p>
           </div>
-        </aside>
+        </div>
 
         <div class="institutional-section__content">
           <p>Contabilidade digital com vis&atilde;o estrat&eacute;gica.</p>
@@ -250,6 +250,15 @@
       </div>
     </section>
   </main>
+
+  <a class="whatsapp-floating" href="#" target="_blank" rel="noopener" aria-label="Falar com a Atlas pelo WhatsApp">
+    <span class="whatsapp-floating__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <path d="M12.04 4.2a7.72 7.72 0 0 0-6.55 11.8l.2.31-.72 2.66 2.72-.71.3.18a7.73 7.73 0 1 0 4.05-14.24Zm0 13.97a6.23 6.23 0 0 1-3.17-.86l-.44-.26-1.43.38.38-1.39-.29-.45a6.22 6.22 0 1 1 4.95 2.58Zm3.42-4.64c-.19-.1-1.1-.54-1.27-.6-.17-.07-.29-.1-.42.09-.12.19-.48.6-.59.72-.11.13-.22.14-.41.05-.19-.1-.8-.29-1.53-.93a5.7 5.7 0 0 1-1.06-1.32c-.11-.19-.01-.29.08-.39.08-.08.19-.22.28-.32.09-.11.12-.19.19-.32.06-.13.03-.24-.02-.34-.05-.09-.42-1-.57-1.38-.15-.36-.3-.31-.42-.32h-.35c-.13 0-.34.05-.51.24-.17.19-.67.65-.67 1.59s.69 1.84.78 1.97c.1.13 1.35 2.06 3.27 2.89.46.2.81.32 1.09.41.46.14.88.12 1.21.07.37-.05 1.1-.45 1.26-.88.15-.43.15-.8.11-.88-.05-.08-.17-.13-.36-.22Z" />
+      </svg>
+    </span>
+    <span>Falar com especialista</span>
+  </a>
 
   <script src="js/script.js"></script>
 </body>

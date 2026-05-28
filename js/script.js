@@ -3,8 +3,8 @@ const mainNavigation = document.querySelector('.site-header__nav');
 const siteHeader = document.querySelector('.site-header');
 const servicesDropdown = document.querySelector('.site-header__dropdown');
 const servicesButton = document.querySelector('.site-header__dropdown-button');
+const clientAreaButton = document.querySelector('.site-header__social');
 const heroSection = document.querySelector('.hero');
-const heroSlidesTrack = document.querySelector('.hero__slides');
 const heroSlides = document.querySelectorAll('.hero__slide');
 const heroReviews = document.querySelectorAll('.hero__review');
 const institutionalSection = document.querySelector('.institutional-section');
@@ -17,6 +17,9 @@ const differentialsSection = document.querySelector('.differentials-section');
 const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 let activeHeroSlide = 0;
 let activeInstitutionalSlide = 0;
+const heroReviewLeaveDuration = 520;
+const heroReviewEnterDelay = 260;
+const heroSlideChangeDelay = 380;
 
 if ('scrollRestoration' in window.history) {
   window.history.scrollRestoration = 'manual';
@@ -52,16 +55,8 @@ const updateHeaderBackground = () => {
   const headerHeight = siteHeader ? siteHeader.offsetHeight : 0;
   const scrollLimit = heroSection ? heroSection.offsetHeight - headerHeight : 120;
   const pageWasScrolled = window.scrollY > scrollLimit;
-  let institutionalSectionIsActive = false;
-
-  if (institutionalSection) {
-    const institutionalArea = institutionalSection.getBoundingClientRect();
-
-    institutionalSectionIsActive = institutionalArea.top <= headerHeight + 1 && institutionalArea.bottom > headerHeight + 120;
-  }
 
   siteHeader.classList.toggle('is-scrolled', pageWasScrolled);
-  siteHeader.classList.toggle('is-institutional', institutionalSectionIsActive);
 };
 
 const showHeroSlide = (slideIndex) => {
@@ -72,37 +67,111 @@ const showHeroSlide = (slideIndex) => {
   const nextActiveSlide = (slideIndex + heroSlides.length) % heroSlides.length;
   const previousHeroSlide = (nextActiveSlide - 1 + heroSlides.length) % heroSlides.length;
   const nextHeroSlide = (nextActiveSlide + 1) % heroSlides.length;
+  const previousActiveHeroSlide = activeHeroSlide;
+  const heroSlideIsChanging = previousActiveHeroSlide !== nextActiveSlide;
 
-  if (heroSlidesTrack && nextActiveSlide !== activeHeroSlide) {
-    heroSlidesTrack.classList.add('is-moving');
+  if (heroSlideIsChanging) {
+    const shrinkingSlide = heroSlides[previousActiveHeroSlide];
 
-    heroReviews.forEach((review) => {
-      review.classList.add('is-moving');
-    });
+    if (shrinkingSlide) {
+      shrinkingSlide.classList.remove('is-active', 'is-previous', 'is-next');
+      shrinkingSlide.classList.add('is-shrinking');
 
-    window.setTimeout(() => {
-      heroSlidesTrack.classList.remove('is-moving');
+      if (shrinkingSlide.heroShrinkTimer) {
+        window.clearTimeout(shrinkingSlide.heroShrinkTimer);
+      }
 
-      heroReviews.forEach((review) => {
-        review.classList.remove('is-moving');
-      });
-    }, 900);
+      shrinkingSlide.heroShrinkTimer = window.setTimeout(() => {
+        shrinkingSlide.classList.remove('is-shrinking');
+        shrinkingSlide.heroShrinkTimer = null;
+      }, 800);
+    }
   }
 
   activeHeroSlide = nextActiveSlide;
 
   heroSlides.forEach((slide, index) => {
-    slide.classList.toggle('is-active', index === activeHeroSlide);
-    slide.classList.toggle('is-previous', index === previousHeroSlide);
-    slide.classList.toggle('is-next', index === nextHeroSlide);
+    if (slide.classList.contains('is-shrinking')) {
+      return;
+    }
+
+    slide.classList.remove('is-active', 'is-previous', 'is-next');
+
+    if (index === activeHeroSlide) {
+      slide.classList.add('is-active');
+    } else if (index === previousHeroSlide) {
+      slide.classList.add('is-previous');
+    } else if (index === nextHeroSlide) {
+      slide.classList.add('is-next');
+    }
   });
 
   heroReviews.forEach((review, index) => {
-    review.classList.toggle('is-active', index === activeHeroSlide);
-    review.classList.toggle('is-previous', index === previousHeroSlide);
-    review.classList.toggle('is-next', index === nextHeroSlide);
-  });
+    review.classList.remove('is-active', 'is-previous', 'is-next', 'is-waiting');
 
+    if (review.heroLeaveTimer) {
+      window.clearTimeout(review.heroLeaveTimer);
+      review.heroLeaveTimer = null;
+    }
+
+    if (review.heroEnterTimer) {
+      window.clearTimeout(review.heroEnterTimer);
+      review.heroEnterTimer = null;
+    }
+
+    const reviewIsLeaving = index === previousActiveHeroSlide && previousActiveHeroSlide !== activeHeroSlide;
+    const reviewIsEntering = index === activeHeroSlide;
+
+    if (reviewIsEntering && !heroSlideIsChanging) {
+      review.classList.remove('is-leaving');
+      review.classList.add('is-active');
+    } else if (reviewIsEntering) {
+      review.classList.remove('is-leaving');
+      review.classList.add('is-waiting');
+
+      review.heroEnterTimer = window.setTimeout(() => {
+        review.classList.remove('is-waiting');
+        review.classList.add('is-active');
+        review.heroEnterTimer = null;
+      }, heroReviewEnterDelay);
+    } else if (reviewIsLeaving) {
+      review.classList.add('is-leaving');
+
+      review.heroLeaveTimer = window.setTimeout(() => {
+        review.classList.remove('is-leaving');
+        review.heroLeaveTimer = null;
+      }, heroReviewLeaveDuration);
+    } else if (index === previousHeroSlide) {
+      review.classList.add('is-previous');
+    } else if (index === nextHeroSlide) {
+      review.classList.add('is-next');
+    }
+  });
+};
+
+const scheduleHeroSlide = (slideIndex) => {
+  if (!heroSlides.length || !heroReviews.length) {
+    showHeroSlide(slideIndex);
+    return;
+  }
+
+  const nextActiveSlide = (slideIndex + heroSlides.length) % heroSlides.length;
+
+  if (nextActiveSlide === activeHeroSlide) {
+    showHeroSlide(slideIndex);
+    return;
+  }
+
+  const activeReview = heroReviews[activeHeroSlide];
+
+  if (activeReview) {
+    activeReview.classList.remove('is-active', 'is-previous', 'is-next', 'is-waiting');
+    activeReview.classList.add('is-leaving');
+  }
+
+  window.setTimeout(() => {
+    showHeroSlide(slideIndex);
+  }, heroSlideChangeDelay);
 };
 
 const formatSlideNumber = (slideNumber) => String(slideNumber).padStart(2, '0');
@@ -170,6 +239,21 @@ if (institutionalNextButton) {
 }
 
 if (institutionalSection) {
+  const institutionalHeaderObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        siteHeader.classList.add('is-institutional');
+      } else {
+        siteHeader.classList.remove('is-institutional');
+      }
+    });
+  }, {
+    rootMargin: '-68px 0px -78% 0px',
+    threshold: 0
+  });
+
+  institutionalHeaderObserver.observe(institutionalSection);
+
   const institutionalTextObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -186,6 +270,22 @@ if (institutionalSection) {
 }
 
 if (differentialsSection) {
+  const differentialsHeaderObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        siteHeader.classList.remove('is-institutional');
+        siteHeader.classList.add('is-differentials');
+      } else {
+        siteHeader.classList.remove('is-differentials');
+      }
+    });
+  }, {
+    rootMargin: '-68px 0px -78% 0px',
+    threshold: 0
+  });
+
+  differentialsHeaderObserver.observe(differentialsSection);
+
   const differentialsObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -267,8 +367,8 @@ if (heroSection) {
   });
 
   window.setInterval(() => {
-    showHeroSlide(activeHeroSlide + 1);
-  }, 5200);
+    scheduleHeroSlide(activeHeroSlide + 1);
+  }, 4600);
 }
 
 if (institutionalSlides.length && !reducedMotionQuery.matches) {
