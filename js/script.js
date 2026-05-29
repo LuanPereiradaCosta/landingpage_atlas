@@ -17,9 +17,9 @@ const differentialsSection = document.querySelector('.differentials-section');
 const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 let activeHeroSlide = 0;
 let activeInstitutionalSlide = 0;
-const heroReviewLeaveDuration = 520;
-const heroReviewEnterDelay = 260;
-const heroSlideChangeDelay = 380;
+const heroReviewLeaveDuration = 780;
+const heroReviewEnterDelay = 1120;
+const heroSlideChangeDelay = 1040;
 
 if ('scrollRestoration' in window.history) {
   window.history.scrollRestoration = 'manual';
@@ -64,47 +64,114 @@ const showHeroSlide = (slideIndex) => {
     return;
   }
 
-  const nextActiveSlide = (slideIndex + heroSlides.length) % heroSlides.length;
-  const previousHeroSlide = (nextActiveSlide - 1 + heroSlides.length) % heroSlides.length;
-  const nextHeroSlide = (nextActiveSlide + 1) % heroSlides.length;
+  const totalHeroSlides = heroSlides.length;
+  const nextActiveSlide = (slideIndex + totalHeroSlides) % totalHeroSlides;
   const previousActiveHeroSlide = activeHeroSlide;
+  const currentPreviousSlide = (previousActiveHeroSlide - 1 + totalHeroSlides) % totalHeroSlides;
+  const upcomingNextSlide = (nextActiveSlide + 1) % totalHeroSlides;
   const heroSlideIsChanging = previousActiveHeroSlide !== nextActiveSlide;
 
-  if (heroSlideIsChanging) {
+  const clearHeroSlideTimer = (slide, timerName) => {
+    if (slide && slide[timerName]) {
+      window.clearTimeout(slide[timerName]);
+      slide[timerName] = null;
+    }
+  };
+
+  if (!heroSlideIsChanging) {
+    heroSlides.forEach((slide, index) => {
+      clearHeroSlideTimer(slide, 'heroShrinkTimer');
+      clearHeroSlideTimer(slide, 'heroEjectTimer');
+      clearHeroSlideTimer(slide, 'heroActivateTimer');
+
+      slide.classList.remove('is-active', 'is-previous', 'is-next', 'is-shrinking', 'is-ejecting');
+
+      if (index === nextActiveSlide) {
+        slide.classList.add('is-active');
+      } else if (index === (nextActiveSlide - 1 + totalHeroSlides) % totalHeroSlides) {
+        slide.classList.add('is-previous');
+      } else if (index === (nextActiveSlide + 1) % totalHeroSlides) {
+        slide.classList.add('is-next');
+      }
+    });
+  } else {
     const shrinkingSlide = heroSlides[previousActiveHeroSlide];
+    const ejectingSlide = heroSlides[currentPreviousSlide];
+    const enteringSlide = heroSlides[nextActiveSlide];
+    const reservedNextSlide = heroSlides[upcomingNextSlide];
+
+    heroSlides.forEach((slide, index) => {
+      clearHeroSlideTimer(slide, 'heroActivateTimer');
+
+      const slideMustStayInCycle =
+        index === previousActiveHeroSlide ||
+        index === currentPreviousSlide ||
+        index === nextActiveSlide ||
+        index === upcomingNextSlide;
+
+      if (!slideMustStayInCycle) {
+        clearHeroSlideTimer(slide, 'heroShrinkTimer');
+        clearHeroSlideTimer(slide, 'heroEjectTimer');
+        slide.classList.remove('is-active', 'is-previous', 'is-next', 'is-shrinking', 'is-ejecting');
+      }
+    });
+
+    if (ejectingSlide) {
+      clearHeroSlideTimer(ejectingSlide, 'heroEjectTimer');
+      ejectingSlide.classList.remove('is-active', 'is-previous', 'is-next', 'is-shrinking');
+      ejectingSlide.classList.add('is-ejecting');
+
+      ejectingSlide.heroEjectTimer = window.setTimeout(() => {
+        ejectingSlide.classList.remove('is-ejecting');
+        ejectingSlide.heroEjectTimer = null;
+      }, 940);
+    }
+
+    if (enteringSlide) {
+      clearHeroSlideTimer(enteringSlide, 'heroActivateTimer');
+      enteringSlide.classList.remove('is-active', 'is-previous', 'is-shrinking', 'is-ejecting');
+      enteringSlide.classList.add('is-next');
+    }
+
+    if (reservedNextSlide && reservedNextSlide !== enteringSlide) {
+      clearHeroSlideTimer(reservedNextSlide, 'heroActivateTimer');
+      reservedNextSlide.classList.remove('is-active', 'is-previous', 'is-next', 'is-shrinking', 'is-ejecting');
+    }
 
     if (shrinkingSlide) {
-      shrinkingSlide.classList.remove('is-active', 'is-previous', 'is-next');
+      clearHeroSlideTimer(shrinkingSlide, 'heroShrinkTimer');
+      shrinkingSlide.classList.remove('is-active', 'is-previous', 'is-next', 'is-ejecting');
       shrinkingSlide.classList.add('is-shrinking');
-
-      if (shrinkingSlide.heroShrinkTimer) {
-        window.clearTimeout(shrinkingSlide.heroShrinkTimer);
-      }
 
       shrinkingSlide.heroShrinkTimer = window.setTimeout(() => {
         shrinkingSlide.classList.remove('is-shrinking');
+        shrinkingSlide.classList.add('is-previous');
         shrinkingSlide.heroShrinkTimer = null;
-      }, 800);
+
+        if (enteringSlide) {
+          enteringSlide.classList.remove('is-next', 'is-previous', 'is-shrinking', 'is-ejecting');
+          enteringSlide.classList.add('is-active');
+        }
+
+        if (
+          reservedNextSlide &&
+          reservedNextSlide !== enteringSlide &&
+          reservedNextSlide !== shrinkingSlide
+        ) {
+          reservedNextSlide.heroActivateTimer = window.setTimeout(() => {
+            reservedNextSlide.classList.remove('is-active', 'is-previous', 'is-shrinking', 'is-ejecting');
+            reservedNextSlide.classList.add('is-next');
+            reservedNextSlide.heroActivateTimer = null;
+          }, 60);
+        }
+      }, 1020);
     }
   }
 
   activeHeroSlide = nextActiveSlide;
 
-  heroSlides.forEach((slide, index) => {
-    if (slide.classList.contains('is-shrinking')) {
-      return;
-    }
-
-    slide.classList.remove('is-active', 'is-previous', 'is-next');
-
-    if (index === activeHeroSlide) {
-      slide.classList.add('is-active');
-    } else if (index === previousHeroSlide) {
-      slide.classList.add('is-previous');
-    } else if (index === nextHeroSlide) {
-      slide.classList.add('is-next');
-    }
-  });
+  const previousHeroSlide = (activeHeroSlide - 1 + totalHeroSlides) % totalHeroSlides;
+  const nextHeroSlide = (activeHeroSlide + 1) % totalHeroSlides;
 
   heroReviews.forEach((review, index) => {
     review.classList.remove('is-active', 'is-previous', 'is-next', 'is-waiting');
@@ -119,7 +186,7 @@ const showHeroSlide = (slideIndex) => {
       review.heroEnterTimer = null;
     }
 
-    const reviewIsLeaving = index === previousActiveHeroSlide && previousActiveHeroSlide !== activeHeroSlide;
+    const reviewIsLeaving = index === previousActiveHeroSlide && heroSlideIsChanging;
     const reviewIsEntering = index === activeHeroSlide;
 
     if (reviewIsEntering && !heroSlideIsChanging) {
@@ -145,12 +212,14 @@ const showHeroSlide = (slideIndex) => {
       review.classList.add('is-previous');
     } else if (index === nextHeroSlide) {
       review.classList.add('is-next');
+    } else {
+      review.classList.remove('is-leaving');
     }
   });
 };
 
 const scheduleHeroSlide = (slideIndex) => {
-  if (!heroSlides.length || !heroReviews.length) {
+  if (!heroSlides.length) {
     showHeroSlide(slideIndex);
     return;
   }
@@ -160,13 +229,6 @@ const scheduleHeroSlide = (slideIndex) => {
   if (nextActiveSlide === activeHeroSlide) {
     showHeroSlide(slideIndex);
     return;
-  }
-
-  const activeReview = heroReviews[activeHeroSlide];
-
-  if (activeReview) {
-    activeReview.classList.remove('is-active', 'is-previous', 'is-next', 'is-waiting');
-    activeReview.classList.add('is-leaving');
   }
 
   window.setTimeout(() => {
