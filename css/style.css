@@ -57,11 +57,7 @@ button:focus-visible {
 @keyframes fadeSlideUp {
   from {
     opacity: 0;
-<<<<<<< HEAD
-    transform: translateY(24px);
-=======
     transform: translateY(16px);
->>>>>>> origin/alteracoes-victor
   }
 
   to {
@@ -73,11 +69,7 @@ button:focus-visible {
 @keyframes heroMediaReveal {
   from {
     opacity: 0;
-<<<<<<< HEAD
-    transform: translateY(26px) scale(0.97);
-=======
     transform: translateY(20px) scale(0.98);
->>>>>>> origin/alteracoes-victor
   }
 
   to {
@@ -88,11 +80,6 @@ button:focus-visible {
 
 @keyframes heroSlideEnter {
   0% {
-<<<<<<< HEAD
-    opacity: 0.45;
-    filter: saturate(0.35) brightness(0.48) blur(1px);
-    transform: translate3d(calc(-50% + 90%), -50%, -80px) scale(0.6);
-=======
     opacity: 1;
     filter: saturate(0.4) brightness(0.52) blur(0.5px);
     transform: translate3d(calc(-50% + 92%), -50%, -60px) scale(0.72);
@@ -104,7 +91,6 @@ button:focus-visible {
     filter: saturate(0.5) brightness(0.63) blur(0.1px);
     transform: translate3d(calc(-50% + 90%), -50%, 5px) scale(0.88);
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.35, 1);
->>>>>>> origin/alteracoes-victor
   }
 
   100% {
@@ -121,18 +107,6 @@ button:focus-visible {
     transform: translate3d(-50%, -50%, 0px) scale(1);
   }
 
-<<<<<<< HEAD
-  55% {
-    opacity: 0.7;
-    filter: saturate(0.55) brightness(0.65) blur(0px);
-    transform: translate3d(-50%, -50%, -40px) scale(0.78);
-  }
-
-  100% {
-    opacity: 0.55;
-    filter: saturate(0.4) brightness(0.52) blur(1px);
-    transform: translate3d(-50%, -50%, -80px) scale(0.6);
-=======
   100% {
     opacity: 1;
     filter: saturate(1) brightness(1) blur(0px);
@@ -151,23 +125,11 @@ button:focus-visible {
     opacity: 1;
     filter: saturate(0.35) brightness(0.48) blur(0.5px);
     transform: translate3d(calc(-50% + 92%), -50%, -60px) scale(0.72);
->>>>>>> origin/alteracoes-victor
   }
 }
 
 @keyframes heroSlidePushLeft {
   0% {
-<<<<<<< HEAD
-    opacity: 0.55;
-    filter: saturate(0.4) brightness(0.52) blur(1px);
-    transform: translate3d(-50%, -50%, -80px) scale(0.6);
-  }
-
-  100% {
-    opacity: 0.45;
-    filter: saturate(0.35) brightness(0.48) blur(1px);
-    transform: translate3d(calc(-50% - 90%), -50%, -80px) scale(0.6);
-=======
     opacity: 1;
     filter: saturate(1) brightness(1) blur(0px);
     transform: translate3d(-50%, -50%, -30px) scale(0.8);
@@ -177,138 +139,68 @@ button:focus-visible {
     opacity: 1;
     filter: saturate(0.4) brightness(0.52) blur(0.5px);
     transform: translate3d(calc(-50% - 92%), -50%, -60px) scale(0.72);
->>>>>>> origin/alteracoes-victor
   }
 }
 
 @keyframes heroSlideEject {
   0% {
-<<<<<<< HEAD
-    opacity: 0.45;
-    filter: saturate(0.35) brightness(0.48) blur(1px);
-    transform: translate3d(calc(-50% - 90%), -50%, -80px) scale(0.6);
-  }
-
-  60% {
-    opacity: 0.3;
-    filter: saturate(0.2) brightness(0.35) blur(2px);
-    transform: translate3d(calc(-50% - 118%), -50%, -80px) scale(0.52);
-=======
     opacity: 1;
     filter: saturate(0.4) brightness(0.52) blur(0.5px);
     transform: translate3d(calc(-50% - 92%), -50%, -60px) scale(0.72);
->>>>>>> origin/alteracoes-victor
   }
 
   100% {
     opacity: 0;
-<<<<<<< HEAD
-    filter: saturate(0.1) brightness(0.2) blur(3px);
-    transform: translate3d(calc(-50% - 150%), -50%, -80px) scale(0.44);
-=======
     filter: saturate(0.05) brightness(0.15) blur(2px);
     transform: translate3d(calc(-50% - 140%), -50%, -60px) scale(0.52);
->>>>>>> origin/alteracoes-victor
   }
 }
 
 @keyframes reviewSoftReveal {
   0% {
     opacity: 0;
-<<<<<<< HEAD
-    filter: saturate(0.9);
-    transform: translate3d(-50%, 8px, 0) scaleX(0.96) scaleY(0.08);
-=======
     transform: translate3d(-50%, 14px, 0) scale(0.97);
->>>>>>> origin/alteracoes-victor
   }
 
   100% {
     opacity: 1;
-<<<<<<< HEAD
-    filter: saturate(1);
-    transform: translate3d(-50%, 0, 0) scaleX(1) scaleY(1);
-=======
     transform: translate3d(-50%, 0, 0) scale(1);
->>>>>>> origin/alteracoes-victor
   }
 }
 
 @keyframes reviewSoftRevealMobile {
   0% {
     opacity: 0;
-<<<<<<< HEAD
-    filter: saturate(0.9);
-    transform: translate3d(0, 8px, 0) scaleX(0.96) scaleY(0.08);
-=======
     transform: translate3d(0, 14px, 0) scale(0.97);
->>>>>>> origin/alteracoes-victor
   }
 
   100% {
     opacity: 1;
-<<<<<<< HEAD
-    filter: saturate(1);
-    transform: translate3d(0, 0, 0) scaleX(1) scaleY(1);
-=======
     transform: translate3d(0, 0, 0) scale(1);
->>>>>>> origin/alteracoes-victor
   }
 }
 
 @keyframes reviewSoftHide {
   0% {
     opacity: 1;
-<<<<<<< HEAD
-    filter: saturate(1);
-    transform: translate3d(-50%, 0, 0) scaleX(1) scaleY(1);
-  }
-
-  45% {
-    opacity: 1;
-    filter: saturate(1);
-    transform: translate3d(-50%, -10px, 50px) scaleX(1.02) scaleY(1.02);
-=======
     transform: translate3d(-50%, 0, 0) scale(1);
->>>>>>> origin/alteracoes-victor
   }
 
   100% {
     opacity: 0;
-<<<<<<< HEAD
-    filter: saturate(0.9);
-    transform: translate3d(-50%, -14px, 50px) scaleX(0.96) scaleY(0.06);
-=======
     transform: translate3d(-50%, -10px, 0) scale(0.97);
->>>>>>> origin/alteracoes-victor
   }
 }
 
 @keyframes reviewSoftHideMobile {
   0% {
     opacity: 1;
-<<<<<<< HEAD
-    filter: saturate(1);
-    transform: translate3d(0, 0, 0) scaleX(1) scaleY(1);
-  }
-
-  45% {
-    opacity: 1;
-    filter: saturate(1);
-    transform: translate3d(0, -10px, 50px) scaleX(1.02) scaleY(1.02);
-=======
     transform: translate3d(0, 0, 0) scale(1);
->>>>>>> origin/alteracoes-victor
   }
 
   100% {
     opacity: 0;
-<<<<<<< HEAD
-    filter: saturate(0.9);
-    transform: translate3d(0, -14px, 50px) scaleX(0.96) scaleY(0.06);
-=======
     transform: translate3d(0, -10px, 0) scale(0.97);
->>>>>>> origin/alteracoes-victor
   }
 }
 
@@ -776,11 +668,7 @@ body.is-loaded .page-loader {
 .hero__title,
 .hero__text,
 .hero__actions {
-<<<<<<< HEAD
-  animation: fadeSlideUp 0.72s ease both;
-=======
   animation: fadeSlideUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
->>>>>>> origin/alteracoes-victor
 }
 
 .hero__eyebrow {
@@ -863,24 +751,14 @@ body.is-loaded .page-loader {
 
 .hero__carousel {
   position: relative;
-<<<<<<< HEAD
-  width: min(100%, 440px);
-  margin: 0 auto;
-  animation: heroMediaReveal 0.85s ease 1.5s both;
-=======
   margin: 0 auto;
   margin-right: 20%;
   animation: heroMediaReveal 1.05s cubic-bezier(0.22, 1, 0.36, 1) 1.45s both;
->>>>>>> origin/alteracoes-victor
 }
 
 .hero__slides {
   position: relative;
-<<<<<<< HEAD
-  min-height: 292px;
-=======
   min-height: 330px;
->>>>>>> origin/alteracoes-victor
   overflow: visible;
   perspective: 900px;
 }
@@ -890,25 +768,15 @@ body.is-loaded .page-loader {
   top: 50%;
   left: 50%;
   z-index: 1;
-<<<<<<< HEAD
-  width: 68%;
-  height: 90%;
-=======
   width: 74%;
   height: 92%;
->>>>>>> origin/alteracoes-victor
   object-fit: cover;
   opacity: 0;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 14px;
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
-<<<<<<< HEAD
-  filter: saturate(0.35) brightness(0.48) blur(1px);
-  transform: translate3d(-50%, -50%, -80px) scale(0.6);
-=======
   filter: saturate(0.35) brightness(0.48) blur(0.5px);
   transform: translate3d(-50%, -50%, -60px) scale(0.72);
->>>>>>> origin/alteracoes-victor
   will-change: transform, opacity, filter;
   transition: none;
 }
@@ -919,59 +787,34 @@ body.is-loaded .page-loader {
   filter: saturate(1) brightness(1) blur(0px);
   transform: translate3d(-50%, -50%, 0px) scale(1);
   box-shadow: 0 28px 64px rgba(0, 0, 0, 0.22);
-<<<<<<< HEAD
-  animation: heroSlideEnter 1.45s cubic-bezier(0.16, 1, 0.3, 1) both;
-=======
   animation: heroSlideEnter 1.7s linear both;
->>>>>>> origin/alteracoes-victor
 }
 
 .hero__slide.is-shrinking {
   z-index: 5;
-<<<<<<< HEAD
-  animation: heroSlideShrink 1.0s cubic-bezier(0.33, 1, 0.68, 1) both;
-=======
   animation: heroSlideShrink 0.3s cubic-bezier(0.33, 1, 0.68, 1) both;
->>>>>>> origin/alteracoes-victor
 }
 
 .hero__slide.is-previous {
   z-index: 2;
-<<<<<<< HEAD
-  opacity: 0.45;
-  filter: saturate(0.35) brightness(0.48) blur(1px);
-  transform: translate3d(calc(-50% - 90%), -50%, -80px) scale(0.6);
-  animation: heroSlidePushLeft 1.15s cubic-bezier(0.33, 1, 0.68, 1) both;
-=======
   opacity: 1;
   filter: saturate(0.4) brightness(0.52) blur(0.5px);
   transform: translate3d(calc(-50% - 92%), -50%, -60px) scale(0.72);
   animation: heroSlidePushLeft 0.78s cubic-bezier(0.4, 0, 0.75, 1) both;
->>>>>>> origin/alteracoes-victor
 }
 
 .hero__slide.is-ejecting {
   z-index: 1;
   pointer-events: none;
-<<<<<<< HEAD
-  animation: heroSlideEject 0.92s cubic-bezier(0.33, 1, 0.68, 1) both;
-=======
   animation: heroSlideEject 0.85s cubic-bezier(0.4, 0.1, 0.75, 1) both;
->>>>>>> origin/alteracoes-victor
 }
 
 .hero__slide.is-next {
   z-index: 2;
-<<<<<<< HEAD
-  opacity: 0.45;
-  filter: saturate(0.35) brightness(0.48) blur(1px);
-  transform: translate3d(calc(-50% + 90%), -50%, -80px) scale(0.6);
-=======
   opacity: 1;
   filter: saturate(0.35) brightness(0.48) blur(0.5px);
   transform: translate3d(calc(-50% + 92%), -50%, -60px) scale(0.72);
   animation: heroNextSlideReveal 1.3s cubic-bezier(0.25, 0.46, 0.35, 1) both;
->>>>>>> origin/alteracoes-victor
 }
 
 .hero__review {
@@ -979,97 +822,55 @@ body.is-loaded .page-loader {
   top: calc(100% - 24px);
   left: 50%;
   z-index: 1;
-<<<<<<< HEAD
-  width: min(76%, 340px);
-  min-height: 132px;
-  padding: 14px;
-=======
   width: min(84%, 390px);
   min-height: 140px;
   padding: 16px 18px;
->>>>>>> origin/alteracoes-victor
   color: var(--color-text);
   background-color: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: 13px;
   box-shadow: 0 18px 44px rgba(11, 46, 74, 0.2);
   opacity: 0;
-<<<<<<< HEAD
-  filter: saturate(0.88);
-  pointer-events: none;
-  transform: translate3d(-50%, 8px, 0) scaleX(0.96) scaleY(0.08);
-  transform-origin: center;
-  transition:
-    opacity 0.34s ease,
-    transform 0.48s cubic-bezier(0.4, 0, 0.2, 1),
-    filter 0.34s ease;
-  will-change: transform, opacity;
-=======
   pointer-events: none;
   transform: translate3d(-50%, 14px, 0) scale(0.97);
   transform-origin: center;
->>>>>>> origin/alteracoes-victor
 }
 
 .hero__review.is-active {
   z-index: 5;
   opacity: 1;
-<<<<<<< HEAD
-  filter: saturate(1);
-  pointer-events: auto;
-  transform: translate3d(-50%, 0, 0) scaleX(1) scaleY(1);
-  animation: reviewSoftReveal 0.68s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
-=======
   pointer-events: auto;
   transform: translate3d(-50%, 0, 0) scale(1);
   animation: reviewSoftReveal 0.78s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
->>>>>>> origin/alteracoes-victor
 }
 
 .hero__review.is-previous {
   z-index: 2;
   opacity: 0;
   visibility: hidden;
-<<<<<<< HEAD
-  transform: translate3d(-50%, 8px, 0) scaleX(0.96) scaleY(0.08);
-=======
   transform: translate3d(-50%, 14px, 0) scale(0.97);
->>>>>>> origin/alteracoes-victor
 }
 
 .hero__review.is-next {
   z-index: 2;
   opacity: 0;
   visibility: hidden;
-<<<<<<< HEAD
-  transform: translate3d(-50%, 8px, 0) scaleX(0.96) scaleY(0.08);
-=======
   transform: translate3d(-50%, 14px, 0) scale(0.97);
->>>>>>> origin/alteracoes-victor
 }
 
 .hero__review.is-waiting {
   z-index: 1;
   opacity: 0;
   pointer-events: none;
-<<<<<<< HEAD
-  transform: translate3d(-50%, 8px, 0) scaleX(0.96) scaleY(0.08);
-=======
   transform: translate3d(-50%, 14px, 0) scale(0.97);
->>>>>>> origin/alteracoes-victor
 }
 
 .hero__review.is-leaving {
   z-index: 6;
   opacity: 1;
   pointer-events: none;
-<<<<<<< HEAD
-  transform: translate3d(-50%, 0, 0) scaleX(1) scaleY(1);
-  animation: reviewSoftHide 0.55s cubic-bezier(0.25, 0, 0.3, 1) both;
-=======
   transform: translate3d(-50%, 0, 0) scale(1);
   animation: reviewSoftHide 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
->>>>>>> origin/alteracoes-victor
 }
 
 .hero__review-rating {
@@ -1697,11 +1498,7 @@ body.is-loaded .page-loader {
   }
 
   .hero {
-<<<<<<< HEAD
-    grid-template-columns: minmax(0, 1fr) 440px;
-=======
     grid-template-columns: minmax(0, 1fr) 480px;
->>>>>>> origin/alteracoes-victor
     align-items: center;
     padding: 132px 48px 72px;
   }
@@ -1898,11 +1695,7 @@ body.is-loaded .page-loader {
 
 @media (min-width: 980px) {
   .hero {
-<<<<<<< HEAD
-    grid-template-columns: minmax(0, 1fr) 440px;
-=======
     grid-template-columns: minmax(0, 1fr) 480px;
->>>>>>> origin/alteracoes-victor
   }
 
   .differentials-section__grid {
@@ -1933,11 +1726,7 @@ body.is-loaded .page-loader {
 
 @media (min-width: 1180px) {
   .hero {
-<<<<<<< HEAD
-    grid-template-columns: minmax(0, 1fr) 510px;
-=======
     grid-template-columns: minmax(0, 1fr) 550px;
->>>>>>> origin/alteracoes-victor
     padding-left: 72px;
     padding-right: 72px;
   }
@@ -1985,11 +1774,7 @@ body.is-loaded .page-loader {
 
 @media (max-width: 767px) {
   .hero__slides {
-<<<<<<< HEAD
-    min-height: 300px;
-=======
     min-height: 330px;
->>>>>>> origin/alteracoes-victor
     overflow: visible;
     border-radius: 18px;
   }
@@ -2007,20 +1792,6 @@ body.is-loaded .page-loader {
     transform: translate(-50%, -50%) scale(1);
   }
 
-<<<<<<< HEAD
-  .hero__review {
-    display: none;
-    position: relative;
-    top: auto;
-    left: auto;
-    z-index: 3;
-    width: calc(100% - 28px);
-    min-height: auto;
-    margin: 18px auto 0;
-    opacity: 0;
-    filter: saturate(0.88);
-    transform: translate3d(0, 8px, 0) scaleX(0.96) scaleY(0.08);
-=======
   .hero__carousel {
     min-height: 492px;
   }
@@ -2036,22 +1807,13 @@ body.is-loaded .page-loader {
     margin: 0;
     opacity: 0;
     transform: translate3d(0, 14px, 0) scale(0.97);
->>>>>>> origin/alteracoes-victor
   }
 
   .hero__review.is-active {
     display: block;
-<<<<<<< HEAD
-    width: calc(100% - 28px);
-    opacity: 1;
-    filter: saturate(1);
-    transform: translate3d(0, 0, 0) scaleX(1) scaleY(1);
-    animation: reviewSoftRevealMobile 0.62s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
-=======
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
     animation: reviewSoftRevealMobile 0.78s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
->>>>>>> origin/alteracoes-victor
   }
 
   .hero__review.is-previous,
@@ -2063,24 +1825,15 @@ body.is-loaded .page-loader {
   .hero__review.is-leaving {
     display: block;
     position: absolute;
-<<<<<<< HEAD
-    top: 318px;
-=======
     top: 348px;
->>>>>>> origin/alteracoes-victor
     left: 14px;
     right: 14px;
     z-index: 6;
     width: auto;
     margin: 0;
     opacity: 1;
-<<<<<<< HEAD
-    transform: translate3d(0, 0, 0) scaleX(1) scaleY(1);
-    animation: reviewSoftHideMobile 0.55s cubic-bezier(0.25, 0, 0.3, 1) both;
-=======
     transform: translate3d(0, 0, 0) scale(1);
     animation: reviewSoftHideMobile 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
->>>>>>> origin/alteracoes-victor
   }
 
   .institutional-section__background {
