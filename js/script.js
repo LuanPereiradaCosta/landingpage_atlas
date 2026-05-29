@@ -17,8 +17,13 @@ const differentialsSection = document.querySelector('.differentials-section');
 const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 let activeHeroSlide = 0;
 let activeInstitutionalSlide = 0;
+<<<<<<< HEAD
 const heroReviewLeaveDuration = 780;
 const heroReviewEnterDelay = 1120;
+=======
+const heroReviewLeaveDuration = 600;
+const heroReviewEnterDelay = 1450;
+>>>>>>> origin/alteracoes-victor
 const heroSlideChangeDelay = 1040;
 
 if ('scrollRestoration' in window.history) {
@@ -118,6 +123,7 @@ const showHeroSlide = (slideIndex) => {
 
     if (ejectingSlide) {
       clearHeroSlideTimer(ejectingSlide, 'heroEjectTimer');
+<<<<<<< HEAD
       ejectingSlide.classList.remove('is-active', 'is-previous', 'is-next', 'is-shrinking');
       ejectingSlide.classList.add('is-ejecting');
 
@@ -125,17 +131,25 @@ const showHeroSlide = (slideIndex) => {
         ejectingSlide.classList.remove('is-ejecting');
         ejectingSlide.heroEjectTimer = null;
       }, 940);
+=======
+>>>>>>> origin/alteracoes-victor
     }
 
     if (enteringSlide) {
       clearHeroSlideTimer(enteringSlide, 'heroActivateTimer');
       enteringSlide.classList.remove('is-active', 'is-previous', 'is-shrinking', 'is-ejecting');
+<<<<<<< HEAD
       enteringSlide.classList.add('is-next');
     }
 
     if (reservedNextSlide && reservedNextSlide !== enteringSlide) {
       clearHeroSlideTimer(reservedNextSlide, 'heroActivateTimer');
       reservedNextSlide.classList.remove('is-active', 'is-previous', 'is-next', 'is-shrinking', 'is-ejecting');
+=======
+      if (!enteringSlide.classList.contains('is-next')) {
+        enteringSlide.classList.add('is-next');
+      }
+>>>>>>> origin/alteracoes-victor
     }
 
     if (shrinkingSlide) {
@@ -148,6 +162,19 @@ const showHeroSlide = (slideIndex) => {
         shrinkingSlide.classList.add('is-previous');
         shrinkingSlide.heroShrinkTimer = null;
 
+<<<<<<< HEAD
+=======
+        if (ejectingSlide) {
+          ejectingSlide.classList.remove('is-active', 'is-previous', 'is-next', 'is-shrinking');
+          ejectingSlide.classList.add('is-ejecting');
+
+          ejectingSlide.heroEjectTimer = window.setTimeout(() => {
+            ejectingSlide.classList.remove('is-ejecting');
+            ejectingSlide.heroEjectTimer = null;
+          }, 960);
+        }
+
+>>>>>>> origin/alteracoes-victor
         if (enteringSlide) {
           enteringSlide.classList.remove('is-next', 'is-previous', 'is-shrinking', 'is-ejecting');
           enteringSlide.classList.add('is-active');
@@ -159,12 +186,21 @@ const showHeroSlide = (slideIndex) => {
           reservedNextSlide !== shrinkingSlide
         ) {
           reservedNextSlide.heroActivateTimer = window.setTimeout(() => {
+<<<<<<< HEAD
             reservedNextSlide.classList.remove('is-active', 'is-previous', 'is-shrinking', 'is-ejecting');
+=======
+            clearHeroSlideTimer(reservedNextSlide, 'heroActivateTimer');
+            reservedNextSlide.classList.remove('is-active', 'is-previous', 'is-next', 'is-shrinking', 'is-ejecting');
+>>>>>>> origin/alteracoes-victor
             reservedNextSlide.classList.add('is-next');
             reservedNextSlide.heroActivateTimer = null;
           }, 60);
         }
+<<<<<<< HEAD
       }, 1020);
+=======
+      }, 320);
+>>>>>>> origin/alteracoes-victor
     }
   }
 
