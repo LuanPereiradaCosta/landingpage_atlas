@@ -1,0 +1,31 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Dependencias, caso algum pacote seja instalado no futuro
+node_modules/
+
+# Arquivos de ambiente e dados sensiveis
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Saidas de build ou testes, caso existam no futuro
+dist/
+build/
+coverage/
+
+# Cache e arquivos temporarios
+.cache/
+.tmp/
+tmp/
+
+AGENTS.md
