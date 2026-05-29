@@ -17,9 +17,9 @@ const differentialsSection = document.querySelector('.differentials-section');
 const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 let activeHeroSlide = 0;
 let activeInstitutionalSlide = 0;
-const heroReviewLeaveDuration = 600;
-const heroReviewEnterDelay = 1450;
-const heroSlideChangeDelay = 1040;
+const heroReviewLeaveDuration = 680;
+const heroReviewEnterDelay = 960;
+const heroSlideChangeDelay = 900;
 
 if ('scrollRestoration' in window.history) {
   window.history.scrollRestoration = 'manual';
