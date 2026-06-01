@@ -14,6 +14,7 @@ const institutionalTotal = document.querySelector('[data-institutional-total]');
 const institutionalPreviousButton = document.querySelector('[data-institutional-prev]');
 const institutionalNextButton = document.querySelector('[data-institutional-next]');
 const differentialsSection = document.querySelector('.differentials-section');
+const specialtiesSection = document.querySelector('.specialties-section');
 const specialtiesTrack = document.querySelector('[data-specialties-track]');
 const specialtiesPrevButton = document.querySelector('[data-specialties-prev]');
 const specialtiesNextButton = document.querySelector('[data-specialties-next]');
@@ -367,6 +368,20 @@ if (differentialsSection) {
   differentialsObserver.observe(differentialsSection);
 }
 
+if (specialtiesSection) {
+  const specialtiesObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        specialtiesSection.classList.add('is-visible');
+      }
+    });
+  }, {
+    threshold: 0.28
+  });
+
+  specialtiesObserver.observe(specialtiesSection);
+}
+
 if (specialtiesTrack) {
   const originalSpecialtyCards = [...specialtiesTrack.querySelectorAll('.specialty-card')];
   const specialtyCloneCopies = 2;
@@ -603,6 +618,93 @@ if (institutionalSlides.length && !reducedMotionQuery.matches) {
   window.setInterval(() => {
     showInstitutionalSlide(activeInstitutionalSlide + 1);
   }, 8800);
+}
+
+const contactSteps = document.querySelectorAll('.contact-step');
+const contactMockupSection = document.querySelector('.contact-section__mockup');
+const mockupMessages = document.querySelectorAll('[data-mockup-messages] .contact-mockup__msg');
+const mockupMessagesMobile = document.querySelectorAll('[data-mockup-messages-mobile] .contact-mockup__msg');
+const mockupInput = document.querySelector('[data-mockup-input]');
+const mockupInputMobile = document.querySelector('[data-mockup-input-mobile]');
+
+const contactStepMessages = [
+  [],
+  [0],
+  [0, 1],
+  [0, 1, 2, 3]
+];
+
+const contactInputTexts = [
+  '',
+  'Olá, gostaria de saber mais...',
+  '',
+  ''
+];
+
+let contactAutoTimer = null;
+let activeContactStep = 0;
+
+const showContactStep = (stepIndex) => {
+  if (!contactSteps.length) return;
+
+  const total = contactSteps.length;
+  const index = (stepIndex + total) % total;
+
+  contactSteps.forEach((step, i) => {
+    const isActive = i === index;
+    step.classList.toggle('is-active', isActive);
+    step.querySelector('.contact-step__button').setAttribute('aria-expanded', isActive);
+  });
+
+  const visibleMessages = contactStepMessages[index] || [];
+
+  mockupMessages.forEach((msg, i) => {
+    msg.classList.toggle('is-visible', visibleMessages.includes(i));
+  });
+
+  mockupMessagesMobile.forEach((msg, i) => {
+    msg.classList.toggle('is-visible', visibleMessages.includes(i));
+  });
+
+  if (mockupInput) {
+    mockupInput.textContent = contactInputTexts[index] || '';
+  }
+
+  if (mockupInputMobile) {
+    mockupInputMobile.textContent = contactInputTexts[index] || '';
+  }
+
+  if (contactMockupSection) {
+    contactMockupSection.classList.toggle('show-mobile', index >= 2);
+  }
+
+  activeContactStep = index;
+};
+
+const startContactAutoPlay = () => {
+  if (reducedMotionQuery.matches) return;
+
+  contactAutoTimer = window.setInterval(() => {
+    showContactStep(activeContactStep + 1);
+  }, 2800);
+};
+
+const resetContactAutoPlay = () => {
+  window.clearInterval(contactAutoTimer);
+  startContactAutoPlay();
+};
+
+if (contactSteps.length) {
+  contactSteps.forEach((step) => {
+    step.querySelector('.contact-step__button').addEventListener('click', () => {
+      const stepIndex = parseInt(step.getAttribute('data-step'), 10);
+      showContactStep(stepIndex);
+      resetContactAutoPlay();
+    });
+  });
+
+  showContactStep(0);
+  startContactAutoPlay();
 }
 
 updateHeaderBackground();
