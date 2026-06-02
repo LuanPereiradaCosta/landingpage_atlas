@@ -15,6 +15,7 @@ const institutionalPreviousButton = document.querySelector('[data-institutional-
 const institutionalNextButton = document.querySelector('[data-institutional-next]');
 const differentialsSection = document.querySelector('.differentials-section');
 const specialtiesSection = document.querySelector('.specialties-section');
+const contactSection = document.querySelector('.contact-section');
 const specialtiesTrack = document.querySelector('[data-specialties-track]');
 const specialtiesPrevButton = document.querySelector('[data-specialties-prev]');
 const specialtiesNextButton = document.querySelector('[data-specialties-next]');
@@ -583,7 +584,29 @@ document.querySelectorAll('a[href^="#"]').forEach((anchorLink) => {
     event.preventDefault();
 
     const headerHeight = siteHeader ? siteHeader.offsetHeight : 0;
-    const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+    let targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+    if (targetId === '#contato') {
+      const contactButton = targetElement.querySelector('.contact-section__cta');
+      const availableViewportHeight = window.innerHeight - headerHeight;
+
+      if (contactButton && targetElement.offsetHeight > availableViewportHeight) {
+        const sectionTopPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+        const preferredSectionTop = Math.max(
+          0,
+          headerHeight + ((availableViewportHeight - targetElement.offsetHeight) / 2)
+        );
+        const buttonBottomPosition = contactButton.getBoundingClientRect().bottom + window.scrollY;
+        const centeredPosition = sectionTopPosition - preferredSectionTop;
+        const buttonBottomAfterCenter = buttonBottomPosition - centeredPosition;
+
+        targetPosition = centeredPosition;
+
+        if (buttonBottomAfterCenter > window.innerHeight - 40) {
+          targetPosition += buttonBottomAfterCenter - (window.innerHeight - 40);
+        }
+      }
+    }
 
     window.scrollTo({
       top: targetPosition,
@@ -643,6 +666,8 @@ const contactInputTexts = [
 
 let contactAutoTimer = null;
 let activeContactStep = 0;
+let isContactSectionVisible = false;
+const contactStepInterval = 4800;
 
 const showContactStep = (stepIndex) => {
   if (!contactSteps.length) return;
@@ -683,28 +708,65 @@ const showContactStep = (stepIndex) => {
 
 const startContactAutoPlay = () => {
   if (reducedMotionQuery.matches) return;
+  if (!isContactSectionVisible) return;
+
+  window.clearInterval(contactAutoTimer);
 
   contactAutoTimer = window.setInterval(() => {
+    if (!isContactSectionVisible) {
+      stopContactAutoPlay();
+      return;
+    }
+
     showContactStep(activeContactStep + 1);
-  }, 2800);
+  }, contactStepInterval);
+};
+
+const stopContactAutoPlay = () => {
+  window.clearInterval(contactAutoTimer);
+  contactAutoTimer = null;
 };
 
 const resetContactAutoPlay = () => {
-  window.clearInterval(contactAutoTimer);
+  stopContactAutoPlay();
   startContactAutoPlay();
 };
+
+if (contactSection) {
+  const contactObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        isContactSectionVisible = true;
+        contactSection.classList.add('is-visible');
+        stopContactAutoPlay();
+        showContactStep(0);
+        startContactAutoPlay();
+      } else {
+        isContactSectionVisible = false;
+        contactSection.classList.remove('is-visible');
+        stopContactAutoPlay();
+        showContactStep(0);
+      }
+    });
+  }, {
+    threshold: 0.28
+  });
+
+  contactObserver.observe(contactSection);
+}
 
 if (contactSteps.length) {
   contactSteps.forEach((step) => {
     step.querySelector('.contact-step__button').addEventListener('click', () => {
       const stepIndex = parseInt(step.getAttribute('data-step'), 10);
       showContactStep(stepIndex);
-      resetContactAutoPlay();
+      if (isContactSectionVisible) {
+        resetContactAutoPlay();
+      }
     });
   });
 
   showContactStep(0);
-  startContactAutoPlay();
 }
 
 updateHeaderBackground();
