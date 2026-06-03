@@ -743,7 +743,6 @@ if (contactSection) {
         startContactAutoPlay();
       } else {
         isContactSectionVisible = false;
-        contactSection.classList.remove('is-visible');
         stopContactAutoPlay();
         showContactStep(0);
       }

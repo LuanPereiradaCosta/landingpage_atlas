@@ -17,6 +17,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -25,6 +26,7 @@ body {
   font-weight: 400;
   color: var(--color-text);
   background-color: var(--color-background);
+  overflow-x: clip;
 }
 
 body.is-loading {
@@ -239,7 +241,7 @@ button:focus-visible {
 @keyframes institutionalPanelReveal {
   from {
     opacity: 0;
-    transform: translateY(-26px);
+    transform: translateY(22px);
   }
 
   to {
@@ -1054,6 +1056,8 @@ body.is-loaded .page-loader {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  opacity: 0;
+  transform: translateY(22px);
 }
 
 .institutional-section__stats-label {
@@ -1101,6 +1105,9 @@ body.is-loaded .page-loader {
 }
 
 .institutional-section__stat-mini-num {
+  min-height: clamp(1.2rem, 2vw, 1.5rem);
+  display: flex;
+  align-items: flex-end;
   font-size: clamp(1.2rem, 2vw, 1.5rem);
   font-weight: 600;
   color: var(--color-surface);
@@ -1147,6 +1154,10 @@ body.is-loaded .page-loader {
 .institutional-section__controls {
   opacity: 0;
   transform: translateY(22px);
+}
+
+.institutional-section.is-visible .institutional-section__stats {
+  animation: institutionalPanelReveal 0.72s ease 0.28s both;
 }
 
 .institutional-section.is-visible .institutional-section__content,
@@ -1617,28 +1628,35 @@ body.is-loaded .page-loader {
 
 @media (max-width: 520px) {
   .specialties-section {
-    padding: 56px 0 64px;
+    min-height: 68vh;
+    padding: 72px 0 86px;
   }
 
   .specialties-section__header {
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
+    margin-bottom: 42px;
+  }
+
+  .specialties-section__track {
+    padding: 0 20px;
   }
 
   .specialty-card {
-    flex: 0 0 72vw;
-    height: 52vw;
-    min-height: 220px;
+    flex: 0 0 76vw;
+    height: 68vw;
+    min-height: 290px;
+    max-height: 360px;
   }
 
   .specialties-section__arrow {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
   }
 
   .specialties-section__arrow svg {
-    width: 13px;
-    height: 13px;
+    width: 14px;
+    height: 14px;
   }
 }
 
@@ -2491,12 +2509,12 @@ body.is-loaded .page-loader {
     align-self: end;
     justify-self: end;
     max-width: min(560px, calc(100vw - 470px));
-    padding: 0 clamp(44px, 6vw, 88px) 106px 0;
+    padding: 0 clamp(44px, 6vw, 88px) 72px 0;
   }
 
   .institutional-section__content p {
-    font-size: clamp(1.85rem, 3.2vw, 2.75rem);
-    line-height: 1.12;
+    font-size: clamp(1.8rem, 3vw, 2.55rem);
+    line-height: 1.14;
   }
 
   .institutional-section__controls {
@@ -2641,18 +2659,33 @@ body.is-loaded .page-loader {
   }
 
   .institutional-section {
-    align-items: center;
+    align-items: stretch;
     height: auto;
     max-height: none;
-    min-height: 86vh;
-    padding: 104px 32px 104px;
+    min-height: 100svh;
+    padding: 86px 32px 78px;
   }
 
   .institutional-section__layout {
     grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
+    align-items: end;
     gap: 34px;
-    width: min(100%, 720px);
+    width: min(100%, 760px);
+    min-height: calc(100svh - 164px);
+    height: 100%;
+  }
+
+  .institutional-section__stats {
+    align-self: end;
     height: auto;
+    padding: 0 0 38px;
+  }
+
+  .institutional-section__content {
+    align-self: end;
+    max-width: min(340px, 42vw);
+    min-height: 0;
+    padding: 0 0 38px;
   }
 }
 
@@ -2960,6 +2993,623 @@ body.is-loaded .page-loader {
     text-align: left;
   }
 
+}
+
+@media (max-width: 767px) {
+  .site-header {
+    gap: 10px;
+    min-height: 62px;
+    padding: 8px clamp(14px, 4vw, 20px);
+  }
+
+  .site-header__brand img {
+    height: clamp(36px, 11vw, 42px);
+  }
+
+  .site-header__nav {
+    padding-inline: clamp(16px, 5vw, 22px);
+  }
+
+  .hero {
+    gap: clamp(30px, 8vw, 42px);
+    min-height: auto;
+    padding: clamp(96px, 24vw, 118px) clamp(16px, 5vw, 24px) clamp(62px, 14vw, 88px);
+  }
+
+  .hero__content {
+    max-width: 100%;
+  }
+
+  .hero__title {
+    font-size: clamp(2.1rem, 10vw, 3rem);
+  }
+
+  .hero__text {
+    font-size: clamp(0.94rem, 3.8vw, 1rem);
+    line-height: 1.62;
+  }
+
+  .hero__carousel {
+    width: min(100%, 430px);
+    margin: 0 auto;
+    min-height: clamp(420px, 112vw, 492px);
+  }
+
+  .hero__slides {
+    min-height: clamp(260px, 78vw, 330px);
+  }
+
+  .hero__review,
+  .hero__review.is-leaving {
+    top: calc(clamp(260px, 78vw, 330px) + 18px);
+  }
+
+  .differentials-section {
+    min-height: auto;
+    padding: clamp(58px, 16vw, 76px) clamp(18px, 5vw, 28px);
+  }
+
+  .differential-card {
+    padding: 26px 0;
+  }
+
+  .differential-card__word {
+    font-size: clamp(2.35rem, 13vw, 3.6rem);
+  }
+
+  .differentials-marquee {
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .differentials-marquee::before,
+  .differentials-marquee::after {
+    top: 36px;
+    width: 34px;
+  }
+
+  .differentials-marquee__group {
+    gap: 16px;
+    padding: 0 10px;
+  }
+
+  .differentials-marquee__group img {
+    max-width: 118px;
+    height: 32px;
+  }
+
+  .specialties-section__track {
+    gap: 14px;
+    padding-inline: clamp(16px, 5vw, 24px);
+  }
+
+  .specialties-section__controls {
+    padding-inline: 8px;
+  }
+
+  .specialties-section {
+    min-height: 66vh;
+  }
+
+  .specialty-card {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-header__nav {
+    left: 12px;
+    right: 12px;
+    padding: 14px 16px 18px;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .hero__eyebrow {
+    margin-bottom: 14px;
+    font-size: 0.72rem;
+  }
+
+  .hero__actions {
+    gap: 10px;
+    margin-top: 26px;
+  }
+
+  .hero__button {
+    min-height: 44px;
+    padding-inline: 16px;
+  }
+
+  .institutional-section__stats-row {
+    gap: 16px;
+  }
+
+  .differentials-marquee__title {
+    font-size: 0.7rem;
+  }
+
+  .specialty-card {
+    flex-basis: min(78vw, 300px);
+  }
+
+  .site-footer__actions-links {
+    gap: 8px;
+  }
+
+  .site-footer__button {
+    min-height: 36px;
+    padding-inline: 14px;
+    font-size: 0.78rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+  .hero__carousel {
+    width: min(100%, 460px);
+    margin: 0 auto;
+  }
+
+  .hero__slides {
+    min-height: 310px;
+  }
+
+  .hero__review,
+  .hero__review.is-leaving {
+    top: calc(100% - 128px);
+    width: min(74%, 360px);
+    min-height: 118px;
+  }
+
+  .institutional-section__stats {
+    padding: 42px 30px;
+  }
+
+  .institutional-section__content {
+    max-width: min(360px, 44vw);
+    min-height: 150px;
+    text-align: right;
+  }
+
+  .institutional-section__content p {
+    font-size: clamp(1.45rem, 3.4vw, 2rem);
+  }
+
+  .differentials-section {
+    min-height: auto;
+    padding: 72px 32px 58px;
+  }
+
+  .differentials-section__grid {
+    max-width: 720px;
+  }
+
+  .differential-card {
+    min-height: 220px;
+  }
+
+  .specialties-section__track {
+    gap: 16px;
+    padding-inline: 32px;
+  }
+
+  .specialty-card {
+    flex-basis: clamp(250px, 36vw, 310px);
+    height: clamp(320px, 44vw, 380px);
+  }
+}
+
+@media (min-width: 980px) and (max-width: 1359px) {
+  .site-header {
+    min-height: 64px;
+    padding-inline: 24px;
+  }
+
+  .site-header__brand img {
+    height: 44px;
+  }
+
+  .site-header__nav {
+    gap: clamp(16px, 2vw, 24px);
+  }
+
+  .site-header__nav a,
+  .site-header__dropdown-button {
+    font-size: 0.86rem;
+  }
+
+  .site-header__client {
+    min-height: 34px;
+    padding-inline: 12px;
+    font-size: 0.76rem;
+  }
+
+  .site-header__social {
+    display: none;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 112px 48px 78px;
+  }
+
+  .hero__title {
+    max-width: 620px;
+    font-size: clamp(2.7rem, 5.2vw, 3.7rem);
+  }
+
+  .hero__text {
+    max-width: 520px;
+  }
+
+  .institutional-section {
+    min-height: 760px;
+  }
+
+  .institutional-section__stats {
+    padding: 42px 34px;
+  }
+
+  .institutional-section__content {
+    max-width: min(520px, calc(100vw - 450px));
+    padding-bottom: 68px;
+  }
+
+  .differentials-section {
+    min-height: auto;
+    padding-top: 70px;
+    padding-bottom: 54px;
+  }
+
+  .differential-card {
+    min-height: 220px;
+    padding-inline: 22px;
+  }
+
+  .differential-card__word {
+    font-size: clamp(2rem, 3vw, 2.65rem);
+  }
+
+  .specialty-card {
+    flex-basis: clamp(260px, 25vw, 310px);
+    height: clamp(330px, 32vw, 400px);
+  }
+}
+
+@media (min-width: 1180px) and (max-width: 1359px) {
+  .hero {
+    grid-template-columns: minmax(0, 600px) 330px;
+    align-items: center;
+    gap: clamp(54px, 6vw, 78px);
+    min-height: 100svh;
+    padding: 104px 48px 58px;
+  }
+
+  .hero__title {
+    font-size: clamp(2.85rem, 4.3vw, 3.45rem);
+  }
+
+  .hero__text {
+    max-width: 500px;
+    line-height: 1.6;
+  }
+
+  .hero__media {
+    justify-self: end;
+    transform: translate(0, -24px);
+  }
+
+  .hero__carousel {
+    width: 330px;
+    margin: 0;
+  }
+
+  .hero__slides {
+    min-height: 242px;
+  }
+
+  .hero__review {
+    width: min(82%, 300px);
+    min-height: 116px;
+    padding: 12px 14px;
+  }
+}
+
+@media (min-width: 980px) and (max-height: 820px) {
+  .hero {
+    min-height: 100svh;
+    padding-top: 104px;
+    padding-bottom: 56px;
+  }
+
+  .hero__title {
+    font-size: clamp(2.55rem, 4.6vw, 3.55rem);
+  }
+
+  .hero__text {
+    margin-top: 18px;
+    line-height: 1.58;
+  }
+
+  .hero__actions {
+    margin-top: 26px;
+  }
+
+  .hero__slides {
+    min-height: 268px;
+  }
+
+  .hero__review {
+    min-height: 122px;
+  }
+
+  .differentials-section {
+    min-height: auto;
+  }
+}
+
+@media (min-width: 1360px) and (max-width: 1499px) {
+  .site-header {
+    padding-inline: 36px;
+  }
+
+  .site-header__brand img {
+    height: 46px;
+  }
+
+  .site-header__nav {
+    gap: 24px;
+  }
+
+  .site-header__nav a,
+  .site-header__dropdown-button {
+    font-size: 0.9rem;
+  }
+
+  .site-header__client {
+    min-height: 34px;
+    padding-inline: 14px;
+    font-size: 0.78rem;
+  }
+
+  .site-header__social a {
+    width: 30px;
+    height: 30px;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 620px) 370px;
+    column-gap: clamp(96px, 9vw, 140px);
+    padding: 112px 56px 58px;
+  }
+
+  .hero__title {
+    font-size: clamp(3rem, 4vw, 3.7rem);
+  }
+
+  .hero__carousel {
+    width: 370px;
+  }
+
+  .hero__slides {
+    min-height: 268px;
+  }
+
+  .hero__review {
+    width: min(82%, 320px);
+    min-height: 122px;
+  }
+
+  .differentials-section {
+    min-height: auto;
+  }
+}
+
+@media (min-width: 1500px) and (max-width: 1999px) {
+  .site-header__nav {
+    gap: clamp(28px, 2.2vw, 34px);
+  }
+
+  .differentials-section__header,
+  .differentials-section__grid,
+  .differentials-marquee,
+  .specialties-section__header,
+  .site-footer__inner,
+  .site-footer__bottom {
+    max-width: 1500px;
+  }
+
+  .specialty-card {
+    flex-basis: clamp(300px, 21vw, 340px);
+    height: clamp(360px, 27vw, 430px);
+  }
+}
+
+@media (min-width: 2000px) {
+  .site-header {
+    padding-inline: clamp(72px, 5vw, 128px);
+  }
+
+  .site-header__nav {
+    gap: 38px;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 760px) 440px;
+    column-gap: clamp(190px, 11vw, 280px);
+    min-height: min(100vh, 1080px);
+    padding-inline: 90px;
+  }
+
+  .hero__title {
+    font-size: clamp(3.6rem, 3vw, 4.35rem);
+  }
+
+  .hero__carousel {
+    width: 430px;
+    margin: 0;
+  }
+
+  .hero__slides {
+    min-height: 310px;
+  }
+
+  .institutional-section__layout,
+  .differentials-section__header,
+  .differentials-section__grid,
+  .differentials-marquee,
+  .specialties-section__header,
+  .contact-section__layout,
+  .site-footer__inner,
+  .site-footer__bottom {
+    max-width: 1500px;
+  }
+
+  .institutional-section__layout {
+    margin-inline: auto;
+  }
+
+  .differentials-section {
+    min-height: auto;
+    padding-top: 92px;
+    padding-bottom: 70px;
+  }
+
+  .differential-card {
+    min-height: 250px;
+  }
+
+  .specialties-section {
+    padding-block: 92px 96px;
+  }
+
+  .specialties-section__track {
+    padding-inline: max(calc((100vw - 1500px) / 2), 80px);
+  }
+
+  .specialty-card {
+    flex-basis: clamp(320px, 16vw, 360px);
+    height: clamp(390px, 20vw, 440px);
+  }
+
+  .site-footer {
+    padding-top: 72px;
+  }
+}
+
+@media (max-width: 979px) {
+  .institutional-section {
+    align-items: stretch;
+  }
+
+  .institutional-section__layout {
+    align-items: end;
+    height: 100%;
+  }
+
+  .institutional-section__stats {
+    align-self: end;
+    justify-content: flex-end;
+  }
+
+  .institutional-section__content {
+    display: grid;
+    align-self: end;
+    justify-self: end;
+    text-align: right;
+  }
+}
+
+@media (max-width: 767px) {
+  .institutional-section {
+    min-height: 88svh;
+    padding: 86px clamp(16px, 5vw, 24px) 88px;
+  }
+
+  .institutional-section__layout {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+    gap: clamp(14px, 4vw, 24px);
+    min-height: calc(88svh - 174px);
+  }
+
+  .institutional-section__stats {
+    min-width: 0;
+    height: auto;
+    padding: 0 0 16px;
+  }
+
+  .institutional-section__stats-label {
+    margin-bottom: 10px;
+    font-size: 0.58rem;
+  }
+
+  .institutional-section__stats-big {
+    font-size: clamp(2.15rem, 11vw, 3.2rem);
+  }
+
+  .institutional-section__stats-sub {
+    margin-bottom: 16px;
+    font-size: 0.72rem;
+  }
+
+  .institutional-section__stats-divider {
+    margin-bottom: 14px;
+  }
+
+  .institutional-section__stats-row {
+    flex-wrap: wrap;
+    gap: 10px 14px;
+  }
+
+  .institutional-section__stat-mini {
+    flex: 1 1 58px;
+  }
+
+  .institutional-section__stat-mini-num {
+    min-height: clamp(0.95rem, 4vw, 1.15rem);
+    font-size: clamp(0.95rem, 4vw, 1.15rem);
+  }
+
+  .institutional-section__stat-mini-num--sm {
+    font-size: clamp(0.68rem, 3vw, 0.82rem);
+  }
+
+  .institutional-section__stat-mini-desc {
+    font-size: 0.58rem;
+  }
+
+  .institutional-section__content {
+    min-width: 0;
+    max-width: 100%;
+    min-height: 0;
+    padding: 0 0 16px;
+    gap: 8px;
+  }
+
+  .institutional-section__content p {
+    font-size: clamp(0.95rem, 4.8vw, 1.28rem);
+    line-height: 1.12;
+  }
+}
+
+@media (max-width: 380px) {
+  .institutional-section__layout {
+    gap: 12px;
+  }
+
+  .institutional-section__stats {
+    padding-bottom: 22px;
+  }
+
+  .institutional-section__content {
+    padding-bottom: 22px;
+  }
+
+  .institutional-section__stats-row {
+    gap: 8px 10px;
+  }
+
+  .institutional-section__content p {
+    font-size: clamp(0.86rem, 4.4vw, 1.05rem);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
