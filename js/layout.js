@@ -1,0 +1,287 @@
+const commonHeader = `
+  <div class="page-loader" aria-hidden="true">
+    <img src="assets/logo/logo_atlas.png" alt="">
+  </div>
+
+  <header class="site-header">
+    <a class="site-header__brand" href="index.html" aria-label="Atlas Contabilidade Digital - pagina inicial">
+      <img src="assets/logo/logo_atlas.png" alt="Logo da Atlas Contabilidade Digital">
+    </a>
+
+    <button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-header__nav" id="main-navigation" aria-label="Menu principal">
+      <a href="index.html">Home</a>
+
+      <div class="site-header__dropdown">
+        <button class="site-header__dropdown-button" type="button" aria-expanded="false" aria-controls="services-menu">
+          Servi&ccedil;os
+        </button>
+
+        <div class="site-header__dropdown-menu" id="services-menu">
+          <a href="servico-contabil-fiscal.html">Cont&aacute;bil e Fiscal</a>
+          <a href="servico-gestao-pessoal.html">Gest&atilde;o Pessoal</a>
+          <a href="servico-planejamento-tributario.html">Planejamento Tribut&aacute;rio</a>
+          <a href="servico-abertura-empresa.html">Abertura de empresa</a>
+          <a href="servico-migracao-contabilidade.html">Migra&ccedil;&atilde;o de contabilidade</a>
+        </div>
+      </div>
+
+      <a href="index.html#especialidades">Especialidades</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="site-header__social">
+      <a href="#" target="_blank" rel="noopener" aria-label="Instagram da Atlas">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <a href="#" target="_blank" rel="noopener" aria-label="Facebook da Atlas">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M14.1 8.2V6.9c0-.7.5-.9.9-.9h2.1V2.4L14.2 2c-3.2 0-4.9 1.9-4.9 5.3v.9H6.2v3.9h3.1V22h4.1v-9.9h3.3l.5-3.9h-3.8Z"/>
+        </svg>
+      </a>
+      <a href="#" target="_blank" rel="noopener" aria-label="WhatsApp da Atlas">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.04 4.2a7.72 7.72 0 0 0-6.55 11.8l.2.31-.72 2.66 2.72-.71.3.18a7.73 7.73 0 1 0 4.05-14.24Zm0 13.97a6.23 6.23 0 0 1-3.17-.86l-.44-.26-1.43.38.38-1.39-.29-.45a6.22 6.22 0 1 1 4.95 2.58Zm3.42-4.64c-.19-.1-1.1-.54-1.27-.6-.17-.07-.29-.1-.42.09-.12.19-.48.6-.59.72-.11.13-.22.14-.41.05-.19-.1-.8-.29-1.53-.93a5.7 5.7 0 0 1-1.06-1.32c-.11-.19-.01-.29.08-.39.08-.08.19-.22.28-.32.09-.11.12-.19.19-.32.06-.13.03-.24-.02-.34-.05-.09-.42-1-.57-1.38-.15-.36-.3-.31-.42-.32h-.35c-.13 0-.34.05-.51.24-.17.19-.67.65-.67 1.59s.69 1.84.78 1.97c.1.13 1.35 2.06 3.27 2.89.46.2.81.32 1.09.41.46.14.88.12 1.21.07.37-.05 1.1-.45 1.26-.88.15-.43.15-.8.11-.88-.05-.08-.17-.13-.36-.22Z"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+`;
+
+const commonContactFooter = `
+  <section class="contact-section" id="contato" aria-labelledby="contact-title">
+    <div class="contact-section__layout">
+      <div class="contact-section__content">
+        <p class="contact-section__eyebrow">Fale com a Atlas</p>
+        <h2 class="contact-section__title" id="contact-title">
+          Simples assim.<br>&Eacute; s&oacute; chamar.
+        </h2>
+        <p class="contact-section__description">
+          Em poucos passos voc&ecirc; fala com um especialista e recebe todas as informa&ccedil;&otilde;es que precisa.
+        </p>
+
+        <ol class="contact-steps" aria-label="Passos para entrar em contato">
+          <li class="contact-step is-active" data-step="0">
+            <button class="contact-step__button" type="button" aria-expanded="true">
+              <span class="contact-step__number">01</span>
+              <div class="contact-step__text">
+                <strong>Clique no bot&atilde;o do WhatsApp</strong>
+                <p>Dispon&iacute;vel na p&aacute;gina ou no canto da tela a qualquer momento.</p>
+              </div>
+            </button>
+          </li>
+          <li class="contact-step" data-step="1">
+            <button class="contact-step__button" type="button" aria-expanded="false">
+              <span class="contact-step__number">02</span>
+              <div class="contact-step__text">
+                <strong>Mensagem j&aacute; preenchida</strong>
+                <p>Voc&ecirc; ser&aacute; direcionado ao WhatsApp com uma mensagem pronta para enviar.</p>
+              </div>
+            </button>
+          </li>
+          <li class="contact-step" data-step="2">
+            <button class="contact-step__button" type="button" aria-expanded="false">
+              <span class="contact-step__number">03</span>
+              <div class="contact-step__text">
+                <strong>Fale com um especialista</strong>
+                <p>Nossa equipe responde rapidamente e orienta voc&ecirc; sobre os pr&oacute;ximos passos.</p>
+              </div>
+            </button>
+          </li>
+          <li class="contact-step" data-step="3">
+            <button class="contact-step__button" type="button" aria-expanded="false">
+              <span class="contact-step__number">04</span>
+              <div class="contact-step__text">
+                <strong>Receba sua proposta</strong>
+                <p>Diagn&oacute;stico gratuito e proposta personalizada para o seu neg&oacute;cio.</p>
+              </div>
+            </button>
+          </li>
+        </ol>
+
+        <a class="contact-section__cta" href="https://wa.me/5548999999999?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20Atlas%20Contabilidade%20Digital." target="_blank" rel="noopener" aria-label="Falar com especialista no WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12.04 4.2a7.72 7.72 0 0 0-6.55 11.8l.2.31-.72 2.66 2.72-.71.3.18a7.73 7.73 0 1 0 4.05-14.24Zm0 13.97a6.23 6.23 0 0 1-3.17-.86l-.44-.26-1.43.38.38-1.39-.29-.45a6.22 6.22 0 1 1 4.95 2.58Zm3.42-4.64c-.19-.1-1.1-.54-1.27-.6-.17-.07-.29-.1-.42.09-.12.19-.48.6-.59.72-.11.13-.22.14-.41.05-.19-.1-.8-.29-1.53-.93a5.7 5.7 0 0 1-1.06-1.32c-.11-.19-.01-.29.08-.39.08-.08.19-.22.28-.32.09-.11.12-.19.19-.32.06-.13.03-.24-.02-.34-.05-.09-.42-1-.57-1.38-.15-.36-.3-.31-.42-.32h-.35c-.13 0-.34.05-.51.24-.17.19-.67.65-.67 1.59s.69 1.84.78 1.97c.1.13 1.35 2.06 3.27 2.89.46.2.81.32 1.09.41.46.14.88.12 1.21.07.37-.05 1.1-.45 1.26-.88.15-.43.15-.8.11-.88-.05-.08-.17-.13-.36-.22Z"/>
+          </svg>
+          Falar com especialista
+        </a>
+      </div>
+
+      <div class="contact-section__mockup" aria-hidden="true">
+        <div class="contact-mockup contact-mockup--desktop" data-mockup-screen="desktop">
+          <div class="contact-mockup__chrome">
+            <div class="contact-mockup__chrome-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="contact-mockup__chrome-bar">
+              <span>web.whatsapp.com</span>
+            </div>
+          </div>
+          <div class="contact-mockup__body">
+            <div class="contact-mockup__sidebar">
+              <div class="contact-mockup__sidebar-header">
+                <div class="contact-mockup__avatar contact-mockup__avatar--lg"></div>
+                <div class="contact-mockup__sidebar-search"></div>
+              </div>
+              <div class="contact-mockup__chat-item is-active">
+                <div class="contact-mockup__avatar"></div>
+                <div class="contact-mockup__chat-preview">
+                  <span>Atlas Contabilidade</span>
+                  <p>Ol&aacute;, gostaria de saber mais...</p>
+                </div>
+              </div>
+              <div class="contact-mockup__chat-item">
+                <div class="contact-mockup__avatar contact-mockup__avatar--muted"></div>
+                <div class="contact-mockup__chat-preview">
+                  <span>Contato 2</span>
+                  <p>&Uacute;ltima mensagem...</p>
+                </div>
+              </div>
+            </div>
+            <div class="contact-mockup__conversation">
+              <div class="contact-mockup__conv-header">
+                <div class="contact-mockup__avatar"></div>
+                <div>
+                  <strong>Atlas Contabilidade Digital</strong>
+                  <span>online</span>
+                </div>
+              </div>
+              <div class="contact-mockup__messages" data-mockup-messages>
+                <div class="contact-mockup__msg contact-mockup__msg--out" data-msg="0">
+                  <p>Ol&aacute;, gostaria de saber mais sobre os servi&ccedil;os da Atlas Contabilidade Digital.</p>
+                  <span>14:32</span>
+                </div>
+                <div class="contact-mockup__msg contact-mockup__msg--in" data-msg="1">
+                  <p>Ol&aacute;! Fico feliz em ajudar. Pode me contar um pouco sobre a sua empresa?</p>
+                  <span>14:33</span>
+                </div>
+                <div class="contact-mockup__msg contact-mockup__msg--out" data-msg="2">
+                  <p>Tenho uma empresa de servi&ccedil;os e estou buscando uma contabilidade mais organizada.</p>
+                  <span>14:34</span>
+                </div>
+                <div class="contact-mockup__msg contact-mockup__msg--in" data-msg="3">
+                  <p>Perfeito! Vou preparar uma proposta personalizada para voc&ecirc;.</p>
+                  <span>14:35</span>
+                </div>
+              </div>
+              <div class="contact-mockup__input">
+                <span class="contact-mockup__input-text" data-mockup-input></span>
+                <button class="contact-mockup__send" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-mockup contact-mockup--mobile" data-mockup-screen="mobile">
+          <div class="contact-mockup__phone">
+            <div class="contact-mockup__phone-notch"></div>
+            <div class="contact-mockup__phone-screen">
+              <div class="contact-mockup__conv-header contact-mockup__conv-header--mobile">
+                <div class="contact-mockup__avatar"></div>
+                <div>
+                  <strong>Atlas Contabilidade Digital</strong>
+                  <span>online</span>
+                </div>
+              </div>
+              <div class="contact-mockup__messages contact-mockup__messages--mobile" data-mockup-messages-mobile>
+                <div class="contact-mockup__msg contact-mockup__msg--out" data-msg-mobile="0">
+                  <p>Ol&aacute;, gostaria de saber mais sobre os servi&ccedil;os da Atlas.</p>
+                  <span>14:32</span>
+                </div>
+                <div class="contact-mockup__msg contact-mockup__msg--in" data-msg-mobile="1">
+                  <p>Ol&aacute;! Fico feliz em ajudar.</p>
+                  <span>14:33</span>
+                </div>
+                <div class="contact-mockup__msg contact-mockup__msg--out" data-msg-mobile="2">
+                  <p>Tenho uma empresa e busco contabilidade organizada.</p>
+                  <span>14:34</span>
+                </div>
+                <div class="contact-mockup__msg contact-mockup__msg--in" data-msg-mobile="3">
+                  <p>Vou preparar uma proposta para voc&ecirc;!</p>
+                  <span>14:35</span>
+                </div>
+              </div>
+              <div class="contact-mockup__input contact-mockup__input--mobile">
+                <span class="contact-mockup__input-text" data-mockup-input-mobile></span>
+                <button class="contact-mockup__send" type="button">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" aria-labelledby="footer-title">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <h2 class="site-footer__title" id="footer-title">Atlas Contabilidade Digital</h2>
+        <p class="site-footer__text">Contabilidade digital com clareza, seguran&ccedil;a e proximidade.</p>
+        <p class="site-footer__location">S&atilde;o Jos&eacute;, Santa Catarina</p>
+      </div>
+
+      <div class="site-footer__actions">
+        <div class="site-footer__social" aria-label="Redes sociais da Atlas">
+          <a class="site-footer__social-link" href="#" aria-label="Instagram da Atlas">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm4.2 3.6a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8Zm0 2a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8Zm5-2.55a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1Z"/>
+            </svg>
+          </a>
+          <a class="site-footer__social-link" href="#" aria-label="WhatsApp da Atlas">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.04 4.2a7.72 7.72 0 0 0-6.55 11.8l.2.31-.72 2.66 2.72-.71.3.18a7.73 7.73 0 1 0 4.05-14.24Zm0 13.97a6.23 6.23 0 0 1-3.17-.86l-.44-.26-1.43.38.38-1.39-.29-.45a6.22 6.22 0 1 1 4.95 2.58Zm3.42-4.64c-.19-.1-1.1-.54-1.27-.6-.17-.07-.29-.1-.42.09-.12.19-.48.6-.59.72-.11.13-.22.14-.41.05-.19-.1-.8-.29-1.53-.93a5.7 5.7 0 0 1-1.06-1.32c-.11-.19-.01-.29.08-.39.08-.08.19-.22.28-.32.09-.11.12-.19.19-.32.06-.13.03-.24-.02-.34-.05-.09-.42-1-.57-1.38-.15-.36-.3-.31-.42-.32h-.35c-.13 0-.34.05-.51.24-.17.19-.67.65-.67 1.59s.69 1.84.78 1.97c.1.13 1.35 2.06 3.27 2.89.46.2.81.32 1.09.41.46.14.88.12 1.21.07.37-.05 1.1-.45 1.26-.88.15-.43.15-.8.11-.88-.05-.08-.17-.13-.36-.22Z"/>
+            </svg>
+          </a>
+          <a class="site-footer__social-link" href="#" aria-label="Facebook da Atlas">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M14 8.4V6.8c0-.72.48-.9.82-.9H17V2.1L14 2c-3.34 0-4.1 2.5-4.1 4.1v2.3H7v3.9h2.9V22H14v-9.7h3.1l.42-3.9H14Z"/>
+            </svg>
+          </a>
+          <a class="site-footer__social-link" href="mailto:contato@atlascontabilidade.com.br" aria-label="Enviar e-mail para a Atlas">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm8 7.3L4 7.8V17h16V7.8l-8 4.5Zm0-2.3L19.2 7H4.8L12 10Z"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="site-footer__actions-links">
+          <a class="site-footer__button" href="index.html#especialidades">Especialidades</a>
+          <a class="site-footer__button" href="servico-contabil-fiscal.html">Servi&ccedil;os</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="site-footer__bottom">&copy; 2026 Atlas Contabilidade Digital. Todos os direitos reservados.</p>
+  </footer>
+
+  <a class="whatsapp-floating" href="#" target="_blank" rel="noopener" aria-label="Falar com a Atlas pelo WhatsApp">
+    <span class="whatsapp-floating__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <path d="M12.04 4.2a7.72 7.72 0 0 0-6.55 11.8l.2.31-.72 2.66 2.72-.71.3.18a7.73 7.73 0 1 0 4.05-14.24Zm0 13.97a6.23 6.23 0 0 1-3.17-.86l-.44-.26-1.43.38.38-1.39-.29-.45a6.22 6.22 0 1 1 4.95 2.58Zm3.42-4.64c-.19-.1-1.1-.54-1.27-.6-.17-.07-.29-.1-.42.09-.12.19-.48.6-.59.72-.11.13-.22.14-.41.05-.19-.1-.8-.29-1.53-.93a5.7 5.7 0 0 1-1.06-1.32c-.11-.19-.01-.29.08-.39.08-.08.19-.22.28-.32.09-.11.12-.19.19-.32.06-.13.03-.24-.02-.34-.05-.09-.42-1-.57-1.38-.15-.36-.3-.31-.42-.32h-.35c-.13 0-.34.05-.51.24-.17.19-.67.65-.67 1.59s.69 1.84.78 1.97c.1.13 1.35 2.06 3.27 2.89.46.2.81.32 1.09.41.46.14.88.12 1.21.07.37-.05 1.1-.45 1.26-.88.15-.43.15-.8.11-.88-.05-.08-.17-.13-.36-.22Z" />
+      </svg>
+    </span>
+    <span>Falar com especialista</span>
+  </a>
+`;
+
+document.body.insertAdjacentHTML('afterbegin', commonHeader);
+
+const mainContent = document.querySelector('main');
+
+if (mainContent) {
+  mainContent.insertAdjacentHTML('afterend', commonContactFooter);
+}
