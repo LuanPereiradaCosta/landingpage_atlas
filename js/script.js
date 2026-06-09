@@ -9,6 +9,7 @@ const heroSlides = document.querySelectorAll('.hero__slide');
 const heroReviews = document.querySelectorAll('.hero__review');
 const institutionalSection = document.querySelector('.institutional-section');
 const institutionalSlides = document.querySelectorAll('.institutional-section__slide');
+const institutionalTexts = document.querySelectorAll('[data-institutional-text]');
 const institutionalCurrent = document.querySelector('[data-institutional-current]');
 const institutionalTotal = document.querySelector('[data-institutional-total]');
 const institutionalPreviousButton = document.querySelector('[data-institutional-prev]');
@@ -285,6 +286,13 @@ const showInstitutionalSlide = (slideIndex) => {
     }
   });
 
+  institutionalTexts.forEach((text, index) => {
+    const isActiveText = index === activeInstitutionalSlide;
+
+    text.classList.toggle('is-active', isActiveText);
+    text.setAttribute('aria-hidden', String(!isActiveText));
+  });
+
   if (institutionalCurrent) {
     institutionalCurrent.textContent = formatSlideNumber(activeInstitutionalSlide + 1);
   }
@@ -406,9 +414,22 @@ if (specialtiesTrack) {
   }
 
   const getCardWidth = () => {
-    const card = specialtiesTrack.querySelector('.specialty-card');
-    if (!card) return 300;
-    return card.offsetWidth + 16;
+    const cards = [...specialtiesTrack.querySelectorAll('.specialty-card')];
+    const firstOriginalCardIndex = cards.findIndex((card) => !card.dataset.specialtyClone);
+    const firstCardIndex = firstOriginalCardIndex >= 0 ? firstOriginalCardIndex : 0;
+    const firstCard = cards[firstCardIndex];
+    const secondCard = cards[firstCardIndex + 1];
+
+    if (!firstCard) return 300;
+
+    if (secondCard) {
+      return secondCard.offsetLeft - firstCard.offsetLeft;
+    }
+
+    const trackStyles = window.getComputedStyle(specialtiesTrack);
+    const trackGap = parseFloat(trackStyles.columnGap || trackStyles.gap) || 16;
+
+    return firstCard.offsetWidth + trackGap;
   };
 
   const getLoopWidth = () => getCardWidth() * originalSpecialtyCards.length;
@@ -453,8 +474,8 @@ if (specialtiesTrack) {
   window.requestAnimationFrame(moveToLoopStart);
 
   const moveSpecialtiesCarousel = (direction) => {
-    specialtiesTrack.scrollBy({
-      left: getCardWidth() * direction,
+    specialtiesTrack.scrollTo({
+      left: specialtiesTrack.scrollLeft + (getCardWidth() * direction),
       behavior: reducedMotionQuery.matches ? 'auto' : 'smooth'
     });
 
@@ -538,9 +559,24 @@ if (specialtiesTrack) {
   });
 
   specialtiesTrack.addEventListener('touchstart', pauseAutoScroll, { passive: true });
-  specialtiesTrack.addEventListener('touchend', normalizeInfiniteScrollPosition);
+  specialtiesTrack.addEventListener('touchend', () => {
+    window.setTimeout(normalizeInfiniteScrollPosition, 120);
+  });
   specialtiesTrack.addEventListener('scrollend', normalizeInfiniteScrollPosition);
-  window.addEventListener('resize', normalizeInfiniteScrollPosition);
+
+  let specialtiesScrollTimer = null;
+  specialtiesTrack.addEventListener('scroll', () => {
+    window.clearTimeout(specialtiesScrollTimer);
+    specialtiesScrollTimer = window.setTimeout(normalizeInfiniteScrollPosition, 160);
+  });
+
+  let specialtiesResizeTimer = null;
+  window.addEventListener('resize', () => {
+    window.clearTimeout(specialtiesResizeTimer);
+    specialtiesResizeTimer = window.setTimeout(() => {
+      moveToLoopStart();
+    }, 160);
+  });
 
   startAutoScroll();
 }
@@ -667,7 +703,7 @@ const contactInputTexts = [
 let contactAutoTimer = null;
 let activeContactStep = 0;
 let isContactSectionVisible = false;
-const contactStepInterval = 4800;
+const contactStepInterval = 3600;
 
 const showContactStep = (stepIndex) => {
   if (!contactSteps.length) return;

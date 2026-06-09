@@ -29,3 +29,5 @@ coverage/
 tmp/
 
 AGENTS.md
+
+.serena/
