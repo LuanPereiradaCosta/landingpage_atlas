@@ -2,6 +2,19 @@
 .DS_Store
 Thumbs.db
 Desktop.ini
+$RECYCLE.BIN/
+
+# Editores e configuracoes locais
+.idea/
+*.swp
+*.swo
+*.swn
+*~
+
+# Arquivos locais do Codex, Serena e automacoes
+.serena/
+.codex/
+.agents/
 
 # Dependencias, caso algum pacote seja instalado no futuro
 node_modules/
@@ -17,17 +30,33 @@ logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
-# Saidas de build ou testes, caso existam no futuro
+# Saidas de build, testes ou cobertura
 dist/
 build/
 coverage/
+.nyc_output/
 
 # Cache e arquivos temporarios
 .cache/
+.parcel-cache/
+.vite/
 .tmp/
 tmp/
+temp/
 
-AGENTS.md
+# Arquivos de backup
+*.bak
+*.backup
+*.orig
 
-.serena/
+# Pacotes compactados gerados localmente
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+#arquivos .md
+
+*.md
