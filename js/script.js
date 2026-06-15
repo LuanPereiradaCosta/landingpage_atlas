@@ -21,11 +21,156 @@ const specialtiesTrack = document.querySelector('[data-specialties-track]');
 const specialtiesPrevButton = document.querySelector('[data-specialties-prev]');
 const specialtiesNextButton = document.querySelector('[data-specialties-next]');
 const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+const technologySpecialtyPageName = 'especialidade-tecnologia.html';
 let activeHeroSlide = 0;
 let activeInstitutionalSlide = 0;
 const heroReviewLeaveDuration = 680;
 const heroReviewEnterDelay = 960;
 const heroSlideChangeDelay = 900;
+
+const setupTechnologyHeroTyping = () => {
+  const currentPageName = decodeURIComponent(window.location.pathname.split('/').pop() || '');
+
+  if (currentPageName !== technologySpecialtyPageName) {
+    return;
+  }
+
+  const specialtyPage = document.querySelector('.specialty-page');
+  const specialtyHero = specialtyPage ? specialtyPage.querySelector('.specialty-page__hero') : null;
+  const specialtyTitle = specialtyHero ? specialtyHero.querySelector('.specialty-page__title') : null;
+  const specialtyText = specialtyHero ? specialtyHero.querySelector('.specialty-page__text') : null;
+
+  if (!specialtyTitle || !specialtyText) {
+    return;
+  }
+
+  const fullTitleText = specialtyTitle.textContent.trim();
+
+  const showCompleteTitle = () => {
+    specialtyTitle.textContent = fullTitleText;
+    specialtyHero.classList.remove('is-typing', 'is-typing-done');
+    specialtyHero.classList.add('is-title-complete');
+    specialtyText.classList.add('is-visible');
+  };
+
+  if (reducedMotionQuery.matches) {
+    showCompleteTitle();
+    return;
+  }
+
+  const titleCursor = document.createElement('span');
+  titleCursor.className = 'specialty-page__title-cursor';
+  titleCursor.setAttribute('aria-hidden', 'true');
+
+  specialtyTitle.setAttribute('aria-label', fullTitleText);
+  specialtyTitle.textContent = '';
+  specialtyTitle.appendChild(titleCursor);
+  specialtyHero.classList.add('is-typing');
+
+  const titleCharacters = Array.from(fullTitleText);
+  const typingDelay = 36;
+  let currentCharacterIndex = 0;
+
+  const finishTyping = () => {
+    specialtyHero.classList.remove('is-typing');
+    specialtyHero.classList.add('is-typing-done');
+    specialtyText.classList.add('is-visible');
+
+    window.setTimeout(() => {
+      titleCursor.remove();
+      specialtyHero.classList.remove('is-typing-done');
+      specialtyHero.classList.add('is-title-complete');
+    }, 1500);
+  };
+
+  const typeNextCharacter = () => {
+    if (currentCharacterIndex >= titleCharacters.length) {
+      finishTyping();
+      return;
+    }
+
+    specialtyTitle.insertBefore(
+      document.createTextNode(titleCharacters[currentCharacterIndex]),
+      titleCursor
+    );
+    currentCharacterIndex += 1;
+    window.setTimeout(typeNextCharacter, typingDelay);
+  };
+
+  const startTyping = () => {
+    window.setTimeout(typeNextCharacter, 180);
+  };
+
+  if (document.readyState === 'complete') {
+    window.setTimeout(startTyping, 1320);
+  } else {
+    window.addEventListener('load', () => {
+      window.setTimeout(startTyping, 1320);
+    }, { once: true });
+  }
+};
+
+const setupTechnologyHeroBackground = () => {
+  const currentPageName = decodeURIComponent(window.location.pathname.split('/').pop() || '');
+
+  if (currentPageName !== technologySpecialtyPageName) {
+    return;
+  }
+
+  const technologyHeroImages = document.querySelectorAll('.specialty-page--technology .specialty-page__hero-bg-image');
+
+  if (technologyHeroImages.length <= 1 || reducedMotionQuery.matches) {
+    return;
+  }
+
+  let activeTechnologyHeroImage = 0;
+
+  window.setInterval(() => {
+    technologyHeroImages[activeTechnologyHeroImage].classList.remove('is-active');
+    activeTechnologyHeroImage = (activeTechnologyHeroImage + 1) % technologyHeroImages.length;
+    technologyHeroImages[activeTechnologyHeroImage].classList.add('is-active');
+  }, 5200);
+};
+
+const setupTechnologyArticleReveal = () => {
+  const currentPageName = decodeURIComponent(window.location.pathname.split('/').pop() || '');
+
+  if (currentPageName !== technologySpecialtyPageName) {
+    return;
+  }
+
+  const technologyArticleElements = document.querySelectorAll(
+    '.specialty-page--technology .specialty-article__intro, .specialty-page--technology .specialty-article__feature-media, .specialty-page--technology .specialty-article__body, .specialty-page--technology .specialty-article__note, .specialty-page--technology .specialty-article__highlights'
+  );
+
+  if (!technologyArticleElements.length) {
+    return;
+  }
+
+  if (reducedMotionQuery.matches || !('IntersectionObserver' in window)) {
+    technologyArticleElements.forEach((element) => {
+      element.classList.add('is-visible');
+    });
+    return;
+  }
+
+  const technologyArticleObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      entry.target.classList.toggle('is-visible', entry.isIntersecting);
+    });
+  }, {
+    rootMargin: '0px 0px -10% 0px',
+    threshold: 0.18
+  });
+
+  technologyArticleElements.forEach((element) => {
+    technologyArticleObserver.observe(element);
+  });
+};
+
+setupTechnologyHeroTyping();
+setupTechnologyHeroBackground();
+setupTechnologyArticleReveal();
 
 if ('scrollRestoration' in window.history) {
   window.history.scrollRestoration = 'manual';
