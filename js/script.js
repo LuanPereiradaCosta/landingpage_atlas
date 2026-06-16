@@ -149,9 +149,41 @@ const setupPremiumSpecialtyArticleReveal = () => {
   });
 };
 
+const setupCompanyOpeningServiceReveal = () => {
+  const serviceRevealElements = document.querySelectorAll('.service-page--company-opening [data-service-reveal]');
+
+  if (!serviceRevealElements.length) {
+    return;
+  }
+
+  if (reducedMotionQuery.matches || !('IntersectionObserver' in window)) {
+    serviceRevealElements.forEach((element) => {
+      element.classList.add('is-visible');
+    });
+    return;
+  }
+
+  const serviceRevealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    rootMargin: '0px 0px -12% 0px',
+    threshold: 0.16
+  });
+
+  serviceRevealElements.forEach((element) => {
+    serviceRevealObserver.observe(element);
+  });
+};
+
 setupPremiumSpecialtyHeroTyping();
 setupPremiumSpecialtyHeroBackground();
 setupPremiumSpecialtyArticleReveal();
+setupCompanyOpeningServiceReveal();
 
 if ('scrollRestoration' in window.history) {
   window.history.scrollRestoration = 'manual';

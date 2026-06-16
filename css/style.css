@@ -5750,6 +5750,2101 @@ body.is-loaded .page-loader {
   }
 }
 
+.service-page--company-opening {
+  overflow-x: clip;
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(115, 202, 255, 0.18), transparent 28%),
+    linear-gradient(180deg, #eaf6fb 0%, #f3fafe 42%, #d6e9f1 100%);
+}
+
+.service-page--company-opening [data-service-reveal] {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(24px);
+  transition:
+    opacity 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.78s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.service-page--company-opening [data-service-reveal].is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+.service-page--company-opening .service-page__eyebrow {
+  margin: 0 0 16px;
+  color: var(--color-accent);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.service-page--company-opening .service-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 94svh;
+  display: flex;
+  align-items: center;
+  padding: clamp(118px, 14vh, 168px) clamp(20px, 5vw, 80px) clamp(72px, 10vh, 118px);
+  overflow: hidden;
+  color: var(--color-surface);
+  background: var(--color-brand-deep);
+}
+
+.service-page--company-opening .service-hero::before,
+.service-page--company-opening .service-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.service-page--company-opening .service-hero::before {
+  z-index: -1;
+  background:
+    radial-gradient(circle at 76% 28%, rgba(115, 202, 255, 0.28), transparent 28%),
+    linear-gradient(90deg, rgba(2, 22, 37, 0.98) 0%, rgba(3, 43, 69, 0.9) 48%, rgba(3, 43, 69, 0.54) 74%, rgba(2, 22, 37, 0.22) 100%),
+    linear-gradient(180deg, rgba(2, 22, 37, 0.18) 0%, rgba(2, 22, 37, 0.94) 100%);
+}
+
+.service-page--company-opening .service-hero::after {
+  z-index: -1;
+  opacity: 0.24;
+  background-image:
+    linear-gradient(rgba(115, 202, 255, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(115, 202, 255, 0.18) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.86), transparent 78%);
+}
+
+.service-page--company-opening .service-hero__background {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.service-page--company-opening .service-hero__background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 72% center;
+  filter: saturate(0.82) contrast(1.08);
+  transform: scale(1.08);
+  animation: companyOpeningHeroImage 1.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes companyOpeningHeroImage {
+  from {
+    filter: blur(8px) saturate(0.72) contrast(1.04);
+    transform: scale(1.14);
+  }
+
+  to {
+    filter: blur(0) saturate(0.82) contrast(1.08);
+    transform: scale(1.08);
+  }
+}
+
+.service-page--company-opening .service-hero__inner,
+.service-page--company-opening .service-overview__inner,
+.service-page--company-opening .service-process__inner,
+.service-page--company-opening .service-final__inner {
+  width: min(100%, 1180px);
+  margin: 0 auto;
+}
+
+.service-page--company-opening .service-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.62fr);
+  gap: clamp(38px, 6vw, 86px);
+  align-items: end;
+}
+
+.service-page--company-opening .service-hero__content h1,
+.service-page--company-opening .service-overview h2,
+.service-page--company-opening .service-process h2,
+.service-page--company-opening .service-final h2 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.service-page--company-opening .service-hero__content h1 {
+  max-width: 780px;
+  font-size: clamp(2.75rem, 6vw, 5.8rem);
+  line-height: 0.96;
+}
+
+.service-page--company-opening .service-hero__content > p:not(.service-page__eyebrow) {
+  max-width: 610px;
+  margin: 26px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
+  line-height: 1.72;
+}
+
+.service-page--company-opening .service-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.service-page--company-opening .service-hero__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease,
+    color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.service-page--company-opening .service-hero__button:hover,
+.service-page--company-opening .service-hero__button:focus-visible {
+  transform: translateY(-2px);
+}
+
+.service-page--company-opening .service-hero__button--primary {
+  color: #032b45;
+  background: linear-gradient(135deg, #ffffff 0%, #d8f1ff 100%);
+  box-shadow: 0 18px 40px rgba(0, 140, 227, 0.22);
+}
+
+.service-page--company-opening .service-hero__button--secondary {
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.service-page--company-opening .service-hero__button--secondary:hover,
+.service-page--company-opening .service-hero__button--secondary:focus-visible {
+  border-color: rgba(115, 202, 255, 0.58);
+  background: rgba(115, 202, 255, 0.13);
+}
+
+.service-page--company-opening .service-hero__panel {
+  padding: clamp(22px, 3vw, 32px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 22px;
+  background: rgba(3, 43, 69, 0.48);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(18px);
+}
+
+.service-page--company-opening .service-hero__panel-label {
+  margin: 0 0 18px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.service-page--company-opening .service-hero__panel ul,
+.service-page--company-opening .service-final__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-page--company-opening .service-hero__panel li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 16px 0;
+  color: rgba(255, 255, 255, 0.78);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  transition:
+    color 0.22s ease,
+    transform 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.service-page--company-opening .service-hero__panel li:hover {
+  color: #ffffff;
+  border-color: rgba(115, 202, 255, 0.34);
+  transform: translateX(4px);
+}
+
+.service-page--company-opening .service-hero__panel span,
+.service-page--company-opening .service-overview__card span,
+.service-page--company-opening .service-process__item span {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.service-page--company-opening .service-overview,
+.service-page--company-opening .service-process {
+  padding: clamp(78px, 9vw, 126px) clamp(20px, 5vw, 80px);
+}
+
+.service-page--company-opening .service-overview {
+  background:
+    radial-gradient(circle at 15% 12%, rgba(115, 202, 255, 0.2), transparent 26%),
+    linear-gradient(180deg, #eaf6fb 0%, #f4fbff 100%);
+}
+
+.service-page--company-opening .service-overview__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(42px, 6vw, 82px);
+  align-items: start;
+}
+
+.service-page--company-opening .service-overview__intro h2,
+.service-page--company-opening .service-process__header h2,
+.service-page--company-opening .service-final__intro h2 {
+  color: #082f49;
+  font-size: clamp(2rem, 4vw, 3.7rem);
+  line-height: 1.04;
+}
+
+.service-page--company-opening .service-overview__intro p:not(.service-page__eyebrow) {
+  margin: 24px 0 0;
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.76;
+}
+
+.service-page--company-opening .service-overview__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.service-page--company-opening .service-overview__card {
+  min-height: 245px;
+  padding: 28px;
+  border: 1px solid rgba(4, 50, 79, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 18px 48px rgba(4, 50, 79, 0.08);
+  transition:
+    transform 0.24s ease,
+    border-color 0.24s ease,
+    box-shadow 0.24s ease,
+    background 0.24s ease;
+}
+
+.service-page--company-opening .service-overview__card:nth-child(2),
+.service-page--company-opening .service-process__item:nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+.service-page--company-opening .service-overview__card:nth-child(3),
+.service-page--company-opening .service-process__item:nth-child(3) {
+  transition-delay: 0.16s;
+}
+
+.service-page--company-opening .service-overview__card:nth-child(4),
+.service-page--company-opening .service-process__item:nth-child(4) {
+  transition-delay: 0.24s;
+}
+
+.service-page--company-opening .service-overview__card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 140, 227, 0.28);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 24px 60px rgba(4, 50, 79, 0.12);
+}
+
+.service-page--company-opening .service-overview__card h3,
+.service-page--company-opening .service-process__item h3 {
+  margin: 24px 0 12px;
+  font-family: var(--font-heading);
+  font-size: 1.16rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.service-page--company-opening .service-overview__card p,
+.service-page--company-opening .service-process__item p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.94rem;
+  line-height: 1.68;
+}
+
+.service-page--company-opening .service-process {
+  color: var(--color-surface);
+  background:
+    radial-gradient(circle at 86% 12%, rgba(115, 202, 255, 0.2), transparent 28%),
+    linear-gradient(180deg, #f4fbff 0%, #0a3856 8%, #032b45 100%);
+}
+
+.service-page--company-opening .service-process__header {
+  max-width: 720px;
+}
+
+.service-page--company-opening .service-process__header h2 {
+  color: var(--color-surface);
+}
+
+.service-page--company-opening .service-process__timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin-top: clamp(46px, 6vw, 74px);
+}
+
+.service-page--company-opening .service-process__timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 23px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(115, 202, 255, 0), rgba(115, 202, 255, 0.42), rgba(115, 202, 255, 0));
+}
+
+.service-page--company-opening .service-process__item {
+  position: relative;
+  min-height: 255px;
+  padding: 58px 28px 28px;
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.035);
+  transition:
+    transform 0.24s ease,
+    background 0.24s ease,
+    border-color 0.24s ease,
+    box-shadow 0.24s ease;
+}
+
+.service-page--company-opening .service-process__item:last-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.service-page--company-opening .service-process__item span {
+  position: absolute;
+  top: 0;
+  left: 28px;
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(115, 202, 255, 0.36);
+  border-radius: 50%;
+  background: #032b45;
+  box-shadow: 0 0 0 rgba(115, 202, 255, 0);
+  transition:
+    border-color 0.24s ease,
+    box-shadow 0.24s ease,
+    background 0.24s ease,
+    color 0.24s ease;
+}
+
+.service-page--company-opening .service-process__item h3 {
+  color: var(--color-surface);
+}
+
+.service-page--company-opening .service-process__item p {
+  color: rgba(255, 255, 255, 0.62);
+  transition: color 0.24s ease;
+}
+
+.service-page--company-opening .service-process__item:hover {
+  transform: translateY(-8px) scale(1.015);
+  border-color: rgba(115, 202, 255, 0.34);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+}
+
+.service-page--company-opening .service-process__item:hover span {
+  color: #032b45;
+  border-color: rgba(115, 202, 255, 0.82);
+  background: var(--color-accent);
+  box-shadow: 0 0 28px rgba(115, 202, 255, 0.34);
+}
+
+.service-page--company-opening .service-process__item:hover p {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+
+.service-page--company-opening .service-final {
+  position: relative;
+  margin-bottom: -1px;
+  padding: clamp(84px, 10vw, 136px) clamp(20px, 5vw, 80px) clamp(112px, 12vw, 170px);
+  color: var(--color-surface);
+  background:
+    radial-gradient(circle at 80% 20%, rgba(115, 202, 255, 0.18), transparent 31%),
+    linear-gradient(180deg, #d8ecf4 0%, #94bdcf 34%, #315f78 68%, #032b45 100%);
+}
+
+.service-page--company-opening .service-final__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.84fr) minmax(0, 1fr);
+  gap: clamp(38px, 6vw, 78px);
+  align-items: start;
+}
+
+.service-page--company-opening .service-final__intro h2 {
+  color: #032b45;
+}
+
+.service-page--company-opening .service-final__list {
+  display: grid;
+  border-top: 1px solid rgba(255, 255, 255, 0.34);
+}
+
+.service-page--company-opening .service-final__list li {
+  position: relative;
+  padding: 20px 0 20px 34px;
+  color: rgba(255, 255, 255, 0.88);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  font-size: 1rem;
+  line-height: 1.4;
+  transition:
+    color 0.22s ease,
+    padding-left 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.service-page--company-opening .service-final__list li::before {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 18px rgba(115, 202, 255, 0.28);
+}
+
+.service-page--company-opening .service-final__list li:hover {
+  padding-left: 42px;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.38);
+}
+
+.service-page--company-opening + .contact-section {
+  margin-top: -1px;
+  padding-top: clamp(96px, 10vw, 150px);
+  background:
+    radial-gradient(circle at 82% 20%, rgba(0, 140, 227, 0.24), transparent 30%),
+    linear-gradient(180deg, #032b45 0%, #021625 30%, var(--color-brand-deep) 70%, #04324f 100%);
+}
+
+@media (min-width: 1500px) {
+  .service-page--company-opening .service-hero__inner,
+  .service-page--company-opening .service-overview__inner,
+  .service-page--company-opening .service-process__inner,
+  .service-page--company-opening .service-final__inner {
+    width: min(100%, 1500px);
+  }
+}
+
+@media (max-width: 1080px) {
+  .service-page--company-opening .service-hero__inner,
+  .service-page--company-opening .service-overview__inner,
+  .service-page--company-opening .service-final__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .service-page--company-opening .service-hero__panel {
+    max-width: 620px;
+  }
+
+}
+
+@media (max-width: 860px) {
+  .service-page--company-opening .service-hero {
+    min-height: auto;
+    padding-top: clamp(104px, 22vw, 136px);
+  }
+
+  .service-page--company-opening .service-hero::before {
+    background:
+      radial-gradient(circle at 72% 24%, rgba(115, 202, 255, 0.24), transparent 30%),
+      linear-gradient(180deg, rgba(2, 22, 37, 0.92) 0%, rgba(3, 43, 69, 0.86) 54%, rgba(2, 22, 37, 0.96) 100%);
+  }
+
+  .service-page--company-opening .service-hero__background img {
+    object-position: 62% center;
+  }
+
+  .service-page--company-opening .service-overview__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-page--company-opening .service-overview__card {
+    min-height: auto;
+  }
+
+  .service-page--company-opening .service-process__timeline {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-left: 20px;
+  }
+
+  .service-page--company-opening .service-process__timeline::before {
+    left: 0;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    height: auto;
+    background: linear-gradient(180deg, rgba(115, 202, 255, 0), rgba(115, 202, 255, 0.42), rgba(115, 202, 255, 0));
+  }
+
+  .service-page--company-opening .service-process__item,
+  .service-page--company-opening .service-process__item:last-child {
+    min-height: auto;
+    padding: 30px 0 30px 48px;
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    background: transparent;
+  }
+
+  .service-page--company-opening .service-process__item span {
+    top: 28px;
+    left: -20px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .service-page--company-opening .service-process__item:hover {
+    transform: translateX(4px);
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .service-page--company-opening .service-hero,
+  .service-page--company-opening .service-overview,
+  .service-page--company-opening .service-process,
+  .service-page--company-opening .service-final {
+    padding-inline: clamp(16px, 5vw, 24px);
+  }
+
+  .service-page--company-opening .service-hero__content h1 {
+    font-size: clamp(2.35rem, 12vw, 3.25rem);
+  }
+
+  .service-page--company-opening .service-hero__actions {
+    flex-direction: column;
+  }
+
+  .service-page--company-opening .service-hero__button {
+    width: 100%;
+  }
+
+  .service-page--company-opening .service-hero__panel {
+    border-radius: 18px;
+  }
+
+  .service-page--company-opening .service-overview__card {
+    padding: 24px;
+  }
+
+  .service-page--company-opening .service-final__intro h2 {
+    font-size: clamp(2.05rem, 11vw, 3rem);
+  }
+
+  .service-page--company-opening .service-final {
+    padding-bottom: 136px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-page--company-opening [data-service-reveal],
+  .service-page--company-opening .service-hero__background img,
+  .service-page--company-opening .service-overview__card,
+  .service-page--company-opening .service-process__item,
+  .service-page--company-opening .service-final__list li {
+    animation: none;
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Ajustes finais da pagina de abertura de empresa */
+.service-page--company-opening .service-hero,
+.service-page--company-opening .service-final,
+.service-page--company-opening .service-overview,
+.service-page--company-opening .service-process {
+  min-height: 100svh;
+}
+
+.service-page--company-opening .service-hero {
+  min-height: 100svh;
+  padding-block: clamp(104px, 13vh, 148px) clamp(64px, 9vh, 104px);
+}
+
+.service-page--company-opening .service-hero::before {
+  background:
+    radial-gradient(circle at 78% 28%, rgba(115, 202, 255, 0.22), transparent 28%),
+    linear-gradient(90deg, rgba(2, 22, 37, 0.98) 0%, rgba(3, 43, 69, 0.92) 50%, rgba(3, 43, 69, 0.58) 76%, rgba(2, 22, 37, 0.26) 100%),
+    linear-gradient(180deg, rgba(2, 22, 37, 0.12) 0%, rgba(2, 22, 37, 0.98) 100%);
+}
+
+.service-page--company-opening .service-hero__content h1 {
+  max-width: 820px;
+  font-size: clamp(3rem, 5.55vw, 5.55rem);
+}
+
+.service-page--company-opening .service-hero__content > p:not(.service-page__eyebrow) {
+  max-width: 560px;
+}
+
+.service-page--company-opening .service-final {
+  display: flex;
+  align-items: center;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  padding: clamp(76px, 8vw, 118px) clamp(20px, 5vw, 80px) clamp(96px, 9vw, 140px);
+  overflow: hidden;
+  color: var(--color-surface);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(115, 202, 255, 0.2), transparent 30%),
+    radial-gradient(circle at 88% 64%, rgba(0, 140, 227, 0.16), transparent 28%),
+    linear-gradient(180deg, #021625 0%, #032b45 24%, #174c66 56%, #6f9bab 86%, #7fa9b8 100%);
+}
+
+.service-page--company-opening .service-final::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(216, 241, 255, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(216, 241, 255, 0.16) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 82%);
+}
+
+.service-page--company-opening .service-final::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: clamp(90px, 12vw, 170px);
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 22% 74%, rgba(115, 202, 255, 0.16), transparent 30%),
+    linear-gradient(180deg, rgba(127, 169, 184, 0), rgba(127, 169, 184, 0.82) 46%, #7fa9b8 100%);
+}
+
+.service-page--company-opening .service-final__inner {
+  position: relative;
+  z-index: 1;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.78fr);
+  align-items: center;
+  gap: clamp(44px, 7vw, 112px);
+}
+
+.service-page--company-opening .service-final__intro {
+  max-width: 680px;
+}
+
+.service-page--company-opening .service-final__intro h2 {
+  color: var(--color-surface);
+  font-size: clamp(2.45rem, 4.7vw, 5rem);
+  line-height: 1;
+}
+
+.service-page--company-opening .service-final__intro p:not(.service-page__eyebrow) {
+  max-width: 560px;
+  margin: 24px 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  line-height: 1.76;
+}
+
+.service-page--company-opening .service-final__list {
+  padding: clamp(14px, 2vw, 22px) 0;
+  border-top-color: rgba(216, 241, 255, 0.22);
+  border-bottom: 1px solid rgba(216, 241, 255, 0.14);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
+}
+
+.service-page--company-opening .service-final__list li {
+  display: flex;
+  align-items: center;
+  min-height: 58px;
+  padding: 16px 20px 16px 48px;
+  color: rgba(255, 255, 255, 0.8);
+  border-bottom-color: rgba(216, 241, 255, 0.14);
+  transition:
+    color 0.22s ease,
+    padding-left 0.22s ease,
+    background 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.service-page--company-opening .service-final__list li::before {
+  top: 50%;
+  left: 20px;
+  width: 8px;
+  height: 8px;
+  transform: translateY(-50%);
+  background: var(--color-accent);
+  box-shadow: 0 0 18px rgba(115, 202, 255, 0.22);
+}
+
+.service-page--company-opening .service-final__list li:hover {
+  padding-left: 56px;
+  color: #ffffff;
+  border-color: rgba(216, 241, 255, 0.28);
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.service-page--company-opening .service-overview {
+  display: flex;
+  align-items: center;
+  margin-top: -1px;
+  padding-block: clamp(72px, 7vw, 108px) clamp(76px, 8vw, 118px);
+  background:
+    radial-gradient(circle at 20% 12%, rgba(115, 202, 255, 0.18), transparent 30%),
+    linear-gradient(180deg, #7fa9b8 0%, #9fc1ce 18%, #d8ecf4 42%, #eaf6fb 72%, #b8d5e0 100%);
+}
+
+.service-page--company-opening .service-overview__inner {
+  align-items: center;
+}
+
+.service-page--company-opening .service-overview__intro h2 {
+  color: #032b45;
+}
+
+.service-page--company-opening .service-overview__card {
+  min-height: clamp(200px, 25vh, 245px);
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(10px);
+}
+
+.service-page--company-opening .service-process {
+  display: flex;
+  align-items: center;
+  padding-block: clamp(76px, 8vw, 118px);
+  background:
+    radial-gradient(circle at 86% 12%, rgba(115, 202, 255, 0.18), transparent 28%),
+    linear-gradient(180deg, #b8d5e0 0%, #315f78 18%, #0a3856 48%, #032b45 100%);
+}
+
+.service-page--company-opening .service-process__timeline {
+  margin-top: clamp(40px, 5vw, 62px);
+}
+
+.service-page--company-opening + .contact-section {
+  margin-top: -1px;
+  background:
+    radial-gradient(circle at 82% 20%, rgba(0, 140, 227, 0.24), transparent 30%),
+    linear-gradient(180deg, #032b45 0%, #021625 30%, var(--color-brand-deep) 70%, #04324f 100%);
+}
+
+@media (min-width: 1280px) and (max-height: 820px) {
+  .service-page--company-opening .service-hero,
+  .service-page--company-opening .service-final,
+  .service-page--company-opening .service-overview,
+  .service-page--company-opening .service-process {
+    min-height: 100svh;
+    padding-block: 88px 60px;
+  }
+
+  .service-page--company-opening .service-final__intro h2 {
+    font-size: clamp(2.35rem, 4vw, 4rem);
+  }
+
+  .service-page--company-opening .service-overview__card {
+    min-height: 190px;
+    padding: 24px;
+  }
+
+  .service-page--company-opening .service-process__item {
+    min-height: 218px;
+    padding: 54px 22px 24px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .service-page--company-opening .service-final__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .service-page--company-opening .service-final__list {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 860px) {
+  .service-page--company-opening .service-hero,
+  .service-page--company-opening .service-final,
+  .service-page--company-opening .service-overview,
+  .service-page--company-opening .service-process {
+    min-height: auto;
+    padding-block: clamp(72px, 16vw, 96px);
+  }
+
+  .service-page--company-opening .service-hero {
+    padding-top: clamp(110px, 24vw, 142px);
+  }
+
+  .service-page--company-opening .service-final {
+    padding-top: clamp(78px, 18vw, 104px);
+    background:
+      radial-gradient(circle at 18% 16%, rgba(115, 202, 255, 0.18), transparent 32%),
+      linear-gradient(180deg, #021625 0%, #053551 36%, #376c83 100%);
+  }
+
+  .service-page--company-opening .service-final::after {
+    background:
+      radial-gradient(circle at 22% 74%, rgba(115, 202, 255, 0.14), transparent 32%),
+      linear-gradient(180deg, rgba(55, 108, 131, 0), rgba(55, 108, 131, 0.82) 46%, #376c83 100%);
+  }
+
+  .service-page--company-opening .service-final__list li {
+    min-height: 54px;
+    padding-right: 12px;
+  }
+
+  .service-page--company-opening .service-overview {
+    background:
+      radial-gradient(circle at 18% 14%, rgba(115, 202, 255, 0.16), transparent 32%),
+      linear-gradient(180deg, #376c83 0%, #d8ecf4 42%, #b8d5e0 100%);
+  }
+
+  .service-page--company-opening .service-process {
+    background:
+      radial-gradient(circle at 80% 12%, rgba(115, 202, 255, 0.16), transparent 32%),
+      linear-gradient(180deg, #b8d5e0 0%, #315f78 20%, #032b45 100%);
+  }
+}
+
+@media (max-width: 560px) {
+  .service-page--company-opening .service-final__intro h2 {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .service-page--company-opening .service-final__list li {
+    min-height: 52px;
+    padding-left: 42px;
+  }
+
+  .service-page--company-opening .service-final__list li:hover {
+    padding-left: 46px;
+  }
+}
+
+/* Continuidade visual entre as secoes da pagina de abertura */
+.service-page--company-opening {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(115, 202, 255, 0.18), transparent 24%),
+    radial-gradient(circle at 86% 42%, rgba(0, 140, 227, 0.12), transparent 24%),
+    linear-gradient(
+      180deg,
+      #021625 0%,
+      #032b45 22%,
+      #174c66 38%,
+      #7fa9b8 52%,
+      #d8ecf4 66%,
+      #b8d5e0 78%,
+      #315f78 90%,
+      #032b45 100%
+    );
+}
+
+.service-page--company-opening .service-hero,
+.service-page--company-opening .service-final,
+.service-page--company-opening .service-overview,
+.service-page--company-opening .service-process {
+  margin-top: -1px;
+  margin-bottom: -1px;
+  background-color: transparent;
+}
+
+.service-page--company-opening .service-hero {
+  background:
+    radial-gradient(circle at 76% 26%, rgba(115, 202, 255, 0.18), transparent 30%),
+    linear-gradient(180deg, rgba(2, 22, 37, 0.94) 0%, rgba(3, 43, 69, 0.88) 74%, rgba(3, 43, 69, 0.34) 100%);
+}
+
+.service-page--company-opening .service-final {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(115, 202, 255, 0.18), transparent 30%),
+    linear-gradient(180deg, rgba(2, 22, 37, 0.08) 0%, rgba(3, 43, 69, 0.5) 22%, rgba(23, 76, 102, 0.62) 58%, rgba(127, 169, 184, 0.58) 100%);
+}
+
+.service-page--company-opening .service-final::after {
+  height: clamp(130px, 16vw, 230px);
+  background:
+    radial-gradient(circle at 18% 72%, rgba(115, 202, 255, 0.13), transparent 30%),
+    linear-gradient(180deg, rgba(127, 169, 184, 0), rgba(159, 193, 206, 0.48) 45%, rgba(216, 236, 244, 0.2) 100%);
+}
+
+.service-page--company-opening .service-overview {
+  background:
+    radial-gradient(circle at 22% 18%, rgba(115, 202, 255, 0.14), transparent 28%),
+    linear-gradient(180deg, rgba(127, 169, 184, 0.42) 0%, rgba(216, 236, 244, 0.74) 42%, rgba(184, 213, 224, 0.42) 100%);
+}
+
+.service-page--company-opening .service-process {
+  background:
+    radial-gradient(circle at 84% 14%, rgba(115, 202, 255, 0.16), transparent 30%),
+    linear-gradient(180deg, rgba(184, 213, 224, 0.18) 0%, rgba(49, 95, 120, 0.7) 26%, rgba(10, 56, 86, 0.88) 58%, rgba(3, 43, 69, 0.98) 100%);
+}
+
+.service-page--company-opening + .contact-section {
+  margin-top: -1px;
+  background:
+    radial-gradient(circle at 82% 20%, rgba(0, 140, 227, 0.24), transparent 30%),
+    linear-gradient(180deg, #032b45 0%, #021625 30%, var(--color-brand-deep) 70%, #04324f 100%);
+}
+
+@media (max-width: 860px) {
+  .service-page--company-opening {
+    background:
+      radial-gradient(circle at 16% 20%, rgba(115, 202, 255, 0.16), transparent 30%),
+      linear-gradient(180deg, #021625 0%, #053551 34%, #376c83 50%, #d8ecf4 66%, #b8d5e0 80%, #032b45 100%);
+  }
+
+  .service-page--company-opening .service-final,
+  .service-page--company-opening .service-overview,
+  .service-page--company-opening .service-process {
+    background-color: transparent;
+  }
+
+  .service-page--company-opening .service-overview {
+    background:
+      radial-gradient(circle at 18% 14%, rgba(115, 202, 255, 0.12), transparent 34%),
+      linear-gradient(180deg, rgba(55, 108, 131, 0.48) 0%, rgba(216, 236, 244, 0.72) 46%, rgba(184, 213, 224, 0.42) 100%);
+  }
+}
+
+/* Fechamento visual continuo da pagina de abertura */
+.service-page--company-opening {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  background:
+    radial-gradient(circle at 78% 8%, rgba(115, 202, 255, 0.18), transparent 26%),
+    radial-gradient(circle at 18% 44%, rgba(0, 140, 227, 0.12), transparent 32%),
+    linear-gradient(
+      180deg,
+      #021625 0%,
+      #032b45 24%,
+      #10435f 42%,
+      #7fa5b8 62%,
+      #b9d4e0 76%,
+      #315f78 90%,
+      #032b45 100%
+    );
+}
+
+.service-page--company-opening .service-hero,
+.service-page--company-opening .service-final,
+.service-page--company-opening .service-overview,
+.service-page--company-opening .service-process {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  height: auto;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  overflow: hidden;
+}
+
+.service-page--company-opening .service-hero__inner,
+.service-page--company-opening .service-final__inner,
+.service-page--company-opening .service-overview__inner,
+.service-page--company-opening .service-process__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.service-page--company-opening .service-final::before,
+.service-page--company-opening .service-overview::before,
+.service-page--company-opening .service-process::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 88px 88px;
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
+}
+
+.service-page--company-opening .service-final::after {
+  display: none;
+}
+
+.service-page--company-opening .service-overview::before {
+  opacity: 0.08;
+  background-position: 34px 0;
+}
+
+.service-page--company-opening .service-process::before {
+  opacity: 0.1;
+  background-position: 0 42px;
+}
+
+.service-page--company-opening .service-process::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  z-index: 0;
+  height: clamp(160px, 18vw, 260px);
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(3, 43, 69, 0.58) 58%,
+    #032b45 100%
+  );
+}
+
+.service-page--company-opening + .contact-section {
+  margin-top: -1px;
+  background:
+    radial-gradient(circle at 82% 20%, rgba(0, 140, 227, 0.24), transparent 30%),
+    linear-gradient(180deg, #032b45 0%, #021625 30%, var(--color-brand-deep) 70%, #04324f 100%);
+}
+
+@media (max-width: 860px) {
+  .service-page--company-opening {
+    background:
+      radial-gradient(circle at 16% 20%, rgba(115, 202, 255, 0.16), transparent 30%),
+      radial-gradient(circle at 84% 46%, rgba(0, 140, 227, 0.1), transparent 34%),
+      linear-gradient(180deg, #021625 0%, #053551 32%, #5f8da1 52%, #b9d4e0 70%, #315f78 86%, #032b45 100%);
+  }
+
+  .service-page--company-opening .service-hero,
+  .service-page--company-opening .service-final,
+  .service-page--company-opening .service-overview,
+  .service-page--company-opening .service-process {
+    min-height: auto;
+    padding-block: clamp(72px, 16vw, 96px);
+  }
+
+  .service-page--company-opening .service-hero {
+    padding-top: clamp(110px, 24vw, 142px);
+  }
+
+  .service-page--company-opening .service-process::after {
+    height: 150px;
+  }
+}
+
+/* Correção final: continuidade visual da página de abertura de empresa */
+.service-page--company-opening {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  color: rgba(255, 255, 255, 0.88);
+  background:
+    radial-gradient(circle at 78% 10%, rgba(115, 202, 255, 0.15), transparent 30%),
+    radial-gradient(circle at 16% 38%, rgba(0, 140, 227, 0.12), transparent 36%),
+    radial-gradient(circle at 72% 68%, rgba(115, 202, 255, 0.09), transparent 32%),
+    linear-gradient(
+      180deg,
+      #021625 0%,
+      #032b45 24%,
+      #063552 46%,
+      #0a4765 64%,
+      #063552 82%,
+      #032b45 100%
+    ) !important;
+}
+
+.service-page--company-opening .service-hero,
+.service-page--company-opening .service-final,
+.service-page--company-opening .service-overview,
+.service-page--company-opening .service-process {
+  min-height: auto !important;
+  height: auto !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: clamp(96px, 10vh, 140px) !important;
+  padding-bottom: clamp(96px, 10vh, 140px) !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.service-page--company-opening .service-hero {
+  min-height: min(100svh, 900px) !important;
+  padding-top: clamp(124px, 14vh, 168px) !important;
+  overflow: hidden !important;
+}
+
+.service-page--company-opening .service-hero__background {
+  opacity: 0.34 !important;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 56%, transparent 100%) !important;
+}
+
+.service-page--company-opening .service-hero::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+  opacity: 1 !important;
+  background:
+    radial-gradient(circle at 76% 24%, rgba(87, 169, 216, 0.16), transparent 34%),
+    linear-gradient(180deg, rgba(2, 22, 37, 0.54) 0%, rgba(3, 43, 69, 0.22) 62%, rgba(3, 43, 69, 0) 100%) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.service-page--company-opening .service-hero::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: -1px !important;
+  height: clamp(180px, 22vh, 300px) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  opacity: 0.72 !important;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 22, 37, 0) 0%,
+    rgba(3, 43, 69, 0.22) 46%,
+    rgba(3, 43, 69, 0.42) 78%,
+    rgba(3, 43, 69, 0) 100%
+  ) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  mask-image: none !important;
+}
+
+.service-page--company-opening .service-final::before,
+.service-page--company-opening .service-final::after,
+.service-page--company-opening .service-overview::before,
+.service-page--company-opening .service-overview::after,
+.service-page--company-opening .service-process::before,
+.service-page--company-opening .service-process::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.service-page--company-opening .service-hero__inner,
+.service-page--company-opening .service-final__inner,
+.service-page--company-opening .service-overview__inner,
+.service-page--company-opening .service-process__inner {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.service-page--company-opening .service-final__list,
+.service-page--company-opening .service-final__list li,
+.service-page--company-opening .service-overview__grid,
+.service-page--company-opening .service-process__timeline,
+.service-page--company-opening .service-overview__card,
+.service-page--company-opening .service-process__item {
+  border: 0 !important;
+  outline: 0 !important;
+}
+
+.service-page--company-opening .service-final__list,
+.service-page--company-opening .service-overview__grid,
+.service-page--company-opening .service-process__timeline {
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.service-page--company-opening .service-process__timeline::before,
+.service-page--company-opening .service-process__timeline::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.service-page--company-opening .service-final__list {
+  display: grid;
+  gap: 8px;
+  padding: 0 !important;
+  backdrop-filter: none !important;
+}
+
+.service-page--company-opening .service-final__list li {
+  margin-bottom: 0 !important;
+  border-radius: 14px;
+  box-shadow: none !important;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.018)
+    ) !important;
+}
+
+.service-page--company-opening .service-overview__card,
+.service-page--company-opening .service-process__item {
+  border-radius: 20px !important;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.075),
+      rgba(255, 255, 255, 0.025)
+    ) !important;
+  box-shadow:
+    0 26px 70px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07) !important;
+  backdrop-filter: blur(12px);
+}
+
+.service-page--company-opening .service-overview__card:hover,
+.service-page--company-opening .service-process__item:hover {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.095),
+      rgba(255, 255, 255, 0.035)
+    ) !important;
+  box-shadow:
+    0 30px 78px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.service-page--company-opening .service-process__item:last-child {
+  border-right: 0 !important;
+}
+
+.service-page--company-opening + .contact-section {
+  margin-top: -120px !important;
+  padding-top: calc(clamp(96px, 10vw, 150px) + 120px) !important;
+  background:
+    linear-gradient(180deg, #032b45 0%, #032b45 24%, #021625 58%, var(--color-brand-deep) 100%) !important;
+}
+
+@media (max-width: 860px) {
+  .service-page--company-opening .service-hero,
+  .service-page--company-opening .service-final,
+  .service-page--company-opening .service-overview,
+  .service-page--company-opening .service-process {
+    min-height: auto !important;
+    padding-top: 84px !important;
+    padding-bottom: 84px !important;
+  }
+
+  .service-page--company-opening .service-hero {
+    padding-top: clamp(112px, 24vw, 142px) !important;
+  }
+}
+
+/* Animação sequencial dos cards do processo na página de abertura */
+.service-page--company-opening .service-process__timeline {
+  gap: clamp(18px, 2vw, 30px) !important;
+  overflow: visible !important;
+}
+
+.service-page--company-opening .service-process__item {
+  position: relative !important;
+  z-index: 1;
+  transform-origin: center;
+  will-change: transform, opacity;
+  animation: companyOpeningProcessFocus 12s ease-in-out infinite;
+}
+
+.service-page--company-opening .service-process__item:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.service-page--company-opening .service-process__item:nth-child(2) {
+  animation-delay: 3s;
+}
+
+.service-page--company-opening .service-process__item:nth-child(3) {
+  animation-delay: 6s;
+}
+
+.service-page--company-opening .service-process__item:nth-child(4) {
+  animation-delay: 9s;
+}
+
+.service-page--company-opening .service-process__item span {
+  animation: companyOpeningProcessNumberFocus 12s ease-in-out infinite;
+}
+
+.service-page--company-opening .service-process__item:nth-child(1) span {
+  animation-delay: 0s;
+}
+
+.service-page--company-opening .service-process__item:nth-child(2) span {
+  animation-delay: 3s;
+}
+
+.service-page--company-opening .service-process__item:nth-child(3) span {
+  animation-delay: 6s;
+}
+
+.service-page--company-opening .service-process__item:nth-child(4) span {
+  animation-delay: 9s;
+}
+
+.service-page--company-opening .service-process__item:hover,
+.service-page--company-opening .service-process__item:focus-within {
+  z-index: 4;
+  opacity: 1;
+  transform: translateY(-10px) scale(1.03) !important;
+  animation-play-state: paused;
+  background: linear-gradient(145deg, rgba(115, 202, 255, 0.18), rgba(255, 255, 255, 0.075)) !important;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.2),
+    0 0 34px rgba(115, 202, 255, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
+
+.service-page--company-opening .service-process__item:hover span,
+.service-page--company-opening .service-process__item:focus-within span {
+  color: #032b45 !important;
+  background: var(--color-accent) !important;
+  border-color: rgba(115, 202, 255, 0.95) !important;
+  box-shadow:
+    0 0 0 8px rgba(115, 202, 255, 0.12),
+    0 0 28px rgba(115, 202, 255, 0.28) !important;
+  animation-play-state: paused;
+}
+
+.service-page--company-opening .service-process__item:hover h3,
+.service-page--company-opening .service-process__item:focus-within h3,
+.service-page--company-opening .service-process__item:hover p,
+.service-page--company-opening .service-process__item:focus-within p {
+  color: rgba(255, 255, 255, 0.94) !important;
+}
+
+@keyframes companyOpeningProcessFocus {
+  0%, 18% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.03);
+    background: linear-gradient(145deg, rgba(115, 202, 255, 0.18), rgba(255, 255, 255, 0.075));
+    box-shadow:
+      0 30px 80px rgba(0, 0, 0, 0.2),
+      0 0 34px rgba(115, 202, 255, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  24%, 100% {
+    opacity: 0.82;
+    transform: translateY(4px) scale(0.985);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+    box-shadow:
+      0 18px 48px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+}
+
+@keyframes companyOpeningProcessNumberFocus {
+  0%, 18% {
+    color: #032b45;
+    background: var(--color-accent);
+    border-color: rgba(115, 202, 255, 0.95);
+    box-shadow:
+      0 0 0 8px rgba(115, 202, 255, 0.12),
+      0 0 28px rgba(115, 202, 255, 0.28);
+  }
+
+  24%, 100% {
+    color: #73caff;
+    background: rgba(3, 43, 69, 0.44);
+    border-color: rgba(115, 202, 255, 0.32);
+    box-shadow: none;
+  }
+}
+
+@keyframes companyOpeningProcessFocusMobile {
+  0%, 18% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.012);
+    background: linear-gradient(145deg, rgba(115, 202, 255, 0.16), rgba(255, 255, 255, 0.07));
+    box-shadow:
+      0 20px 54px rgba(0, 0, 0, 0.16),
+      0 0 26px rgba(115, 202, 255, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  24%, 100% {
+    opacity: 0.86;
+    transform: translateY(2px) scale(0.995);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025));
+    box-shadow:
+      0 16px 42px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+}
+
+@media (max-width: 760px) {
+  .service-page--company-opening .service-process__timeline {
+    gap: 18px !important;
+    margin-left: 0 !important;
+    overflow: visible !important;
+  }
+
+  .service-page--company-opening .service-process__item {
+    animation-name: companyOpeningProcessFocusMobile;
+    transform-origin: center;
+  }
+
+  .service-page--company-opening .service-process__item:hover,
+  .service-page--company-opening .service-process__item:focus-within {
+    transform: translateY(-5px) scale(1.012) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-page--company-opening .service-process__item,
+  .service-page--company-opening .service-process__item span {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Ajuste final: painel da hero da pagina de abertura */
+.service-page--company-opening .service-hero__inner {
+  grid-template-columns: minmax(0, 1.05fr) minmax(440px, 0.85fr) !important;
+  gap: clamp(56px, 7vw, 110px) !important;
+  align-items: center !important;
+}
+
+.service-page--company-opening .service-hero__panel {
+  width: min(100%, 560px) !important;
+  max-width: none !important;
+  min-height: 340px;
+  justify-self: end;
+  padding: clamp(34px, 3vw, 52px) !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(115, 202, 255, 0.24) !important;
+  background: linear-gradient(145deg, rgba(3, 43, 69, 0.72), rgba(2, 22, 37, 0.58)) !important;
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(14px);
+}
+
+.service-page--company-opening .service-hero__panel-label {
+  margin-bottom: 18px !important;
+  color: rgba(115, 202, 255, 0.78) !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.12em;
+}
+
+.service-page--company-opening .service-hero__panel ul {
+  display: grid;
+  gap: 0;
+}
+
+.service-page--company-opening .service-hero__panel li {
+  min-height: 62px;
+  padding: 18px 0 !important;
+  gap: 18px !important;
+  color: rgba(255, 255, 255, 0.86) !important;
+  font-size: clamp(1rem, 1.05vw, 1.18rem);
+  line-height: 1.45;
+}
+
+.service-page--company-opening .service-hero__panel li span {
+  min-width: 34px;
+  margin-right: 0;
+  color: #73caff !important;
+  font-size: clamp(0.95rem, 1vw, 1.1rem);
+}
+
+@media (min-width: 1440px) {
+  .service-page--company-opening .service-hero__panel {
+    width: min(100%, 620px) !important;
+    min-height: 380px;
+    padding: 54px 60px !important;
+  }
+
+  .service-page--company-opening .service-hero__panel li {
+    min-height: 70px;
+    font-size: 1.18rem;
+  }
+}
+
+@media (max-width: 1080px) {
+  .service-page--company-opening .service-hero__inner {
+    grid-template-columns: 1fr !important;
+    gap: clamp(34px, 7vw, 56px) !important;
+  }
+
+  .service-page--company-opening .service-hero__panel {
+    justify-self: start;
+    width: min(100%, 620px) !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .service-page--company-opening .service-hero__panel {
+    width: 100% !important;
+    min-height: auto;
+    padding: 28px 24px !important;
+  }
+
+  .service-page--company-opening .service-hero__panel li {
+    min-height: auto;
+    padding: 14px 0 !important;
+    font-size: 0.98rem;
+  }
+}
+
+/* Ajuste final: animação suave dos cards do processo */
+.service-page--company-opening .service-process__timeline {
+  gap: clamp(20px, 2.4vw, 34px) !important;
+  overflow: visible !important;
+}
+
+.service-page--company-opening .service-process__item {
+  pointer-events: none;
+  transform-origin: center;
+  will-change: transform, opacity;
+  animation: companyOpeningProcessCardFocus 10s cubic-bezier(0.22, 1, 0.36, 1) infinite !important;
+}
+
+.service-page--company-opening .service-process__item span {
+  animation: companyOpeningProcessNumberFocus 10s cubic-bezier(0.22, 1, 0.36, 1) infinite !important;
+}
+
+.service-page--company-opening .service-process__item:nth-child(1),
+.service-page--company-opening .service-process__item:nth-child(1) span {
+  animation-delay: 0s !important;
+}
+
+.service-page--company-opening .service-process__item:nth-child(2),
+.service-page--company-opening .service-process__item:nth-child(2) span {
+  animation-delay: 2.5s !important;
+}
+
+.service-page--company-opening .service-process__item:nth-child(3),
+.service-page--company-opening .service-process__item:nth-child(3) span {
+  animation-delay: 5s !important;
+}
+
+.service-page--company-opening .service-process__item:nth-child(4),
+.service-page--company-opening .service-process__item:nth-child(4) span {
+  animation-delay: 7.5s !important;
+}
+
+.service-page--company-opening .service-process__item:hover,
+.service-page--company-opening .service-process__item:focus-within,
+.service-page--company-opening .service-process__timeline:hover .service-process__item,
+.service-page--company-opening .service-process__timeline:hover .service-process__item span {
+  animation-play-state: running !important;
+}
+
+@keyframes companyOpeningProcessCardFocus {
+  0% {
+    opacity: 0.82;
+    transform: translateY(0) scale(1);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+
+  10% {
+    opacity: 0.9;
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  20%,
+  34% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.025);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.045));
+    box-shadow: 0 30px 76px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  48% {
+    opacity: 0.9;
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  60%,
+  100% {
+    opacity: 0.82;
+    transform: translateY(0) scale(1);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+}
+
+@keyframes companyOpeningProcessNumberFocus {
+  0% {
+    color: rgba(115, 202, 255, 0.9);
+    background: rgba(115, 202, 255, 0.08);
+    border-color: rgba(115, 202, 255, 0.36);
+    box-shadow: none;
+  }
+
+  10% {
+    color: rgba(255, 255, 255, 0.92);
+    background: rgba(115, 202, 255, 0.18);
+    border-color: rgba(115, 202, 255, 0.62);
+  }
+
+  20%,
+  34% {
+    color: #ffffff;
+    background: rgba(115, 202, 255, 0.32);
+    border-color: rgba(115, 202, 255, 0.95);
+    box-shadow: 0 0 28px rgba(115, 202, 255, 0.24);
+  }
+
+  48% {
+    color: rgba(255, 255, 255, 0.92);
+    background: rgba(115, 202, 255, 0.18);
+    border-color: rgba(115, 202, 255, 0.62);
+  }
+
+  60%,
+  100% {
+    color: rgba(115, 202, 255, 0.9);
+    background: rgba(115, 202, 255, 0.08);
+    border-color: rgba(115, 202, 255, 0.36);
+    box-shadow: none;
+  }
+}
+
+@keyframes companyOpeningProcessCardFocusMobile {
+  0% {
+    opacity: 0.86;
+    transform: translateY(0) scale(1);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+
+  10% {
+    opacity: 0.92;
+    transform: translateY(-2px) scale(1.006);
+  }
+
+  20%,
+  34% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.012);
+    background: linear-gradient(145deg, rgba(115, 202, 255, 0.15), rgba(255, 255, 255, 0.06));
+    box-shadow: 0 24px 62px rgba(0, 0, 0, 0.16), 0 0 26px rgba(115, 202, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.11);
+  }
+
+  48% {
+    opacity: 0.92;
+    transform: translateY(-2px) scale(1.006);
+  }
+
+  60%,
+  100% {
+    opacity: 0.86;
+    transform: translateY(0) scale(1);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+}
+
+@media (max-width: 760px) {
+  .service-page--company-opening .service-process__timeline {
+    gap: 18px !important;
+  }
+
+  .service-page--company-opening .service-process__item {
+    animation-name: companyOpeningProcessCardFocusMobile !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-page--company-opening .service-process__item,
+  .service-page--company-opening .service-process__item span {
+    animation: none !important;
+  }
+}
+
+/* Ajuste final: painel da hero da pagina de abertura */
+.service-page--company-opening .service-hero__inner {
+  grid-template-columns: minmax(0, 1.05fr) minmax(440px, 0.85fr) !important;
+  gap: clamp(56px, 7vw, 110px) !important;
+  align-items: center !important;
+}
+
+.service-page--company-opening .service-hero__panel {
+  width: min(100%, 560px) !important;
+  max-width: none !important;
+  min-height: 340px;
+  justify-self: end;
+  padding: clamp(34px, 3vw, 52px) !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(115, 202, 255, 0.24) !important;
+  background: linear-gradient(145deg, rgba(3, 43, 69, 0.72), rgba(2, 22, 37, 0.58)) !important;
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(14px);
+}
+
+.service-page--company-opening .service-hero__panel-label {
+  margin-bottom: 18px !important;
+  color: rgba(115, 202, 255, 0.78) !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.12em;
+}
+
+.service-page--company-opening .service-hero__panel ul {
+  display: grid;
+  gap: 0;
+}
+
+.service-page--company-opening .service-hero__panel li {
+  min-height: 62px;
+  padding: 18px 0 !important;
+  gap: 18px !important;
+  color: rgba(255, 255, 255, 0.86) !important;
+  font-size: clamp(1rem, 1.05vw, 1.18rem);
+  line-height: 1.45;
+}
+
+.service-page--company-opening .service-hero__panel li span {
+  min-width: 34px;
+  margin-right: 0;
+  color: #73caff !important;
+  font-size: clamp(0.95rem, 1vw, 1.1rem);
+}
+
+@media (min-width: 1440px) {
+  .service-page--company-opening .service-hero__panel {
+    width: min(100%, 620px) !important;
+    min-height: 380px;
+    padding: 54px 60px !important;
+  }
+
+  .service-page--company-opening .service-hero__panel li {
+    min-height: 70px;
+    font-size: 1.18rem;
+  }
+}
+
+@media (max-width: 1080px) {
+  .service-page--company-opening .service-hero__inner {
+    grid-template-columns: 1fr !important;
+    gap: clamp(34px, 7vw, 56px) !important;
+  }
+
+  .service-page--company-opening .service-hero__panel {
+    justify-self: start;
+    width: min(100%, 620px) !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .service-page--company-opening .service-hero__panel {
+    width: 100% !important;
+    min-height: auto;
+    padding: 28px 24px !important;
+  }
+
+  .service-page--company-opening .service-hero__panel li {
+    min-height: auto;
+    padding: 14px 0 !important;
+    font-size: 0.98rem;
+  }
+}
+
+/* Ajuste final: painel da hero da pagina de abertura */
+.service-page--company-opening .service-hero__inner {
+  grid-template-columns: minmax(0, 1.05fr) minmax(440px, 0.85fr) !important;
+  gap: clamp(56px, 7vw, 110px) !important;
+  align-items: center !important;
+}
+
+.service-page--company-opening .service-hero__panel {
+  width: min(100%, 560px) !important;
+  max-width: none !important;
+  min-height: 340px;
+  justify-self: end;
+  padding: clamp(34px, 3vw, 52px) !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(115, 202, 255, 0.24) !important;
+  background: linear-gradient(145deg, rgba(3, 43, 69, 0.72), rgba(2, 22, 37, 0.58)) !important;
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(14px);
+}
+
+.service-page--company-opening .service-hero__panel-label {
+  margin-bottom: 18px !important;
+  color: rgba(115, 202, 255, 0.78) !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.12em;
+}
+
+.service-page--company-opening .service-hero__panel ul {
+  display: grid;
+  gap: 0;
+}
+
+.service-page--company-opening .service-hero__panel li {
+  min-height: 62px;
+  padding: 18px 0 !important;
+  gap: 18px !important;
+  color: rgba(255, 255, 255, 0.86) !important;
+  font-size: clamp(1rem, 1.05vw, 1.18rem);
+  line-height: 1.45;
+}
+
+.service-page--company-opening .service-hero__panel li span {
+  min-width: 34px;
+  margin-right: 0;
+  color: #73caff !important;
+  font-size: clamp(0.95rem, 1vw, 1.1rem);
+}
+
+@media (min-width: 1440px) {
+  .service-page--company-opening .service-hero__panel {
+    width: min(100%, 620px) !important;
+    min-height: 380px;
+    padding: 54px 60px !important;
+  }
+
+  .service-page--company-opening .service-hero__panel li {
+    min-height: 70px;
+    font-size: 1.18rem;
+  }
+}
+
+@media (max-width: 1080px) {
+  .service-page--company-opening .service-hero__inner {
+    grid-template-columns: 1fr !important;
+    gap: clamp(34px, 7vw, 56px) !important;
+  }
+
+  .service-page--company-opening .service-hero__panel {
+    justify-self: start;
+    width: min(100%, 620px) !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .service-page--company-opening .service-hero__panel {
+    width: 100% !important;
+    min-height: auto;
+    padding: 28px 24px !important;
+  }
+
+  .service-page--company-opening .service-hero__panel li {
+    min-height: auto;
+    padding: 14px 0 !important;
+    font-size: 0.98rem;
+  }
+}
+
+/* Ajuste final: painel da hero da página de abertura */
+.service-page--company-opening .service-hero__inner {
+  grid-template-columns: minmax(0, 1.05fr) minmax(440px, 0.85fr) !important;
+  gap: clamp(56px, 7vw, 110px) !important;
+  align-items: center !important;
+}
+
+.service-page--company-opening .service-hero__panel {
+  width: min(100%, 560px) !important;
+  max-width: none !important;
+  min-height: 340px;
+  justify-self: end;
+  padding: clamp(34px, 3vw, 52px) !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(115, 202, 255, 0.24) !important;
+  background: linear-gradient(145deg, rgba(3, 43, 69, 0.72), rgba(2, 22, 37, 0.58)) !important;
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(14px);
+}
+
+.service-page--company-opening .service-hero__panel-label {
+  margin-bottom: 18px !important;
+  color: rgba(115, 202, 255, 0.78) !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.12em;
+}
+
+.service-page--company-opening .service-hero__panel ul {
+  display: grid;
+  gap: 0;
+}
+
+.service-page--company-opening .service-hero__panel li {
+  min-height: 62px;
+  padding: 18px 0 !important;
+  gap: 18px !important;
+  color: rgba(255, 255, 255, 0.86) !important;
+  font-size: clamp(1rem, 1.05vw, 1.18rem);
+  line-height: 1.45;
+}
+
+.service-page--company-opening .service-hero__panel li span {
+  min-width: 34px;
+  margin-right: 0;
+  color: #73caff !important;
+  font-size: clamp(0.95rem, 1vw, 1.1rem);
+}
+
+@media (min-width: 1440px) {
+  .service-page--company-opening .service-hero__panel {
+    width: min(100%, 620px) !important;
+    min-height: 380px;
+    padding: 54px 60px !important;
+  }
+
+  .service-page--company-opening .service-hero__panel li {
+    min-height: 70px;
+    font-size: 1.18rem;
+  }
+}
+
+@media (max-width: 1080px) {
+  .service-page--company-opening .service-hero__inner {
+    grid-template-columns: 1fr !important;
+    gap: clamp(34px, 7vw, 56px) !important;
+  }
+
+  .service-page--company-opening .service-hero__panel {
+    justify-self: start;
+    width: min(100%, 620px) !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .service-page--company-opening .service-hero__panel {
+    width: 100% !important;
+    min-height: auto;
+    padding: 28px 24px !important;
+  }
+
+  .service-page--company-opening .service-hero__panel li {
+    min-height: auto;
+    padding: 14px 0 !important;
+    font-size: 0.98rem;
+  }
+}
+
+/* Ajuste final: painel da hero da página de abertura */
+.service-page--company-opening .service-hero__inner {
+  grid-template-columns: minmax(0, 1.05fr) minmax(440px, 0.85fr) !important;
+  gap: clamp(56px, 7vw, 110px) !important;
+  align-items: center !important;
+}
+
+.service-page--company-opening .service-hero__panel {
+  width: min(100%, 560px) !important;
+  max-width: none !important;
+  min-height: 340px;
+  justify-self: end;
+  padding: clamp(34px, 3vw, 52px) !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(115, 202, 255, 0.24) !important;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(3, 43, 69, 0.72),
+      rgba(2, 22, 37, 0.58)
+    ) !important;
+  box-shadow:
+    0 34px 90px rgba(0, 0, 0, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(14px);
+}
+
+.service-page--company-opening .service-hero__panel-label {
+  margin-bottom: 18px !important;
+  color: rgba(115, 202, 255, 0.78) !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.12em;
+}
+
+.service-page--company-opening .service-hero__panel ul {
+  display: grid;
+  gap: 0;
+}
+
+.service-page--company-opening .service-hero__panel li {
+  min-height: 62px;
+  padding: 18px 0 !important;
+  gap: 18px !important;
+  color: rgba(255, 255, 255, 0.86) !important;
+  font-size: clamp(1rem, 1.05vw, 1.18rem);
+  line-height: 1.45;
+}
+
+.service-page--company-opening .service-hero__panel li span {
+  min-width: 34px;
+  margin-right: 0;
+  color: #73caff !important;
+  font-size: clamp(0.95rem, 1vw, 1.1rem);
+}
+
+@media (min-width: 1440px) {
+  .service-page--company-opening .service-hero__panel {
+    width: min(100%, 620px) !important;
+    min-height: 380px;
+    padding: 54px 60px !important;
+  }
+
+  .service-page--company-opening .service-hero__panel li {
+    min-height: 70px;
+    font-size: 1.18rem;
+  }
+}
+
+@media (max-width: 1080px) {
+  .service-page--company-opening .service-hero__inner {
+    grid-template-columns: 1fr !important;
+    gap: clamp(34px, 7vw, 56px) !important;
+  }
+
+  .service-page--company-opening .service-hero__panel {
+    justify-self: start;
+    width: min(100%, 620px) !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .service-page--company-opening .service-hero__panel {
+    width: 100% !important;
+    min-height: auto;
+    padding: 28px 24px !important;
+  }
+
+  .service-page--company-opening .service-hero__panel li {
+    min-height: auto;
+    padding: 14px 0 !important;
+    font-size: 0.98rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -5825,5 +7920,948 @@ body.is-loaded .page-loader {
   .specialty-page--premium .specialty-article__highlights h3,
   .specialty-page--premium .specialty-article__highlights p {
     transition: none;
+  }
+}
+
+/* Ajuste final: fundo continuo da pagina de abertura de empresa */
+.service-page--company-opening {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  color: rgba(255, 255, 255, 0.88);
+  background:
+    radial-gradient(circle at 78% 8%, rgba(87, 169, 216, 0.18), transparent 30%),
+    radial-gradient(circle at 16% 42%, rgba(0, 140, 227, 0.12), transparent 34%),
+    radial-gradient(circle at 72% 78%, rgba(115, 202, 255, 0.1), transparent 30%),
+    linear-gradient(
+      180deg,
+      #021625 0%,
+      #032b45 22%,
+      #063552 42%,
+      #0b4968 62%,
+      #073957 78%,
+      #032b45 100%
+    );
+}
+
+.service-page--company-opening::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.14;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 92px 92px, 92px 92px, 24px 24px;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%);
+}
+
+.service-page--company-opening .service-hero,
+.service-page--company-opening .service-final,
+.service-page--company-opening .service-overview,
+.service-page--company-opening .service-process {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  height: auto;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding-block: clamp(96px, 11vh, 140px);
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  background: transparent;
+  overflow: hidden;
+}
+
+.service-page--company-opening .service-hero {
+  padding-top: clamp(118px, 14vh, 168px);
+}
+
+.service-page--company-opening .service-hero__background {
+  opacity: 0.38;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 68%, transparent 100%);
+}
+
+.service-page--company-opening .service-hero::before {
+  background:
+    radial-gradient(circle at 76% 24%, rgba(87, 169, 216, 0.18), transparent 30%),
+    linear-gradient(180deg, rgba(2, 22, 37, 0.5) 0%, rgba(2, 22, 37, 0.34) 62%, rgba(3, 43, 69, 0) 100%);
+}
+
+.service-page--company-opening .service-hero::after {
+  opacity: 0.1;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), transparent 86%);
+}
+
+.service-page--company-opening .service-final::before,
+.service-page--company-opening .service-overview::before,
+.service-page--company-opening .service-process::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
+  background:
+    radial-gradient(circle at 80% 22%, rgba(115, 202, 255, 0.1), transparent 34%),
+    radial-gradient(circle at 18% 70%, rgba(0, 140, 227, 0.08), transparent 36%);
+  mask-image: none;
+}
+
+.service-page--company-opening .service-final::after,
+.service-page--company-opening .service-overview::after {
+  content: none;
+  display: none;
+}
+
+.service-page--company-opening .service-process::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  z-index: 0;
+  height: clamp(180px, 20vw, 260px);
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(3, 43, 69, 0.42) 64%,
+    #032b45 100%
+  );
+}
+
+.service-page--company-opening .service-hero__inner,
+.service-page--company-opening .service-final__inner,
+.service-page--company-opening .service-overview__inner,
+.service-page--company-opening .service-process__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.service-page--company-opening .service-final__intro h2,
+.service-page--company-opening .service-overview__intro h2,
+.service-page--company-opening .service-process__header h2 {
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.service-page--company-opening .service-final__intro p:not(.service-page__eyebrow),
+.service-page--company-opening .service-overview__intro p:not(.service-page__eyebrow),
+.service-page--company-opening .service-overview__card p,
+.service-page--company-opening .service-process__item p {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.service-page--company-opening .service-hero__panel,
+.service-page--company-opening .service-overview__card,
+.service-page--company-opening .service-process__item {
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  background: rgba(4, 38, 60, 0.42);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(12px);
+}
+
+.service-page--company-opening .service-overview__card:hover,
+.service-page--company-opening .service-process__item:hover {
+  border-color: rgba(115, 202, 255, 0.26);
+  background: rgba(8, 57, 87, 0.56);
+  box-shadow: 0 30px 76px rgba(0, 0, 0, 0.2);
+}
+
+.service-page--company-opening .service-overview__card h3,
+.service-page--company-opening .service-process__item h3 {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.service-page--company-opening .service-overview__card span,
+.service-page--company-opening .service-process__item span,
+.service-page--company-opening .service-hero__panel span {
+  color: #73caff;
+}
+
+.service-page--company-opening .service-final__list {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(4, 38, 60, 0.24);
+  backdrop-filter: blur(10px);
+}
+
+.service-page--company-opening .service-final__list li {
+  color: rgba(255, 255, 255, 0.82);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.service-page--company-opening .service-final__list li::before {
+  background: #73caff;
+  box-shadow: 0 0 18px rgba(115, 202, 255, 0.24);
+}
+
+.service-page--company-opening .service-final__list li:hover {
+  color: #ffffff;
+  border-color: rgba(115, 202, 255, 0.22);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.service-page--company-opening .service-process__timeline::before {
+  background: linear-gradient(90deg, rgba(115, 202, 255, 0), rgba(115, 202, 255, 0.22), rgba(115, 202, 255, 0));
+}
+
+.service-page--company-opening + .contact-section {
+  margin-top: -1px;
+}
+
+@media (max-width: 860px) {
+  .service-page--company-opening {
+    background:
+      radial-gradient(circle at 16% 18%, rgba(87, 169, 216, 0.16), transparent 32%),
+      radial-gradient(circle at 84% 54%, rgba(0, 140, 227, 0.1), transparent 36%),
+      linear-gradient(180deg, #021625 0%, #032b45 34%, #0b4968 62%, #073957 82%, #032b45 100%);
+  }
+
+  .service-page--company-opening .service-hero,
+  .service-page--company-opening .service-final,
+  .service-page--company-opening .service-overview,
+  .service-page--company-opening .service-process {
+    min-height: auto;
+    padding-block: 84px;
+  }
+
+  .service-page--company-opening .service-hero {
+    padding-top: clamp(112px, 24vw, 142px);
+  }
+
+  .service-page--company-opening .service-process::after {
+    height: 150px;
+  }
+}
+
+/* Correção final: continuidade visual da página de abertura de empresa */
+.service-page--company-opening {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  color: rgba(255, 255, 255, 0.88);
+  background:
+    radial-gradient(circle at 78% 10%, rgba(115, 202, 255, 0.15), transparent 30%),
+    radial-gradient(circle at 16% 38%, rgba(0, 140, 227, 0.12), transparent 36%),
+    radial-gradient(circle at 72% 68%, rgba(115, 202, 255, 0.09), transparent 32%),
+    linear-gradient(180deg, #021625 0%, #032b45 24%, #063552 46%, #0a4765 64%, #063552 82%, #032b45 100%) !important;
+}
+
+.service-page--company-opening .service-hero,
+.service-page--company-opening .service-final,
+.service-page--company-opening .service-overview,
+.service-page--company-opening .service-process {
+  min-height: auto !important;
+  height: auto !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: clamp(96px, 10vh, 140px) !important;
+  padding-bottom: clamp(96px, 10vh, 140px) !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.service-page--company-opening .service-hero {
+  min-height: min(100svh, 900px) !important;
+  padding-top: clamp(124px, 14vh, 168px) !important;
+  overflow: hidden !important;
+}
+
+.service-page--company-opening .service-hero__background {
+  opacity: 0.34 !important;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 56%, transparent 100%) !important;
+}
+
+.service-page--company-opening .service-hero::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+  opacity: 1 !important;
+  background:
+    radial-gradient(circle at 76% 24%, rgba(87, 169, 216, 0.16), transparent 34%),
+    linear-gradient(180deg, rgba(2, 22, 37, 0.54) 0%, rgba(3, 43, 69, 0.22) 62%, rgba(3, 43, 69, 0) 100%) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.service-page--company-opening .service-hero::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: -1px !important;
+  height: clamp(180px, 22vh, 300px) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  opacity: 0.72 !important;
+  background: linear-gradient(180deg, rgba(2, 22, 37, 0) 0%, rgba(3, 43, 69, 0.22) 46%, rgba(3, 43, 69, 0.42) 78%, rgba(3, 43, 69, 0) 100%) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  mask-image: none !important;
+}
+
+.service-page--company-opening .service-final::before,
+.service-page--company-opening .service-final::after,
+.service-page--company-opening .service-overview::before,
+.service-page--company-opening .service-overview::after,
+.service-page--company-opening .service-process::before,
+.service-page--company-opening .service-process::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.service-page--company-opening .service-hero__inner,
+.service-page--company-opening .service-final__inner,
+.service-page--company-opening .service-overview__inner,
+.service-page--company-opening .service-process__inner {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.service-page--company-opening .service-final__list,
+.service-page--company-opening .service-final__list li,
+.service-page--company-opening .service-overview__grid,
+.service-page--company-opening .service-process__timeline,
+.service-page--company-opening .service-overview__card,
+.service-page--company-opening .service-process__item {
+  border: 0 !important;
+  outline: 0 !important;
+}
+
+.service-page--company-opening .service-final__list,
+.service-page--company-opening .service-overview__grid,
+.service-page--company-opening .service-process__timeline {
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.service-page--company-opening .service-process__timeline::before,
+.service-page--company-opening .service-process__timeline::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.service-page--company-opening .service-final__list {
+  display: grid;
+  gap: 8px;
+  padding: 0 !important;
+  backdrop-filter: none !important;
+}
+
+.service-page--company-opening .service-final__list li {
+  margin-bottom: 0 !important;
+  border-radius: 14px;
+  box-shadow: none !important;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)) !important;
+}
+
+.service-page--company-opening .service-overview__card,
+.service-page--company-opening .service-process__item {
+  border-radius: 20px !important;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025)) !important;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.07) !important;
+  backdrop-filter: blur(12px);
+}
+
+.service-page--company-opening .service-overview__card:hover,
+.service-page--company-opening .service-process__item:hover {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.095), rgba(255, 255, 255, 0.035)) !important;
+  box-shadow: 0 30px 78px rgba(0, 0, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.service-page--company-opening .service-process__item:last-child {
+  border-right: 0 !important;
+}
+
+.service-page--company-opening + .contact-section {
+  margin-top: 0 !important;
+}
+
+@media (max-width: 860px) {
+  .service-page--company-opening .service-hero,
+  .service-page--company-opening .service-final,
+  .service-page--company-opening .service-overview,
+  .service-page--company-opening .service-process {
+    min-height: auto !important;
+    padding-top: 84px !important;
+    padding-bottom: 84px !important;
+  }
+
+  .service-page--company-opening .service-hero {
+    padding-top: clamp(112px, 24vw, 142px) !important;
+  }
+}
+
+/* Animação sequencial dos cards do processo na página de abertura */
+.service-page--company-opening .service-process__timeline {
+  gap: clamp(18px, 2vw, 30px) !important;
+  overflow: visible !important;
+}
+
+.service-page--company-opening .service-process__item {
+  position: relative !important;
+  z-index: 1;
+  transform-origin: center;
+  will-change: transform, opacity;
+  animation: companyOpeningProcessFocus 12s ease-in-out infinite;
+}
+
+.service-page--company-opening .service-process__item:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.service-page--company-opening .service-process__item:nth-child(2) {
+  animation-delay: 3s;
+}
+
+.service-page--company-opening .service-process__item:nth-child(3) {
+  animation-delay: 6s;
+}
+
+.service-page--company-opening .service-process__item:nth-child(4) {
+  animation-delay: 9s;
+}
+
+.service-page--company-opening .service-process__item span {
+  animation: companyOpeningProcessNumberFocus 12s ease-in-out infinite;
+}
+
+.service-page--company-opening .service-process__item:nth-child(1) span {
+  animation-delay: 0s;
+}
+
+.service-page--company-opening .service-process__item:nth-child(2) span {
+  animation-delay: 3s;
+}
+
+.service-page--company-opening .service-process__item:nth-child(3) span {
+  animation-delay: 6s;
+}
+
+.service-page--company-opening .service-process__item:nth-child(4) span {
+  animation-delay: 9s;
+}
+
+.service-page--company-opening .service-process__item:hover,
+.service-page--company-opening .service-process__item:focus-within {
+  z-index: 4;
+  opacity: 1;
+  transform: translateY(-10px) scale(1.03) !important;
+  animation-play-state: paused;
+  background: linear-gradient(145deg, rgba(115, 202, 255, 0.18), rgba(255, 255, 255, 0.075)) !important;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.2),
+    0 0 34px rgba(115, 202, 255, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
+
+.service-page--company-opening .service-process__item:hover span,
+.service-page--company-opening .service-process__item:focus-within span {
+  color: #032b45 !important;
+  background: var(--color-accent) !important;
+  border-color: rgba(115, 202, 255, 0.95) !important;
+  box-shadow:
+    0 0 0 8px rgba(115, 202, 255, 0.12),
+    0 0 28px rgba(115, 202, 255, 0.28) !important;
+  animation-play-state: paused;
+}
+
+.service-page--company-opening .service-process__item:hover h3,
+.service-page--company-opening .service-process__item:focus-within h3,
+.service-page--company-opening .service-process__item:hover p,
+.service-page--company-opening .service-process__item:focus-within p {
+  color: rgba(255, 255, 255, 0.94) !important;
+}
+
+@keyframes companyOpeningProcessFocus {
+  0%, 18% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.03);
+    background: linear-gradient(145deg, rgba(115, 202, 255, 0.18), rgba(255, 255, 255, 0.075));
+    box-shadow:
+      0 30px 80px rgba(0, 0, 0, 0.2),
+      0 0 34px rgba(115, 202, 255, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  24%, 100% {
+    opacity: 0.82;
+    transform: translateY(4px) scale(0.985);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+    box-shadow:
+      0 18px 48px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+}
+
+@keyframes companyOpeningProcessNumberFocus {
+  0%, 18% {
+    color: #032b45;
+    background: var(--color-accent);
+    border-color: rgba(115, 202, 255, 0.95);
+    box-shadow:
+      0 0 0 8px rgba(115, 202, 255, 0.12),
+      0 0 28px rgba(115, 202, 255, 0.28);
+  }
+
+  24%, 100% {
+    color: #73caff;
+    background: rgba(3, 43, 69, 0.44);
+    border-color: rgba(115, 202, 255, 0.32);
+    box-shadow: none;
+  }
+}
+
+@keyframes companyOpeningProcessFocusMobile {
+  0%, 18% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.012);
+    background: linear-gradient(145deg, rgba(115, 202, 255, 0.16), rgba(255, 255, 255, 0.07));
+    box-shadow:
+      0 20px 54px rgba(0, 0, 0, 0.16),
+      0 0 26px rgba(115, 202, 255, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  24%, 100% {
+    opacity: 0.86;
+    transform: translateY(2px) scale(0.995);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025));
+    box-shadow:
+      0 16px 42px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+}
+
+@media (max-width: 760px) {
+  .service-page--company-opening .service-process__timeline {
+    gap: 18px !important;
+    margin-left: 0 !important;
+    overflow: visible !important;
+  }
+
+  .service-page--company-opening .service-process__item {
+    animation-name: companyOpeningProcessFocusMobile;
+    transform-origin: center;
+  }
+
+  .service-page--company-opening .service-process__item:hover,
+  .service-page--company-opening .service-process__item:focus-within {
+    transform: translateY(-5px) scale(1.012) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-page--company-opening .service-process__item,
+  .service-page--company-opening .service-process__item span {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Ajuste final: painel da hero da pagina de abertura */
+.service-page--company-opening .service-hero__inner {
+  grid-template-columns: minmax(0, 1.05fr) minmax(440px, 0.85fr) !important;
+  gap: clamp(56px, 7vw, 110px) !important;
+  align-items: center !important;
+}
+
+.service-page--company-opening .service-hero__panel {
+  width: min(100%, 560px) !important;
+  max-width: none !important;
+  min-height: 340px;
+  justify-self: end;
+  padding: clamp(34px, 3vw, 52px) !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(115, 202, 255, 0.24) !important;
+  background: linear-gradient(145deg, rgba(3, 43, 69, 0.72), rgba(2, 22, 37, 0.58)) !important;
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(14px);
+}
+
+.service-page--company-opening .service-hero__panel-label {
+  margin-bottom: 18px !important;
+  color: rgba(115, 202, 255, 0.78) !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.12em;
+}
+
+.service-page--company-opening .service-hero__panel ul {
+  display: grid;
+  gap: 0;
+}
+
+.service-page--company-opening .service-hero__panel li {
+  min-height: 62px;
+  padding: 18px 0 !important;
+  gap: 18px !important;
+  color: rgba(255, 255, 255, 0.86) !important;
+  font-size: clamp(1rem, 1.05vw, 1.18rem);
+  line-height: 1.45;
+}
+
+.service-page--company-opening .service-hero__panel li span {
+  min-width: 34px;
+  margin-right: 0;
+  color: #73caff !important;
+  font-size: clamp(0.95rem, 1vw, 1.1rem);
+}
+
+@media (min-width: 1440px) {
+  .service-page--company-opening .service-hero__panel {
+    width: min(100%, 620px) !important;
+    min-height: 380px;
+    padding: 54px 60px !important;
+  }
+
+  .service-page--company-opening .service-hero__panel li {
+    min-height: 70px;
+    font-size: 1.18rem;
+  }
+}
+
+@media (max-width: 1080px) {
+  .service-page--company-opening .service-hero__inner {
+    grid-template-columns: 1fr !important;
+    gap: clamp(34px, 7vw, 56px) !important;
+  }
+
+  .service-page--company-opening .service-hero__panel {
+    justify-self: start;
+    width: min(100%, 620px) !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .service-page--company-opening .service-hero__panel {
+    width: 100% !important;
+    min-height: auto;
+    padding: 28px 24px !important;
+  }
+
+  .service-page--company-opening .service-hero__panel li {
+    min-height: auto;
+    padding: 14px 0 !important;
+    font-size: 0.98rem;
+  }
+}
+
+/* Ajuste final: animacao suave dos cards do processo */
+.service-page--company-opening .service-process__timeline {
+  gap: clamp(20px, 2.4vw, 34px) !important;
+  overflow: visible !important;
+}
+
+.service-page--company-opening .service-process__item {
+  pointer-events: none;
+  transform-origin: center;
+  will-change: transform, opacity;
+  animation: companyOpeningProcessCardFocus 10s cubic-bezier(0.22, 1, 0.36, 1) infinite !important;
+}
+
+.service-page--company-opening .service-process__item span {
+  animation: companyOpeningProcessNumberFocus 10s cubic-bezier(0.22, 1, 0.36, 1) infinite !important;
+}
+
+.service-page--company-opening .service-process__item:nth-child(1),
+.service-page--company-opening .service-process__item:nth-child(1) span {
+  animation-delay: 0s !important;
+}
+
+.service-page--company-opening .service-process__item:nth-child(2),
+.service-page--company-opening .service-process__item:nth-child(2) span {
+  animation-delay: 2.5s !important;
+}
+
+.service-page--company-opening .service-process__item:nth-child(3),
+.service-page--company-opening .service-process__item:nth-child(3) span {
+  animation-delay: 5s !important;
+}
+
+.service-page--company-opening .service-process__item:nth-child(4),
+.service-page--company-opening .service-process__item:nth-child(4) span {
+  animation-delay: 7.5s !important;
+}
+
+.service-page--company-opening .service-process__item:hover,
+.service-page--company-opening .service-process__item:focus-within,
+.service-page--company-opening .service-process__timeline:hover .service-process__item,
+.service-page--company-opening .service-process__timeline:hover .service-process__item span {
+  animation-play-state: running !important;
+}
+
+@keyframes companyOpeningProcessCardFocus {
+  0% {
+    opacity: 0.82;
+    transform: translateY(0) scale(1);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+
+  10% {
+    opacity: 0.9;
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  20%,
+  34% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.025);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.045));
+    box-shadow: 0 30px 76px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  48% {
+    opacity: 0.9;
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  60%,
+  100% {
+    opacity: 0.82;
+    transform: translateY(0) scale(1);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+}
+
+@keyframes companyOpeningProcessNumberFocus {
+  0% {
+    color: rgba(115, 202, 255, 0.9);
+    background: rgba(115, 202, 255, 0.08);
+    border-color: rgba(115, 202, 255, 0.36);
+    box-shadow: none;
+  }
+
+  10% {
+    color: rgba(255, 255, 255, 0.92);
+    background: rgba(115, 202, 255, 0.18);
+    border-color: rgba(115, 202, 255, 0.62);
+  }
+
+  20%,
+  34% {
+    color: #ffffff;
+    background: rgba(115, 202, 255, 0.32);
+    border-color: rgba(115, 202, 255, 0.95);
+    box-shadow: 0 0 28px rgba(115, 202, 255, 0.24);
+  }
+
+  48% {
+    color: rgba(255, 255, 255, 0.92);
+    background: rgba(115, 202, 255, 0.18);
+    border-color: rgba(115, 202, 255, 0.62);
+  }
+
+  60%,
+  100% {
+    color: rgba(115, 202, 255, 0.9);
+    background: rgba(115, 202, 255, 0.08);
+    border-color: rgba(115, 202, 255, 0.36);
+    box-shadow: none;
+  }
+}
+
+@keyframes companyOpeningProcessCardFocusMobile {
+  0% {
+    opacity: 0.86;
+    transform: translateY(0) scale(1);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+
+  10% {
+    opacity: 0.92;
+    transform: translateY(-2px) scale(1.006);
+  }
+
+  20%,
+  34% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.012);
+    background: linear-gradient(145deg, rgba(115, 202, 255, 0.15), rgba(255, 255, 255, 0.06));
+    box-shadow: 0 24px 62px rgba(0, 0, 0, 0.16), 0 0 26px rgba(115, 202, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.11);
+  }
+
+  48% {
+    opacity: 0.92;
+    transform: translateY(-2px) scale(1.006);
+  }
+
+  60%,
+  100% {
+    opacity: 0.86;
+    transform: translateY(0) scale(1);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+}
+
+@media (max-width: 760px) {
+  .service-page--company-opening .service-process__timeline {
+    gap: 18px !important;
+  }
+
+  .service-page--company-opening .service-process__item {
+    animation-name: companyOpeningProcessCardFocusMobile !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-page--company-opening .service-process__item,
+  .service-page--company-opening .service-process__item span {
+    animation: none !important;
+  }
+}
+
+/* Ajuste final: enquadramento das paginas de servico adaptadas */
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-hero,
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-final,
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-overview,
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-process {
+  min-height: auto !important;
+  padding-top: clamp(86px, 9vh, 126px) !important;
+  padding-bottom: clamp(86px, 9vh, 126px) !important;
+}
+
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-hero {
+  min-height: min(100svh, 880px) !important;
+  padding-top: clamp(116px, 13vh, 154px) !important;
+  padding-bottom: clamp(70px, 8vh, 102px) !important;
+}
+
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-hero__inner {
+  grid-template-columns: minmax(0, 1.08fr) minmax(390px, 0.78fr) !important;
+  gap: clamp(42px, 5.5vw, 86px) !important;
+  align-items: center !important;
+}
+
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-hero__content h1 {
+  max-width: 900px !important;
+  font-size: clamp(2.6rem, 4.65vw, 4.8rem) !important;
+  line-height: 1.01 !important;
+}
+
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-hero__content > p:not(.service-page__eyebrow) {
+  max-width: 620px !important;
+  margin-top: 22px !important;
+  font-size: clamp(0.98rem, 1.15vw, 1.1rem) !important;
+  line-height: 1.66 !important;
+}
+
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-hero__panel {
+  width: min(100%, 540px) !important;
+  min-height: 320px !important;
+  padding: clamp(30px, 2.6vw, 44px) !important;
+}
+
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-hero__panel li {
+  min-height: 58px !important;
+  padding: 15px 0 !important;
+  font-size: clamp(0.96rem, 1vw, 1.08rem) !important;
+}
+
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-final__inner,
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-overview__inner {
+  align-items: center !important;
+  gap: clamp(34px, 5vw, 72px) !important;
+}
+
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-final__intro h2,
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-overview__intro h2,
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-process__header h2 {
+  max-width: 820px !important;
+  font-size: clamp(2.15rem, 3.65vw, 4.05rem) !important;
+  line-height: 1.04 !important;
+}
+
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-overview__card {
+  min-height: 220px !important;
+  padding: clamp(24px, 2.2vw, 30px) !important;
+}
+
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-process__timeline {
+  margin-top: clamp(38px, 5vh, 58px) !important;
+}
+
+.service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-process__item {
+  min-height: 230px !important;
+  padding: 52px 24px 26px !important;
+}
+
+@media (min-width: 1440px) {
+  .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-hero__content h1 {
+    font-size: clamp(3.1rem, 4.2vw, 5rem) !important;
+  }
+
+  .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-hero__panel {
+    width: min(100%, 590px) !important;
+    min-height: 360px !important;
+  }
+}
+
+@media (max-width: 1080px) {
+  .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-hero__inner,
+  .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-final__inner,
+  .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-overview__inner {
+    grid-template-columns: 1fr !important;
+  }
+
+  .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-hero__panel {
+    justify-self: start !important;
+    width: min(100%, 620px) !important;
+    min-height: auto !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-hero,
+  .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-final,
+  .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-overview,
+  .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-process {
+    padding-top: 76px !important;
+    padding-bottom: 76px !important;
+  }
+
+  .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-hero {
+    min-height: auto !important;
+    padding-top: clamp(108px, 23vw, 138px) !important;
+  }
+
+  .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-hero__content h1 {
+    font-size: clamp(2.24rem, 11vw, 3.15rem) !important;
+    line-height: 1.03 !important;
+  }
+
+  .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-final__intro h2,
+  .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-overview__intro h2,
+  .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-process__header h2 {
+    font-size: clamp(1.95rem, 9.5vw, 2.9rem) !important;
+  }
+
+  .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-overview__card,
+  .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-process__item {
+    min-height: auto !important;
   }
 }

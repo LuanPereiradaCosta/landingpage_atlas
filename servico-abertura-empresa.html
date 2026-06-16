@@ -10,32 +10,124 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="is-loading">
-  <main class="specialty-page">
-    <section class="specialty-page__hero" style="--specialty-hero-image: url('../assets/especialidades/arquitetura.png');" aria-labelledby="page-title">
-      <div class="specialty-page__hero-inner">
-        <p class="specialty-page__eyebrow">Servi&ccedil;o</p>
-        <h1 class="specialty-page__title" id="page-title">Abertura de empresa.</h1>
-        <p class="specialty-page__text">Orienta&ccedil;&atilde;o para iniciar sua empresa com estrutura, enquadramento e rotina cont&aacute;bil bem definidos.</p>
+  <main class="service-page service-page--company-opening">
+    <section class="service-hero service-hero--company-opening" aria-labelledby="service-title">
+      <div class="service-hero__background" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1800&q=80" alt="">
+      </div>
+
+      <div class="service-hero__inner">
+        <div class="service-hero__content" data-service-reveal>
+          <p class="service-page__eyebrow">Servi&ccedil;o Atlas</p>
+          <h1 id="service-title">Abertura de empresa com clareza desde o primeiro passo.</h1>
+          <p>A Atlas orienta estrutura inicial, enquadramento e rotina cont&aacute;bil para sua empresa come&ccedil;ar de forma organizada.</p>
+
+          <div class="service-hero__actions" aria-label="A&ccedil;&otilde;es do servi&ccedil;o">
+            <a class="service-hero__button service-hero__button--primary" href="#contato">Falar com especialista</a>
+            <a class="service-hero__button service-hero__button--secondary" href="#service-essentials">Ver o que organizamos</a>
+          </div>
+        </div>
+
+        <aside class="service-hero__panel" aria-label="Resumo do servi&ccedil;o" data-service-reveal>
+          <p class="service-hero__panel-label">No processo</p>
+          <ul>
+            <li><span>01</span>Etapas organizadas</li>
+            <li><span>02</span>Enquadramento inicial</li>
+            <li><span>03</span>Documentos e regulariza&ccedil;&atilde;o</li>
+            <li><span>04</span>Rotina cont&aacute;bil ap&oacute;s a abertura</li>
+          </ul>
+        </aside>
       </div>
     </section>
 
-    <section class="specialty-page__content" aria-labelledby="support-title">
-      <div class="specialty-page__content-inner">
-        <div class="specialty-page__intro">
-          <p class="specialty-page__section-label">Servi&ccedil;o Atlas</p>
-          <h2 id="support-title">Comece com mais seguran&ccedil;a</h2>
-          <p>A Atlas acompanha as etapas iniciais para que sua empresa j&aacute; nas&ccedil;a com organiza&ccedil;&atilde;o, enquadramento adequado e uma rotina cont&aacute;bil compreens&iacute;vel.</p>
+    <section class="service-final" id="service-essentials" aria-labelledby="service-final-title">
+      <div class="service-final__inner">
+        <div class="service-final__intro" data-service-reveal>
+          <p class="service-page__eyebrow">O que a Atlas organiza</p>
+          <h2 id="service-final-title">Informa&ccedil;&otilde;es essenciais para sua empresa sair do papel.</h2>
+          <p>Reunimos os dados e decis&otilde;es iniciais para que a abertura aconte&ccedil;a com mais clareza, menos ru&iacute;do e uma base cont&aacute;bil bem definida.</p>
         </div>
 
-        <div class="specialty-page__points">
-          <article><span>01</span><h3>Tipo de empresa</h3><p>Orienta&ccedil;&atilde;o para entender a estrutura mais coerente com a atividade.</p></article>
-          <article><span>02</span><h3>Regulariza&ccedil;&atilde;o inicial</h3><p>Apoio para organizar documentos, etapas e informa&ccedil;&otilde;es necess&aacute;rias.</p></article>
-          <article><span>03</span><h3>Rotina ap&oacute;s abertura</h3><p>Defini&ccedil;&atilde;o dos pr&oacute;ximos cuidados cont&aacute;beis para manter tudo em ordem.</p></article>
+        <ul class="service-final__list" data-service-reveal>
+          <li>Dados da atividade</li>
+          <li>Escolha do tipo de empresa</li>
+          <li>Enquadramento tribut&aacute;rio</li>
+          <li>Documenta&ccedil;&atilde;o inicial</li>
+          <li>Emiss&atilde;o de notas</li>
+          <li>Obriga&ccedil;&otilde;es mensais</li>
+          <li>Orienta&ccedil;&atilde;o para os primeiros meses</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="service-overview" aria-labelledby="service-overview-title">
+      <div class="service-overview__inner">
+        <div class="service-overview__intro" data-service-reveal>
+          <p class="service-page__eyebrow">Como funciona</p>
+          <h2 id="service-overview-title">Da ideia ao CNPJ, com orienta&ccedil;&atilde;o em cada etapa.</h2>
+          <p>Antes de abrir uma empresa, &eacute; importante entender atividade, modelo de atua&ccedil;&atilde;o, enquadramento e obriga&ccedil;&otilde;es. A Atlas acompanha esse processo para transformar decis&otilde;es burocr&aacute;ticas em uma rotina mais clara.</p>
         </div>
 
-        <aside class="specialty-page__highlight">
-          <p>Come&ccedil;ar bem evita retrabalho e deixa a empresa pronta para uma rotina mais organizada.</p>
-        </aside>
+        <div class="service-overview__grid">
+          <article class="service-overview__card" data-service-reveal>
+            <span>01</span>
+            <h3>Entendimento da atividade</h3>
+            <p>Entendemos o tipo de neg&oacute;cio, a forma de atua&ccedil;&atilde;o e as informa&ccedil;&otilde;es essenciais para iniciar o processo.</p>
+          </article>
+
+          <article class="service-overview__card" data-service-reveal>
+            <span>02</span>
+            <h3>Defini&ccedil;&atilde;o do enquadramento</h3>
+            <p>Orientamos sobre estrutura e regime coerentes com a realidade da empresa, sem promessas artificiais.</p>
+          </article>
+
+          <article class="service-overview__card" data-service-reveal>
+            <span>03</span>
+            <h3>Organiza&ccedil;&atilde;o dos documentos</h3>
+            <p>Acompanhamos as informa&ccedil;&otilde;es necess&aacute;rias para abertura, registros e regulariza&ccedil;&atilde;o inicial.</p>
+          </article>
+
+          <article class="service-overview__card" data-service-reveal>
+            <span>04</span>
+            <h3>Primeiros passos cont&aacute;beis</h3>
+            <p>Preparamos a empresa para notas, impostos, obriga&ccedil;&otilde;es e acompanhamento mensal.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-process" id="service-process" aria-labelledby="service-process-title">
+      <div class="service-process__inner">
+        <div class="service-process__header" data-service-reveal>
+          <p class="service-page__eyebrow">Processo</p>
+          <h2 id="service-process-title">Um fluxo claro para abrir sua empresa.</h2>
+        </div>
+
+        <div class="service-process__timeline">
+          <article class="service-process__item" data-service-reveal>
+            <span>01</span>
+            <h3>Diagn&oacute;stico inicial</h3>
+            <p>Levantamento da atividade, perfil do neg&oacute;cio e informa&ccedil;&otilde;es principais.</p>
+          </article>
+
+          <article class="service-process__item" data-service-reveal>
+            <span>02</span>
+            <h3>Defini&ccedil;&atilde;o da estrutura</h3>
+            <p>Orienta&ccedil;&atilde;o sobre tipo de empresa, enquadramento e caminho de abertura.</p>
+          </article>
+
+          <article class="service-process__item" data-service-reveal>
+            <span>03</span>
+            <h3>Documentos e registros</h3>
+            <p>Organiza&ccedil;&atilde;o das informa&ccedil;&otilde;es para formalizar e regularizar a empresa.</p>
+          </article>
+
+          <article class="service-process__item" data-service-reveal>
+            <span>04</span>
+            <h3>Rotina ap&oacute;s abertura</h3>
+            <p>In&iacute;cio da rotina cont&aacute;bil com orienta&ccedil;&atilde;o para notas e obriga&ccedil;&otilde;es.</p>
+          </article>
+        </div>
       </div>
     </section>
   </main>
