@@ -26,6 +26,8 @@ let activeInstitutionalSlide = 0;
 const heroReviewLeaveDuration = 680;
 const heroReviewEnterDelay = 960;
 const heroSlideChangeDelay = 900;
+const pageLeaveDuration = reducedMotionQuery.matches ? 120 : 520;
+let pageIsLeaving = false;
 
 const setupPremiumSpecialtyHeroTyping = () => {
   const specialtyPage = document.querySelector('.specialty-page--premium');
@@ -180,14 +182,131 @@ const setupCompanyOpeningServiceReveal = () => {
   });
 };
 
+const setupAboutPageReveal = () => {
+  const aboutRevealElements = document.querySelectorAll('[data-about-reveal]');
+
+  if (!aboutRevealElements.length) {
+    return;
+  }
+
+  const revealAboutElements = () => {
+    if (reducedMotionQuery.matches || !('IntersectionObserver' in window)) {
+      aboutRevealElements.forEach((element) => {
+        element.classList.add('is-visible');
+      });
+      return;
+    }
+
+    const aboutRevealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -12% 0px',
+      threshold: 0.14
+    });
+
+    aboutRevealElements.forEach((element) => {
+      aboutRevealObserver.observe(element);
+    });
+  };
+
+  if (document.readyState === 'complete') {
+    window.setTimeout(revealAboutElements, 80);
+  } else {
+    window.addEventListener('load', () => {
+      window.setTimeout(revealAboutElements, 1280);
+    }, { once: true });
+  }
+};
+
 setupPremiumSpecialtyHeroTyping();
 setupPremiumSpecialtyHeroBackground();
 setupPremiumSpecialtyArticleReveal();
 setupCompanyOpeningServiceReveal();
+setupAboutPageReveal();
 
 if ('scrollRestoration' in window.history) {
   window.history.scrollRestoration = 'manual';
 }
+
+const linkShouldUsePageTransition = (link, event) => {
+  if (
+    event.defaultPrevented ||
+    event.button !== 0 ||
+    event.metaKey ||
+    event.ctrlKey ||
+    event.shiftKey ||
+    event.altKey
+  ) {
+    return false;
+  }
+
+  if (
+    link.hasAttribute('download') ||
+    (link.target && link.target.toLowerCase() !== '_self')
+  ) {
+    return false;
+  }
+
+  const rawHref = link.getAttribute('href');
+
+  if (!rawHref || rawHref.trim() === '#' || rawHref.trim().startsWith('#')) {
+    return false;
+  }
+
+  let linkUrl;
+
+  try {
+    linkUrl = new URL(rawHref, window.location.href);
+  } catch {
+    return false;
+  }
+
+  const currentUrl = new URL(window.location.href);
+  const blockedProtocols = ['mailto:', 'tel:', 'sms:', 'javascript:'];
+  const blockedHosts = ['wa.me', 'api.whatsapp.com', 'web.whatsapp.com'];
+  const linkPath = linkUrl.pathname.toLowerCase();
+  const currentPath = currentUrl.pathname.toLowerCase();
+
+  if (
+    blockedProtocols.includes(linkUrl.protocol) ||
+    blockedHosts.includes(linkUrl.hostname.toLowerCase()) ||
+    linkUrl.origin !== currentUrl.origin ||
+    !linkPath.endsWith('.html') ||
+    (linkPath === currentPath && linkUrl.hash)
+  ) {
+    return false;
+  }
+
+  return true;
+};
+
+document.addEventListener('click', (event) => {
+  const clickedLink = event.target instanceof Element
+    ? event.target.closest('a[href]')
+    : null;
+
+  if (!clickedLink || !linkShouldUsePageTransition(clickedLink, event)) {
+    return;
+  }
+
+  event.preventDefault();
+
+  if (pageIsLeaving) {
+    return;
+  }
+
+  pageIsLeaving = true;
+  document.body.classList.add('is-page-leaving');
+
+  window.setTimeout(() => {
+    window.location.href = clickedLink.href;
+  }, pageLeaveDuration);
+});
 
 const scrollToPageTop = () => {
   const pageElement = document.documentElement;
@@ -204,12 +323,17 @@ const scrollToPageTop = () => {
   pageElement.style.scrollBehavior = originalScrollBehavior;
 };
 
-window.addEventListener('pageshow', scrollToPageTop);
+window.addEventListener('pageshow', () => {
+  pageIsLeaving = false;
+  document.body.classList.remove('is-page-leaving');
+  scrollToPageTop();
+});
 
 window.addEventListener('load', () => {
   scrollToPageTop();
 
   window.setTimeout(() => {
+    document.body.classList.remove('is-page-leaving');
     document.body.classList.remove('is-loading');
     document.body.classList.add('is-loaded');
   }, 1200);
