@@ -165,21 +165,33 @@ const setupCompanyOpeningServiceReveal = () => {
     return;
   }
 
-  const serviceRevealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
+  const startServiceReveal = () => {
+    const serviceRevealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -12% 0px',
+      threshold: 0.16
     });
-  }, {
-    rootMargin: '0px 0px -12% 0px',
-    threshold: 0.16
-  });
 
-  serviceRevealElements.forEach((element) => {
-    serviceRevealObserver.observe(element);
-  });
+    serviceRevealElements.forEach((element) => {
+      serviceRevealObserver.observe(element);
+    });
+  };
+
+  const scheduleServiceReveal = () => {
+    window.setTimeout(startServiceReveal, 1680);
+  };
+
+  if (document.readyState === 'complete') {
+    scheduleServiceReveal();
+  } else {
+    window.addEventListener('load', scheduleServiceReveal, { once: true });
+  }
 };
 
 const setupAboutPageReveal = () => {
@@ -985,7 +997,7 @@ const contactInputTexts = [
 let contactAutoTimer = null;
 let activeContactStep = 0;
 let isContactSectionVisible = false;
-const contactStepInterval = 3600;
+const contactStepInterval = 2600;
 
 const showContactStep = (stepIndex) => {
   if (!contactSteps.length) return;
