@@ -156,5 +156,3 @@ Durante o desenvolvimento deste projeto, foram trabalhados aprendizados como:
 ## Autor
 
 Desenvolvido por Luan Pereira da Costa.
-
-Estudante de Análise e Desenvolvimento de Sistemas, com interesse em desenvolvimento web, interfaces responsivas, automações com Python e soluções digitais.
