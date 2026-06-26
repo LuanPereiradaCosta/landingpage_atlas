@@ -29,6 +29,51 @@ const heroSlideChangeDelay = 900;
 const pageLeaveDuration = reducedMotionQuery.matches ? 120 : 520;
 let pageIsLeaving = false;
 
+const setupPageLoaderLogo = () => {
+  const pageLoader = document.querySelector('.page-loader');
+
+  if (!pageLoader) {
+    return;
+  }
+
+  fetch('assets/logo/logo_atlas_loader.svg')
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Nao foi possivel carregar o SVG do loader.');
+      }
+
+      return response.text();
+    })
+    .then((svgText) => {
+      const loaderDocument = new DOMParser().parseFromString(svgText, 'image/svg+xml');
+      const loaderLogo = loaderDocument.querySelector('svg');
+
+      if (!loaderLogo) {
+        return;
+      }
+
+      loaderLogo.classList.add('page-loader__logo');
+      loaderLogo.setAttribute('aria-hidden', 'true');
+      loaderLogo.setAttribute('focusable', 'false');
+
+      const logoParts = Array.from(loaderLogo.querySelectorAll('path'));
+      const lastPartIndex = logoParts.length - 1;
+
+      logoParts.forEach((part, index) => {
+        part.style.setProperty('--loader-part-enter-delay', `${index * 18}ms`);
+        part.style.setProperty('--loader-part-exit-delay', `${(lastPartIndex - index) * 6}ms`);
+      });
+
+      pageLoader.replaceChildren(loaderLogo);
+      pageLoader.classList.add('has-loader-logo');
+    })
+    .catch(() => {
+      pageLoader.classList.add('has-loader-fallback');
+    });
+};
+
+setupPageLoaderLogo();
+
 const setupPremiumSpecialtyHeroTyping = () => {
   const specialtyPage = document.querySelector('.specialty-page--premium');
   const specialtyHero = specialtyPage ? specialtyPage.querySelector('.specialty-page__hero') : null;
