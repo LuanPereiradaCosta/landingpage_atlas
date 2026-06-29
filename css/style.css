@@ -579,43 +579,75 @@ button:focus-visible {
   }
 }
 
-@keyframes pageLoaderPartConstruct {
+@keyframes atlasLoaderMarkAppear {
   0% {
     opacity: 0;
-    clip-path: inset(0 100% 0 0);
-    transform: translateY(8px) scale(0.98);
-  }
-
-  58% {
-    opacity: 1;
-    clip-path: inset(0 22% 0 0);
-    transform: translateY(2px) scale(0.995);
+    transform: scale(0.985);
   }
 
   100% {
     opacity: 1;
-    clip-path: inset(0 0 0 0);
-    transform: translateY(0) scale(1);
+    transform: scale(1);
   }
 }
 
-@keyframes pageLoaderPartDeconstruct {
+@keyframes atlasLoaderPathWrite {
   0% {
-    opacity: 1;
-    clip-path: inset(0 0 0 0);
-    transform: translateY(0) scale(1);
+    fill-opacity: 0;
+    stroke-dashoffset: var(--path-length);
+    stroke-opacity: 0;
   }
 
-  44% {
-    opacity: 0.88;
-    clip-path: inset(0 24% 0 0);
-    transform: translateY(-1px) scale(0.995);
+  12% {
+    fill-opacity: 0;
+    opacity: 1;
+    stroke-opacity: 1;
+  }
+
+  72% {
+    fill-opacity: 0;
+    stroke-dashoffset: 0;
+    stroke-opacity: 1;
   }
 
   100% {
-    opacity: 0;
-    clip-path: inset(0 100% 0 0);
-    transform: translateY(-6px) scale(0.98);
+    fill-opacity: 1;
+    stroke-dashoffset: 0;
+    stroke-opacity: 0;
+  }
+}
+
+@keyframes atlasLoaderPathErase {
+  0% {
+    fill-opacity: 1;
+    stroke-dashoffset: 0;
+    stroke-opacity: 0;
+  }
+
+  12% {
+    fill-opacity: 0;
+    stroke-dashoffset: 0;
+    stroke-opacity: 1;
+  }
+
+  100% {
+    fill-opacity: 0;
+    stroke-dashoffset: var(--path-length);
+    stroke-opacity: 0.16;
+  }
+}
+
+@keyframes atlasLoaderLogoSettle {
+  0% {
+    transform: scale(0.997);
+  }
+
+  52% {
+    transform: scale(1.006);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }
 
@@ -631,8 +663,7 @@ button:focus-visible {
   transition: opacity 0.45s ease, visibility 0.45s ease;
 }
 
-.page-loader__fallback,
-.page-loader__logo {
+.page-loader__fallback {
   display: block;
   width: min(220px, 52vw);
   height: auto;
@@ -644,17 +675,45 @@ button:focus-visible {
   animation: pageLoaderFallbackConstruct 0.92s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+.page-loader__mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(220px, 52vw);
+  aspect-ratio: 651 / 383;
+  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.24));
+  animation: atlasLoaderMarkAppear 0.32s ease both;
+}
+
 .page-loader__logo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
   overflow: visible;
 }
 
-.page-loader__logo path {
-  opacity: 0;
-  clip-path: inset(0 100% 0 0);
+.atlas-loader-logo__path {
+  fill: var(--path-fill);
+  fill-opacity: 1;
+  stroke: var(--path-fill);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: var(--path-length);
+  stroke-dashoffset: 0;
+  stroke-opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
-  animation: pageLoaderPartConstruct 0.46s cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-delay: var(--loader-part-enter-delay, 0ms);
+}
+
+.page-loader.is-loader-ready .atlas-loader-logo__path {
+  animation: atlasLoaderPathWrite 0.96s cubic-bezier(0.22, 1, 0.36, 1) var(--path-enter-delay) both;
+}
+
+.page-loader.is-loader-ready .atlas-loader-logo {
+  animation: atlasLoaderLogoSettle 0.42s ease 1.36s both;
 }
 
 body.is-loaded .page-loader {
@@ -678,22 +737,31 @@ body.is-page-leaving .page-loader__fallback {
   animation: pageLoaderFallbackDeconstruct 0.52s cubic-bezier(0.64, 0, 0.78, 0) both;
 }
 
-body.is-page-leaving .page-loader__logo path {
-  animation-name: pageLoaderPartDeconstruct;
-  animation-duration: 0.34s;
-  animation-timing-function: cubic-bezier(0.64, 0, 0.78, 0);
-  animation-delay: var(--loader-part-exit-delay, 0ms);
+body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo {
+  animation: atlasLoaderLogoSettle 0.32s ease reverse both;
+}
+
+body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
+  animation: atlasLoaderPathErase 0.54s cubic-bezier(0.64, 0, 0.78, 0) var(--path-exit-delay) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .page-loader__fallback,
-  .page-loader__logo path,
+  .page-loader__mark,
+  .page-loader.is-loader-ready .atlas-loader-logo,
+  .page-loader.is-loader-ready .atlas-loader-logo__path,
   body.is-page-leaving .page-loader__fallback,
-  body.is-page-leaving .page-loader__logo path {
+  body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo,
+  body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
     animation: none;
     clip-path: inset(0 0 0 0);
     opacity: 1;
-    transform: none;
+  }
+
+  .atlas-loader-logo__path {
+    fill-opacity: 1;
+    stroke-dashoffset: 0;
+    stroke-opacity: 0;
   }
 }
 
@@ -10319,14 +10387,32 @@ body.is-page-leaving .page-loader__logo path {
 }
 
 .about-page .about-principle summary {
+  position: relative;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   gap: clamp(18px, 2.5vw, 30px);
   align-items: center;
   min-height: 150px;
-  padding: clamp(26px, 3.4vw, 40px);
+  padding: clamp(26px, 3.4vw, 40px) clamp(26px, 3.4vw, 40px) clamp(52px, 4vw, 60px);
   cursor: pointer;
   list-style: none;
+}
+
+.about-page .about-principle summary::after {
+  content: "Ver detalhes";
+  position: absolute;
+  right: clamp(26px, 3.4vw, 40px);
+  bottom: 18px;
+  color: rgba(225, 245, 255, 0.66);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transform: translateY(2px);
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .about-page .about-principle summary::-webkit-details-marker {
@@ -10394,9 +10480,11 @@ body.is-page-leaving .page-loader__logo path {
 }
 
 .about-page .about-values__item.about-principle .about-principle__toggle {
-  background: rgba(115, 202, 255, 0.07);
-  border-color: rgba(115, 202, 255, 0.2);
-  box-shadow: none;
+  background: rgba(115, 202, 255, 0.1);
+  border-color: rgba(115, 202, 255, 0.32);
+  box-shadow:
+    0 0 0 6px rgba(115, 202, 255, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .about-page .about-principle__heading strong {
@@ -10415,10 +10503,14 @@ body.is-page-leaving .page-loader__logo path {
   height: 42px;
   margin: 0;
   flex: 0 0 auto;
-  background: rgba(115, 202, 255, 0.07);
-  border: 1px solid rgba(115, 202, 255, 0.2);
+  background: rgba(115, 202, 255, 0.1);
+  border: 1px solid rgba(115, 202, 255, 0.32);
   border-radius: 50%;
-  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 .about-page .about-principle__toggle::before {
@@ -10436,7 +10528,43 @@ body.is-page-leaving .page-loader__logo path {
 }
 
 .about-page .about-principle__toggle::after {
-  content: none;
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border: 1px solid rgba(115, 202, 255, 0.18);
+  border-radius: inherit;
+  opacity: 0;
+  transform: scale(0.86);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.about-page .about-principle summary:hover::after,
+.about-page .about-principle summary:focus-visible::after {
+  color: rgba(255, 255, 255, 0.88);
+  transform: translateY(0);
+}
+
+.about-page .about-principle summary:hover .about-principle__toggle,
+.about-page .about-principle summary:focus-visible .about-principle__toggle {
+  background: rgba(115, 202, 255, 0.18);
+  border-color: rgba(115, 202, 255, 0.62);
+  box-shadow:
+    0 0 0 8px rgba(115, 202, 255, 0.07),
+    0 0 28px rgba(115, 202, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.about-page .about-principle summary:hover .about-principle__toggle::after,
+.about-page .about-principle summary:focus-visible .about-principle__toggle::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.about-page .about-principle details[open] summary::after {
+  content: "Ocultar detalhes";
+  color: rgba(115, 202, 255, 0.86);
 }
 
 .about-page .about-principle details[open] .about-principle__toggle {
@@ -10446,7 +10574,8 @@ body.is-page-leaving .page-loader__logo path {
 }
 
 .about-page .about-principle details[open] .about-principle__toggle::after {
-  opacity: 0;
+  opacity: 1;
+  transform: scale(1);
 }
 
 .about-page .about-principle details[open] .about-principle__number {
@@ -10501,55 +10630,6 @@ body.is-page-leaving .page-loader__logo path {
   box-shadow: 0 0 12px rgba(115, 202, 255, 0.25);
 }
 
-.about-page .about-values-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 0 0 0 clamp(42px, 5vw, 72px);
-  padding: 0;
-  list-style: none;
-}
-
-.about-page .about-values-tags li {
-  padding: 9px 14px;
-  color: rgba(225, 245, 255, 0.82);
-  background: rgba(115, 202, 255, 0.075);
-  border: 1px solid rgba(115, 202, 255, 0.18);
-  border-radius: 999px;
-  font-family: var(--font-body);
-  font-size: 0.86rem;
-  line-height: 1.35;
-  opacity: 0;
-  transform: translateY(5px);
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease,
-    color 0.3s ease,
-    background 0.3s ease,
-    border-color 0.3s ease;
-}
-
-.about-page .about-principle details[open] .about-values-tags li {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.about-page .about-principle details[open] .about-values-tags li:nth-child(2),
-.about-page .about-principle details[open] .about-values-tags li:nth-child(5),
-.about-page .about-principle details[open] .about-values-tags li:nth-child(8) {
-  transition-delay: 0.04s;
-}
-
-.about-page .about-principle details[open] .about-values-tags li:nth-child(3n) {
-  transition-delay: 0.08s;
-}
-
-.about-page .about-values-tags li:hover {
-  color: var(--color-surface);
-  background: rgba(115, 202, 255, 0.13);
-  border-color: rgba(115, 202, 255, 0.34);
-}
-
 @media (max-width: 1080px) {
   .about-page .about-values__inner {
     grid-template-columns: 1fr;
@@ -10577,6 +10657,14 @@ body.is-page-leaving .page-loader__logo path {
     padding: 24px;
   }
 
+  .about-page .about-principle summary::after {
+    position: static;
+    grid-column: 1 / -1;
+    justify-self: start;
+    margin-top: 2px;
+    transform: none;
+  }
+
   .about-page .about-principle__number {
     grid-column: 1 / -1;
   }
@@ -10596,10 +10684,6 @@ body.is-page-leaving .page-loader__logo path {
     margin-left: 0;
   }
 
-  .about-page .about-values-tags {
-    margin-left: 0;
-  }
-
   .about-page .about-values__item.about-principle:hover,
   .about-page .about-values__item.about-principle:focus-within,
   .about-page .about-values__item.about-principle:has(details[open]) {
@@ -10610,11 +10694,11 @@ body.is-page-leaving .page-loader__logo path {
 @media (prefers-reduced-motion: reduce) {
   .about-page .about-values__item.about-principle,
   .about-page .about-principle__number,
+  .about-page .about-principle summary::after,
   .about-page .about-principle__toggle,
   .about-page .about-principle__toggle::before,
   .about-page .about-principle__toggle::after,
-  .about-page .about-principle__content,
-  .about-page .about-values-tags li {
+  .about-page .about-principle__content {
     transition: none !important;
   }
 
@@ -10622,8 +10706,7 @@ body.is-page-leaving .page-loader__logo path {
   .about-page .about-values__item.about-principle:hover,
   .about-page .about-values__item.about-principle:focus-within,
   .about-page .about-values__item.about-principle:has(details[open]),
-  .about-page .about-principle__content,
-  .about-page .about-values-tags li {
+  .about-page .about-principle__content {
     opacity: 1 !important;
     filter: none !important;
     transform: none !important;

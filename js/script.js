@@ -26,7 +26,7 @@ let activeInstitutionalSlide = 0;
 const heroReviewLeaveDuration = 680;
 const heroReviewEnterDelay = 960;
 const heroSlideChangeDelay = 900;
-const pageLeaveDuration = reducedMotionQuery.matches ? 120 : 520;
+const pageLeaveDuration = reducedMotionQuery.matches ? 120 : 1250;
 let pageIsLeaving = false;
 
 const setupPageLoaderLogo = () => {
@@ -53,18 +53,34 @@ const setupPageLoaderLogo = () => {
       }
 
       loaderLogo.classList.add('page-loader__logo');
+      loaderLogo.classList.add('atlas-loader-logo');
       loaderLogo.setAttribute('aria-hidden', 'true');
       loaderLogo.setAttribute('focusable', 'false');
 
       const logoParts = Array.from(loaderLogo.querySelectorAll('path'));
-      const lastPartIndex = logoParts.length - 1;
+      const loaderMark = document.createElement('span');
+
+      loaderMark.classList.add('page-loader__mark');
+      loaderMark.append(loaderLogo);
+      pageLoader.replaceChildren(loaderMark);
 
       logoParts.forEach((part, index) => {
-        part.style.setProperty('--loader-part-enter-delay', `${index * 18}ms`);
-        part.style.setProperty('--loader-part-exit-delay', `${(lastPartIndex - index) * 6}ms`);
+        const pathLength = Math.ceil(part.getTotalLength());
+        const pathFill = part.getAttribute('fill') || '#028BE0';
+        const enterDelay = Math.min(index * 0.036, 0.78);
+        const exitDelay = Math.min((logoParts.length - index - 1) * 0.018, 0.72);
+
+        part.classList.add('atlas-loader-logo__path');
+        part.style.setProperty('--path-length', pathLength);
+        part.style.setProperty('--path-fill', pathFill);
+        part.style.setProperty('--path-enter-delay', `${enterDelay.toFixed(3)}s`);
+        part.style.setProperty('--path-exit-delay', `${exitDelay.toFixed(3)}s`);
       });
 
-      pageLoader.replaceChildren(loaderLogo);
+      window.requestAnimationFrame(() => {
+        pageLoader.classList.add('is-loader-ready');
+      });
+
       pageLoader.classList.add('has-loader-logo');
     })
     .catch(() => {
@@ -393,7 +409,7 @@ window.addEventListener('load', () => {
     document.body.classList.remove('is-page-leaving');
     document.body.classList.remove('is-loading');
     document.body.classList.add('is-loaded');
-  }, 1200);
+  }, reducedMotionQuery.matches ? 120 : 1900);
 });
 
 const updateHeaderBackground = () => {
