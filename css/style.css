@@ -7564,7 +7564,7 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
 .service-page--company-opening .service-overview__grid,
 .service-page--company-opening .service-process__timeline,
 .service-page--company-opening .service-overview__card,
-.service-page--company-opening .service-process__item {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item {
   border: 0 !important;
   outline: 0 !important;
 }
@@ -7658,12 +7658,12 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
 }
 
 /* Animação sequencial dos cards do processo na página de abertura */
-.service-page--company-opening .service-process__timeline {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__timeline {
   gap: clamp(18px, 2vw, 30px) !important;
   overflow: visible !important;
 }
 
-.service-page--company-opening .service-process__item {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item {
   position: relative !important;
   z-index: 1;
   transform-origin: center;
@@ -7671,44 +7671,44 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
   animation: companyOpeningProcessFocus 12s ease-in-out infinite;
 }
 
-.service-page--company-opening .service-process__item:nth-child(1) {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(1) {
   animation-delay: 0s;
 }
 
-.service-page--company-opening .service-process__item:nth-child(2) {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(2) {
   animation-delay: 3s;
 }
 
-.service-page--company-opening .service-process__item:nth-child(3) {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(3) {
   animation-delay: 6s;
 }
 
-.service-page--company-opening .service-process__item:nth-child(4) {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(4) {
   animation-delay: 9s;
 }
 
-.service-page--company-opening .service-process__item span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item span {
   animation: companyOpeningProcessNumberFocus 12s ease-in-out infinite;
 }
 
-.service-page--company-opening .service-process__item:nth-child(1) span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(1) span {
   animation-delay: 0s;
 }
 
-.service-page--company-opening .service-process__item:nth-child(2) span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(2) span {
   animation-delay: 3s;
 }
 
-.service-page--company-opening .service-process__item:nth-child(3) span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(3) span {
   animation-delay: 6s;
 }
 
-.service-page--company-opening .service-process__item:nth-child(4) span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(4) span {
   animation-delay: 9s;
 }
 
-.service-page--company-opening .service-process__item:hover,
-.service-page--company-opening .service-process__item:focus-within {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:hover,
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:focus-within {
   z-index: 4;
   opacity: 1;
   transform: translateY(-10px) scale(1.03) !important;
@@ -7720,8 +7720,8 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
     inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
 }
 
-.service-page--company-opening .service-process__item:hover span,
-.service-page--company-opening .service-process__item:focus-within span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:hover span,
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:focus-within span {
   color: #032b45 !important;
   background: var(--color-accent) !important;
   border-color: rgba(115, 202, 255, 0.95) !important;
@@ -7731,10 +7731,10 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
   animation-play-state: paused;
 }
 
-.service-page--company-opening .service-process__item:hover h3,
-.service-page--company-opening .service-process__item:focus-within h3,
-.service-page--company-opening .service-process__item:hover p,
-.service-page--company-opening .service-process__item:focus-within p {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:hover h3,
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:focus-within h3,
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:hover p,
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:focus-within p {
   color: rgba(255, 255, 255, 0.94) !important;
 }
 
@@ -7805,13 +7805,13 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
     overflow: visible !important;
   }
 
-  .service-page--company-opening .service-process__item {
+  .service-page--company-opening:not(.service-page--accounting-tax) .service-process__item {
     animation-name: companyOpeningProcessFocusMobile;
     transform-origin: center;
   }
 
-  .service-page--company-opening .service-process__item:hover,
-  .service-page--company-opening .service-process__item:focus-within {
+  .service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:hover,
+  .service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:focus-within {
     transform: translateY(-5px) scale(1.012) !important;
   }
 }
@@ -7929,30 +7929,30 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
   animation: companyOpeningProcessNumberFocus 10s cubic-bezier(0.22, 1, 0.36, 1) infinite !important;
 }
 
-.service-page--company-opening .service-process__item:nth-child(1),
-.service-page--company-opening .service-process__item:nth-child(1) span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(1),
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(1) span {
   animation-delay: 0s !important;
 }
 
-.service-page--company-opening .service-process__item:nth-child(2),
-.service-page--company-opening .service-process__item:nth-child(2) span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(2),
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(2) span {
   animation-delay: 2.5s !important;
 }
 
-.service-page--company-opening .service-process__item:nth-child(3),
-.service-page--company-opening .service-process__item:nth-child(3) span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(3),
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(3) span {
   animation-delay: 5s !important;
 }
 
-.service-page--company-opening .service-process__item:nth-child(4),
-.service-page--company-opening .service-process__item:nth-child(4) span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(4),
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(4) span {
   animation-delay: 7.5s !important;
 }
 
-.service-page--company-opening .service-process__item:hover,
-.service-page--company-opening .service-process__item:focus-within,
-.service-page--company-opening .service-process__timeline:hover .service-process__item,
-.service-page--company-opening .service-process__timeline:hover .service-process__item span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:hover,
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:focus-within,
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__timeline:hover .service-process__item,
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__timeline:hover .service-process__item span {
   animation-play-state: running !important;
 }
 
@@ -8068,7 +8068,7 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
     gap: 18px !important;
   }
 
-  .service-page--company-opening .service-process__item {
+  .service-page--company-opening:not(.service-page--accounting-tax) .service-process__item {
     animation-name: companyOpeningProcessCardFocusMobile !important;
   }
 }
@@ -8908,7 +8908,7 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
   overflow: visible !important;
 }
 
-.service-page--company-opening .service-process__item {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item {
   position: relative !important;
   z-index: 1;
   transform-origin: center;
@@ -8916,44 +8916,44 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
   animation: companyOpeningProcessFocus 12s ease-in-out infinite;
 }
 
-.service-page--company-opening .service-process__item:nth-child(1) {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(1) {
   animation-delay: 0s;
 }
 
-.service-page--company-opening .service-process__item:nth-child(2) {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(2) {
   animation-delay: 3s;
 }
 
-.service-page--company-opening .service-process__item:nth-child(3) {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(3) {
   animation-delay: 6s;
 }
 
-.service-page--company-opening .service-process__item:nth-child(4) {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(4) {
   animation-delay: 9s;
 }
 
-.service-page--company-opening .service-process__item span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item span {
   animation: companyOpeningProcessNumberFocus 12s ease-in-out infinite;
 }
 
-.service-page--company-opening .service-process__item:nth-child(1) span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(1) span {
   animation-delay: 0s;
 }
 
-.service-page--company-opening .service-process__item:nth-child(2) span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(2) span {
   animation-delay: 3s;
 }
 
-.service-page--company-opening .service-process__item:nth-child(3) span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(3) span {
   animation-delay: 6s;
 }
 
-.service-page--company-opening .service-process__item:nth-child(4) span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(4) span {
   animation-delay: 9s;
 }
 
-.service-page--company-opening .service-process__item:hover,
-.service-page--company-opening .service-process__item:focus-within {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:hover,
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:focus-within {
   z-index: 4;
   opacity: 1;
   transform: translateY(-10px) scale(1.03) !important;
@@ -8965,8 +8965,8 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
     inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
 }
 
-.service-page--company-opening .service-process__item:hover span,
-.service-page--company-opening .service-process__item:focus-within span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:hover span,
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:focus-within span {
   color: #032b45 !important;
   background: var(--color-accent) !important;
   border-color: rgba(115, 202, 255, 0.95) !important;
@@ -8976,10 +8976,10 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
   animation-play-state: paused;
 }
 
-.service-page--company-opening .service-process__item:hover h3,
-.service-page--company-opening .service-process__item:focus-within h3,
-.service-page--company-opening .service-process__item:hover p,
-.service-page--company-opening .service-process__item:focus-within p {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:hover h3,
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:focus-within h3,
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:hover p,
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:focus-within p {
   color: rgba(255, 255, 255, 0.94) !important;
 }
 
@@ -9158,46 +9158,46 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
 }
 
 /* Ajuste final: animacao suave dos cards do processo */
-.service-page--company-opening .service-process__timeline {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__timeline {
   gap: clamp(20px, 2.4vw, 34px) !important;
   overflow: visible !important;
 }
 
-.service-page--company-opening .service-process__item {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item {
   pointer-events: none;
   transform-origin: center;
   will-change: transform, opacity;
   animation: companyOpeningProcessCardFocus 10s cubic-bezier(0.22, 1, 0.36, 1) infinite !important;
 }
 
-.service-page--company-opening .service-process__item span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item span {
   animation: companyOpeningProcessNumberFocus 10s cubic-bezier(0.22, 1, 0.36, 1) infinite !important;
 }
 
-.service-page--company-opening .service-process__item:nth-child(1),
-.service-page--company-opening .service-process__item:nth-child(1) span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(1),
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(1) span {
   animation-delay: 0s !important;
 }
 
-.service-page--company-opening .service-process__item:nth-child(2),
-.service-page--company-opening .service-process__item:nth-child(2) span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(2),
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(2) span {
   animation-delay: 2.5s !important;
 }
 
-.service-page--company-opening .service-process__item:nth-child(3),
-.service-page--company-opening .service-process__item:nth-child(3) span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(3),
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(3) span {
   animation-delay: 5s !important;
 }
 
-.service-page--company-opening .service-process__item:nth-child(4),
-.service-page--company-opening .service-process__item:nth-child(4) span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(4),
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:nth-child(4) span {
   animation-delay: 7.5s !important;
 }
 
-.service-page--company-opening .service-process__item:hover,
-.service-page--company-opening .service-process__item:focus-within,
-.service-page--company-opening .service-process__timeline:hover .service-process__item,
-.service-page--company-opening .service-process__timeline:hover .service-process__item span {
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:hover,
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__item:focus-within,
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__timeline:hover .service-process__item,
+.service-page--company-opening:not(.service-page--accounting-tax) .service-process__timeline:hover .service-process__item span {
   animation-play-state: running !important;
 }
 
@@ -9309,18 +9309,18 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
 }
 
 @media (max-width: 760px) {
-  .service-page--company-opening .service-process__timeline {
+  .service-page--company-opening:not(.service-page--accounting-tax) .service-process__timeline {
     gap: 18px !important;
   }
 
-  .service-page--company-opening .service-process__item {
+  .service-page--company-opening:not(.service-page--accounting-tax) .service-process__item {
     animation-name: companyOpeningProcessCardFocusMobile !important;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .service-page--company-opening .service-process__item,
-  .service-page--company-opening .service-process__item span {
+  .service-page--company-opening:not(.service-page--accounting-tax) .service-process__item,
+  .service-page--company-opening:not(.service-page--accounting-tax) .service-process__item span {
     animation: none !important;
   }
 }
@@ -9398,6 +9398,97 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
 .service-page--company-opening:is(.service-page--accounting-tax, .service-page--people-management, .service-page--accounting-migration, .service-page--tax-planning) .service-process__item {
   min-height: 230px !important;
   padding: 52px 24px 26px !important;
+}
+
+/* Cards estaticos do processo na pagina contabil e fiscal */
+.service-page--accounting-tax .service-process-flow {
+  position: relative;
+  margin-top: clamp(42px, 5vw, 68px);
+}
+
+.service-page--accounting-tax .service-process-flow__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(18px, 2vw, 28px);
+}
+
+.service-page--accounting-tax .service-process-flow__card {
+  position: relative;
+  z-index: 1;
+  min-height: 250px;
+  padding: 56px 24px 28px;
+  border: 1px solid rgba(115, 202, 255, 0.22);
+  border-radius: 22px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(115, 202, 255, 0.12), transparent 34%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.032)),
+    rgba(3, 43, 69, 0.5);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+}
+
+.service-page--accounting-tax .service-process-flow__card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(120deg, transparent 0%, rgba(115, 202, 255, 0.18) 36%, rgba(201, 162, 74, 0.12) 50%, transparent 68%);
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.service-page--accounting-tax .service-process-flow__card::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 21px;
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  pointer-events: none;
+}
+
+.service-page--accounting-tax .service-process-flow__card span {
+  color: rgba(115, 202, 255, 0.92);
+  border-color: rgba(115, 202, 255, 0.38);
+  background: rgba(3, 43, 69, 0.76);
+  box-shadow: 0 0 20px rgba(115, 202, 255, 0.1);
+}
+
+.service-page--accounting-tax .service-process-flow__card h3 {
+  position: relative;
+  z-index: 1;
+}
+
+.service-page--accounting-tax .service-process-flow__card p {
+  position: relative;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+@media (max-width: 1080px) {
+  .service-page--accounting-tax .service-process-flow__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .service-page--accounting-tax .service-process-flow {
+    margin-top: 34px;
+  }
+
+  .service-page--accounting-tax .service-process-flow__grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .service-page--accounting-tax .service-process-flow__card {
+    min-height: auto;
+    border-radius: 20px;
+  }
 }
 
 @media (min-width: 1440px) {
