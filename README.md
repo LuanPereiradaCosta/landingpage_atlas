@@ -6,6 +6,12 @@ Este projeto é uma landing page institucional desenvolvida para a Atlas Contabi
 
 A proposta visual busca transmitir credibilidade, organização e uma identidade premium, mantendo a navegação simples e objetiva. O projeto também conta com páginas internas, contato via WhatsApp e uma experiência responsiva para diferentes tamanhos de tela.
 
+## Status do projeto
+
+O projeto encontra-se atualmente em fase de protótipo funcional, com sua estrutura e principais funcionalidades já finalizadas.
+
+No momento, aguarda a produção de novas fotografias institucionais e a validação dos textos pela empresa. Após a aprovação e substituição dos conteúdos provisórios, serão realizadas as revisões finais e o deploy.
+
 ## Link do projeto
 
 Repositório: https://github.com/LuanPereiradaCosta/landingpage_atlas
