@@ -396,14 +396,38 @@ const scrollToPageTop = () => {
   pageElement.style.scrollBehavior = originalScrollBehavior;
 };
 
+const scrollToInitialPosition = () => {
+  if (!window.location.hash) {
+    scrollToPageTop();
+    return;
+  }
+
+  const targetId = decodeURIComponent(window.location.hash.slice(1));
+  const targetElement = document.getElementById(targetId);
+
+  if (!targetElement) {
+    scrollToPageTop();
+    return;
+  }
+
+  const headerHeight = siteHeader ? siteHeader.offsetHeight : 0;
+  const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+  window.scrollTo({
+    top: targetPosition,
+    left: 0,
+    behavior: 'auto'
+  });
+};
+
 window.addEventListener('pageshow', () => {
   pageIsLeaving = false;
   document.body.classList.remove('is-page-leaving');
-  scrollToPageTop();
+  scrollToInitialPosition();
 });
 
 window.addEventListener('load', () => {
-  scrollToPageTop();
+  scrollToInitialPosition();
 
   window.setTimeout(() => {
     document.body.classList.remove('is-page-leaving');
