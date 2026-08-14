@@ -132,7 +132,7 @@ git clone https://github.com/LuanPereiradaCosta/landingpage_atlas.git
 Entre na pasta:
 
 ```bash
-cd atlas
+cd landingpage_atlas
 ```
 
 Depois, abra o arquivo `index.html` no navegador ou utilize a extensão Live Server no VS Code.
