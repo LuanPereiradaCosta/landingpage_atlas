@@ -57,6 +57,9 @@ temp/
 *.tar.gz
 *.tgz
 
-# Arquivos Markdown
-*.md
-!README.md
+# Arquivos de apoio e ferramentas
+.vscode/
+.skills/
+*.code-workspace
+AGENTS.MD
+RESPONSIVIDADE.md
