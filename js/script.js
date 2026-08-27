@@ -17,6 +17,8 @@ const institutionalNextButton = document.querySelector('[data-institutional-next
 const differentialsSection = document.querySelector('.differentials-section');
 const specialtiesSection = document.querySelector('.specialties-section');
 const contactSection = document.querySelector('.contact-section');
+const siteFooter = document.querySelector('.site-footer');
+const whatsappFloating = document.querySelector('.whatsapp-floating');
 const specialtiesTrack = document.querySelector('[data-specialties-track]');
 const specialtiesPrevButton = document.querySelector('[data-specialties-prev]');
 const specialtiesNextButton = document.querySelector('[data-specialties-next]');
@@ -296,11 +298,90 @@ const setupAboutPageReveal = () => {
   }
 };
 
+const setupPolicyPageReveal = () => {
+  const privacyPage = document.querySelector('.policy-content--checklist');
+  const qualityPage = document.querySelector('.policy-content--quality');
+  const policyPage = privacyPage || qualityPage;
+
+  if (!policyPage) return;
+
+  const heroSelector = privacyPage ? '.policy-hero--privacy' : '.policy-hero--quality';
+  const contentSelectors = privacyPage
+    ? [
+        '.policy-content--checklist .policy-content__updated',
+        '.policy-content--checklist section h2',
+        '.policy-content--checklist section p'
+      ]
+    : [
+        '.policy-content--quality .policy-content__updated',
+        '.policy-content--quality .policy-content__inner > section > h2',
+        '.policy-content--quality .policy-content__inner > section > p',
+        '.policy-content--quality .policy-principles article'
+      ];
+
+  const heroRevealElements = document.querySelectorAll([
+    `${heroSelector} .policy-page__eyebrow`,
+    `${heroSelector} h1`,
+    `${heroSelector} .policy-breadcrumb`
+  ].join(', '));
+  const contentRevealElements = document.querySelectorAll(contentSelectors.join(', '));
+  const revealElements = [...heroRevealElements, ...contentRevealElements];
+
+  revealElements.forEach((element, index) => {
+    element.classList.add('privacy-reveal');
+    element.style.setProperty('--privacy-reveal-delay', `${Math.min(index % 3, 2) * 90}ms`);
+  });
+
+  if (reducedMotionQuery.matches || !('IntersectionObserver' in window)) {
+    revealElements.forEach((element) => element.classList.add('is-visible'));
+    return;
+  }
+
+  const revealHero = () => {
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        heroRevealElements.forEach((element) => element.classList.add('is-visible'));
+      });
+    });
+  };
+
+  if (document.body.classList.contains('is-loaded')) {
+    revealHero();
+  } else {
+    const loadedStateObserver = new MutationObserver(() => {
+      if (!document.body.classList.contains('is-loaded')) return;
+
+      loadedStateObserver.disconnect();
+      revealHero();
+    });
+
+    loadedStateObserver.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  }
+
+  const privacyRevealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -5% 0px'
+  });
+
+  contentRevealElements.forEach((element) => privacyRevealObserver.observe(element));
+};
+
 setupPremiumSpecialtyHeroTyping();
 setupPremiumSpecialtyHeroBackground();
 setupPremiumSpecialtyArticleReveal();
 setupCompanyOpeningServiceReveal();
 setupAboutPageReveal();
+setupPolicyPageReveal();
 
 if ('scrollRestoration' in window.history) {
   window.history.scrollRestoration = 'manual';
@@ -1167,6 +1248,18 @@ if (contactSection) {
   });
 
   contactObserver.observe(contactSection);
+}
+
+if (siteFooter && whatsappFloating) {
+  const footerObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      whatsappFloating.classList.toggle('is-hidden-by-footer', entry.isIntersecting);
+    });
+  }, {
+    threshold: 0
+  });
+
+  footerObserver.observe(siteFooter);
 }
 
 if (contactSteps.length) {

@@ -8,9 +8,9 @@ A proposta visual busca transmitir credibilidade, organização e uma identidade
 
 ## Status do projeto
 
-O projeto encontra-se atualmente em fase de protótipo funcional, com sua estrutura e principais funcionalidades já finalizadas.
+O projeto encontra-se atualmente em fase de finalização, com sua estrutura, principais funcionalidades e fotografias institucionais já implementadas.
 
-No momento, aguarda a produção de novas fotografias institucionais e a validação dos textos pela empresa. Após a aprovação e substituição dos conteúdos provisórios, serão realizadas as revisões finais e o deploy.
+As imagens do site foram adicionadas, otimizadas em WebP e preparadas com versões e enquadramentos responsivos para desktop e mobile. No momento, restam a validação final dos textos pela empresa, os últimos testes de publicação e o deploy.
 
 ## Link do projeto
 
@@ -43,6 +43,21 @@ Deploy: em breve
 - Footer compartilhado nas páginas internas.
 - Animações suaves em elementos da interface.
 - Transições entre páginas.
+- Imagens otimizadas em WebP com enquadramentos específicos para desktop e mobile.
+- Páginas de política de privacidade e política de qualidade.
+
+## Atualizações recentes
+
+- Inclusão das fotografias institucionais, da fachada e dos ambientes da Atlas.
+- Inclusão das imagens de conteúdo e dos heróis das páginas de especialidades.
+- Otimização dos arquivos de imagem para o formato WebP.
+- Separação de imagens responsivas para desktop e mobile quando necessário.
+- Ajuste dos enquadramentos das imagens institucionais, da página Sobre e das páginas de especialidades.
+- Remoção de imagens antigas ou sem utilização no projeto.
+- Inclusão das páginas de política de privacidade e política de qualidade.
+- Revisão do comportamento responsivo em dispositivos móveis.
+
+O deploy ainda não foi realizado.
 
 ## Páginas desenvolvidas
 
@@ -59,6 +74,8 @@ Deploy: em breve
 - `especialidade-engenharia-arquitetura.html`
 - `especialidade-tecnologia.html`
 - `especialidade-corretor-imoveis.html`
+- `politica-de-privacidade.html`
+- `politica-de-qualidade.html`
 
 ## Decisões de UI/UX
 
@@ -115,6 +132,7 @@ Boas práticas presentes:
 │   ├── script.js
 │   └── layout.js
 ├── assets/
+│   ├── empresas/
 │   ├── images/
 │   ├── logo/
 │   └── especialidades/
@@ -152,10 +170,11 @@ Durante o desenvolvimento deste projeto, foram trabalhados aprendizados como:
 
 ## Melhorias futuras
 
-- Otimização de imagens.
 - Melhoria de SEO.
 - Revisão de acessibilidade.
 - Testes em mais navegadores.
+- Validação final dos textos e informações institucionais.
+- Publicação e configuração do deploy.
 - Integração futura com formulário.
 - Criação de blog ou área de conteúdos.
 

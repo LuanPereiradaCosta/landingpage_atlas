@@ -11,11 +11,20 @@
 </head>
 <body class="is-loading">
   <main class="specialty-page specialty-page--premium specialty-page--advocacy">
-    <section class="specialty-page__hero" style="--specialty-hero-image: url('../assets/especialidades/advocacia.png');" aria-labelledby="page-title">
+    <section class="specialty-page__hero" style="--specialty-hero-image: url('assets/especialidades/advocacia/advocacia.webp');" aria-labelledby="page-title">
       <div class="specialty-page__hero-bg" aria-hidden="true">
-        <img class="specialty-page__hero-bg-image is-active" src="assets/especialidades/advocacia/advogado_hero1.jpg" alt="">
-        <img class="specialty-page__hero-bg-image" src="assets/especialidades/advocacia/adovagado_hero2.jpg" alt="">
-        <img class="specialty-page__hero-bg-image" src="assets/especialidades/advocacia/advogado_hero3.jpg" alt="">
+        <picture class="specialty-page__hero-picture">
+          <source media="(max-width: 780px)" srcset="assets/especialidades/advocacia/hero/mobile/advogado_hero1.webp">
+          <img class="specialty-page__hero-bg-image is-active" src="assets/especialidades/advocacia/hero/desktop/advogado_hero1.webp" alt="">
+        </picture>
+        <picture class="specialty-page__hero-picture">
+          <source media="(max-width: 780px)" srcset="assets/especialidades/advocacia/hero/mobile/adovagado_hero2.webp">
+          <img class="specialty-page__hero-bg-image" src="assets/especialidades/advocacia/hero/desktop/adovagado_hero2.webp" alt="">
+        </picture>
+        <picture class="specialty-page__hero-picture">
+          <source media="(max-width: 780px)" srcset="assets/especialidades/advocacia/hero/mobile/advogado_hero3.webp">
+          <img class="specialty-page__hero-bg-image" src="assets/especialidades/advocacia/hero/desktop/advogado_hero3.webp" alt="">
+        </picture>
       </div>
       <div class="specialty-page__hero-inner">
         <p class="specialty-page__eyebrow">Especialidade</p>
@@ -37,7 +46,7 @@
         </div>
 
         <figure class="specialty-article__feature-media">
-          <img src="assets/especialidades/advocacia/advogado_olhando.jpg" alt="Profissional da advocacia em ambiente de trabalho jur&iacute;dico">
+          <img src="assets/especialidades/advocacia/conteudo/desktop/advogado_olhando.webp" alt="Profissional da advocacia em ambiente de trabalho jur&iacute;dico">
         </figure>
 
         <div class="specialty-article__body">

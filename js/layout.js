@@ -265,7 +265,13 @@ const commonContactFooter = `
       </div>
     </div>
 
-    <p class="site-footer__bottom">&copy; 2026 Atlas Contabilidade Digital. Todos os direitos reservados.</p>
+    <div class="site-footer__bottom">
+      <p>&copy; 2026 Atlas Contabilidade Digital. Todos os direitos reservados.</p>
+      <nav class="site-footer__policy-links" aria-label="Pol&iacute;ticas institucionais">
+        <a href="politica-de-privacidade.html">Pol&iacute;tica de Privacidade</a>
+        <a href="politica-de-qualidade.html">Pol&iacute;tica de Qualidade</a>
+      </nav>
+    </div>
   </footer>
 
   <a class="whatsapp-floating" href="https://api.whatsapp.com/send/?phone=5548984040777&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" aria-label="Falar com a Atlas pelo WhatsApp">
