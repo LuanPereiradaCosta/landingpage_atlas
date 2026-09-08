@@ -93,13 +93,13 @@ button:focus-visible {
 @keyframes heroSlideEnter {
   0% {
     opacity: 1;
-    transform: translate3d(calc(-50% + 92%), -50%, -60px) scale(0.72);
+    transform: translate3d(calc(-50% + var(--hero-side-offset, 92%)), -50%, -60px) scale(0.72);
     animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
   }
 
   28% {
     opacity: 1;
-    transform: translate3d(calc(-50% + 90%), -50%, 5px) scale(0.88);
+    transform: translate3d(calc(-50% + var(--hero-side-offset, 92%) - 2%), -50%, 5px) scale(0.88);
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.35, 1);
   }
 
@@ -1171,8 +1171,8 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
 }
 
 .hero__carousel {
-  --hero-side-offset: 92%;
-  --hero-side-entry-offset: 160%;
+  --hero-side-offset: 108%;
+  --hero-side-entry-offset: 188%;
   position: relative;
   margin: 0 auto;
   margin-right: 20%;
@@ -5452,8 +5452,8 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
   }
 
   .hero__carousel {
-    --hero-side-offset: 70%;
-    --hero-side-entry-offset: 124%;
+    --hero-side-offset: 86%;
+    --hero-side-entry-offset: 152%;
     width: 330px;
     margin: 0;
   }
@@ -5546,8 +5546,8 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
   }
 
   .hero__carousel {
-    --hero-side-offset: 72%;
-    --hero-side-entry-offset: 126%;
+    --hero-side-offset: 88%;
+    --hero-side-entry-offset: 154%;
     width: 370px;
   }
 
@@ -5621,8 +5621,8 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
   }
 
   .hero__carousel {
-    --hero-side-offset: 74%;
-    --hero-side-entry-offset: 130%;
+    --hero-side-offset: 90%;
+    --hero-side-entry-offset: 158%;
     width: 450px;
     margin: 0;
   }
@@ -5717,8 +5717,8 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
   }
 
   .hero__carousel {
-    --hero-side-offset: 72%;
-    --hero-side-entry-offset: 126%;
+    --hero-side-offset: 88%;
+    --hero-side-entry-offset: 154%;
     width: 410px;
   }
 
@@ -5744,8 +5744,8 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
   }
 
   .hero__carousel {
-    --hero-side-offset: 70%;
-    --hero-side-entry-offset: 124%;
+    --hero-side-offset: 86%;
+    --hero-side-entry-offset: 152%;
     width: 390px;
   }
 
@@ -6232,8 +6232,8 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
   }
 
   .hero__carousel {
-    --hero-side-offset: 76%;
-    --hero-side-entry-offset: 132%;
+    --hero-side-offset: 92%;
+    --hero-side-entry-offset: 160%;
     width: min(100%, clamp(370px, 30vw, 430px));
     margin: 0 0 0 auto;
   }
@@ -6323,8 +6323,8 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
   }
 
   .hero__carousel {
-    --hero-side-offset: 78%;
-    --hero-side-entry-offset: 136%;
+    --hero-side-offset: 94%;
+    --hero-side-entry-offset: 164%;
     width: min(100%, clamp(450px, 28vw, 540px));
     margin: 0;
   }
@@ -6404,6 +6404,13 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
     width: min(80%, 500px);
     min-height: clamp(146px, 6vw, 176px);
     padding: 18px 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero__carousel {
+    scale: 0.9;
+    translate: 36px -12px;
   }
 }
 

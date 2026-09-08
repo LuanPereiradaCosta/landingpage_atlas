@@ -15,6 +15,7 @@ $RECYCLE.BIN/
 .serena/
 .codex/
 .agents/
+.mcp-playwright/
 
 # Dependencias, caso algum pacote seja instalado no futuro
 node_modules/
