@@ -4908,11 +4908,28 @@ body.is-page-leaving .page-loader.is-loader-ready .atlas-loader-logo__path {
     opacity: 0;
   }
 
-  .hero__slide.is-active {
+  .hero__slide.is-active,
+  .hero__slide.is-shrinking {
     width: calc(100% - clamp(24px, 8vw, 36px));
     height: 100%;
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
+  }
+
+  .hero__slide.is-shrinking {
+    animation-duration: 0.8s;
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  }
+
+  .hero__slide.is-shrinking .hero__slide-image,
+  .hero__slide.is-shrinking::after {
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+  }
+
+  .hero__slide.is-previous {
+    animation-duration: 1s;
+    transition: width 1s cubic-bezier(0.4, 0, 0.75, 1), height 1s cubic-bezier(0.4, 0, 0.75, 1);
   }
 
   .hero__carousel {

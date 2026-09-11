@@ -631,7 +631,7 @@ const showHeroSlide = (slideIndex) => {
             reservedNextSlide.heroActivateTimer = null;
           }, 60);
         }
-      }, 320);
+      }, window.matchMedia('(max-width: 767px)').matches ? 800 : 320);
     }
   }
 
