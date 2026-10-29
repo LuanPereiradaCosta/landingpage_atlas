@@ -90,14 +90,14 @@ O desenvolvimento principal foi finalizado, permanecendo possíveis evoluções 
   <tr>
     <td align="center">
       <img
-        src="assets/fotos_referencia/carrossel_especialidades.png"
+        src="assets/fotos_referencia/carrosel_especialidades.png"
         alt="Carrossel de especialidades"
         width="430"
       >
     </td>
     <td align="center">
       <img
-        src="assets/fotos_referencia/diferenciais_com_carrossel.png"
+        src="assets/fotos_referencia/diferenciais_com_carrosel.png"
         alt="Seção de diferenciais com carrossel"
         width="430"
       >
@@ -293,9 +293,9 @@ Essa organização contribui para reduzir o peso dos arquivos carregados pelo si
 │   ├── empresas/
 │   ├── especialidades/
 │   ├── fotos_referencia/
-│   │   ├── carrossel_especialidades.png
+│   │   ├── carrosel_especialidades.png
 │   │   ├── contatos.png
-│   │   ├── diferenciais_com_carrossel.png
+│   │   ├── diferenciais_com_carrosel.png
 │   │   ├── especialidades.png
 │   │   ├── hero_home.png
 │   │   ├── home_institucional.png
@@ -371,6 +371,12 @@ Algumas possibilidades são:
 - implementação de ferramentas de análise de navegação e conversão.
 
 ---
+
+## Minha contribuição e publicação
+
+Desenvolvi o site com HTML, CSS e JavaScript, incluindo as páginas, a responsividade e os componentes interativos. Também produzi as fotografias institucionais e organizei sua otimização para uso na web.
+
+A publicação no servidor corporativo contou com apoio do responsável pela infraestrutura.
 
 ## Autor
 
