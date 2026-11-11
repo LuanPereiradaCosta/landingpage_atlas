@@ -380,6 +380,8 @@ A publicação no servidor corporativo contou com apoio do responsável pela inf
 
 ## Autor
 
-Desenvolvido por **Luan Pereira da Costa**.
+Desenvolvido por **Luan Pereira da Costa — Luan Pereira Dev**.
+
+[Portfólio do desenvolvedor](https://luanpereiradev.com.br/)
 
 [GitHub](https://github.com/LuanPereiradaCosta) • [LinkedIn](https://www.linkedin.com/in/luan-pereira-da-costa-333b433b0/)
